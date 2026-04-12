@@ -73,8 +73,8 @@
               <div style="color:var(--gray-light);font-size:.85rem;line-height:1.7">1. Send a WhatsApp message to: <strong style="color:var(--white)">+34 644 81 70 95</strong><br>2. Write exactly: <strong style="color:var(--orange)">"I allow callmebot to send me messages"</strong><br>3. You will receive your API key<br>4. Paste it below and save!</div>
             </div>
           </div>
-          <div class="form-group"><label>Your WhatsApp Number</label><input value="919256990806" placeholder="91XXXXXXXXXX (with country code)"></div>
-          <div class="form-group"><label>CallMeBot API Key</label><input placeholder="Paste your API key here..." id="callmebot-key"></div>
+          <div class="form-group"><label>Your WhatsApp Number</label><input value="919256990806" readonly></div>
+          <div class="form-group"><label>CallMeBot API Key</label><input placeholder="Paste your API key here..." id="callmebot-key" onchange="saveCallmebotKey(this.value)"></div>
           <div class="form-group form-full">
             <label>Notify Me When</label>
             <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
@@ -114,17 +114,17 @@
         </div>
         <div style="font-family:var(--font-c);font-size:.9rem;font-weight:700;letter-spacing:2px;color:var(--orange);margin-bottom:16px">FIREBASE CONFIG</div>
         <div class="form-grid">
-          <div class="form-group"><label>API Key</label><input placeholder="AIza..."></div>
-          <div class="form-group"><label>Project ID</label><input placeholder="your-project-id"></div>
-          <div class="form-group"><label>Auth Domain</label><input placeholder="your-project.firebaseapp.com"></div>
-          <div class="form-group"><label>Storage Bucket</label><input placeholder="your-project.appspot.com"></div>
-          <div class="form-group"><label>Messaging Sender ID</label><input placeholder="123456789"></div>
-          <div class="form-group"><label>App ID</label><input placeholder="1:123:web:abc123"></div>
+          <div class="form-group"><label>API Key</label><input value="AIzaSyAFVqoM9SDu_YkjWLo6O1MBM0pIv-GTrp0"></div>
+          <div class="form-group"><label>Project ID</label><input value="jatinbrandstudio-fecc8"></div>
+          <div class="form-group"><label>Auth Domain</label><input value="jatinbrandstudio-fecc8.firebaseapp.com"></div>
+          <div class="form-group"><label>Storage Bucket</label><input value="jatinbrandstudio-fecc8.firebasestorage.app"></div>
+          <div class="form-group"><label>Messaging Sender ID</label><input value="895387928657"></div>
+          <div class="form-group"><label>App ID</label><input value="1:895387928657:web:9454f887b2e2259c379070"></div>
         </div>
         <div style="font-family:var(--font-c);font-size:.9rem;font-weight:700;letter-spacing:2px;color:var(--orange);margin:24px 0 16px">CLOUDINARY CONFIG</div>
         <div class="form-grid">
-          <div class="form-group"><label>Cloud Name</label><input placeholder="your-cloud-name"></div>
-          <div class="form-group"><label>Upload Preset</label><input placeholder="your-upload-preset"></div>
+          <div class="form-group"><label>Cloud Name</label><input value="dxi4bsikl"></div>
+          <div class="form-group"><label>Upload Preset</label><input value="JBS_default"></div>
         </div>
         <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('Config saved! Reload to apply. ✅')">Save Config</button>
       </div>

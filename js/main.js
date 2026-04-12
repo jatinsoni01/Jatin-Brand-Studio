@@ -2,7 +2,7 @@
 // JATIN BRAND STUDIO - MAIN JS
 // ============================================
 
-const WA_NUMBER = '919256990806';
+const WA_NUMBER = "919256990806";
 
 // ---- PRELOADER ----
 window.addEventListener('load', () => {
@@ -267,3 +267,17 @@ Hi Jatin! I need help with *${serviceName}*. Can you share more details?`;
 
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 };
+
+// ============================================
+// FIREBASE SAVE ORDER — LIVE
+// ============================================
+async function saveOrderToFirebase(data) {
+  try {
+    const { db, saveOrder, saveMessage } = await import('./firebase.js');
+    await saveOrder(data);
+    await saveMessage(data);
+    console.log('✅ Order saved to Firebase!');
+  } catch(e) {
+    console.error('Firebase save error:', e);
+  }
+}

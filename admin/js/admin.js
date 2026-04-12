@@ -208,3 +208,31 @@ document.head.appendChild(sidebarStyle);
 const sov = document.createElement('div');
 sov.id = 'sidebar-overlay';
 document.body.appendChild(sov);
+
+// ============================================
+// FIREBASE CONFIG — LIVE (Admin Panel)
+// ============================================
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAFVqoM9SDu_YkjWLo6O1MBM0pIv-GTrp0",
+  authDomain: "jatinbrandstudio-fecc8.firebaseapp.com",
+  projectId: "jatinbrandstudio-fecc8",
+  storageBucket: "jatinbrandstudio-fecc8.firebasestorage.app",
+  messagingSenderId: "895387928657",
+  appId: "1:895387928657:web:9454f887b2e2259c379070"
+};
+
+const CLOUDINARY_CONFIG = {
+  cloudName: "dxi4bsikl",
+  apiKey: "844265352226548",
+  uploadPreset: "JBS_default"
+};
+
+// CallMeBot WhatsApp — add your API key in Settings > Notifications
+window.CALLMEBOT_KEY = localStorage.getItem('jbs_callmebot_key') || '';
+
+// Save CallMeBot key
+window.saveCallmebotKey = function(key) {
+  localStorage.setItem('jbs_callmebot_key', key);
+  window.CALLMEBOT_KEY = key;
+  showToast('WhatsApp key saved! ✅');
+};
