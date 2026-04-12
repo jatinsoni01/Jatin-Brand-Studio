@@ -132,15 +132,18 @@
 
     <!-- SECURITY -->
     <div class="settings-panel" id="tab-security">
-      <div class="card"><div class="card-title">Change <span>Password</span></div>
-        <div class="form-grid" style="max-width:500px">
-          <div class="form-group form-full"><label>Current Password</label><input type="password" placeholder="••••••••"></div>
-          <div class="form-group form-full"><label>New Password</label><input type="password" placeholder="••••••••"></div>
-          <div class="form-group form-full"><label>Confirm New Password</label><input type="password" placeholder="••••••••"></div>
+      <div class="card"><div class="card-title">Change Admin <span>PIN</span></div>
+        <div style="background:rgba(255,102,0,.08);border:1px solid rgba(255,102,0,.2);padding:16px;margin-bottom:24px;font-size:.88rem;color:var(--gray-light);line-height:1.7">
+          🔐 PIN must be exactly <strong style="color:var(--white)">6 digits</strong>. Default PIN is <strong style="color:var(--orange)">260326</strong>. Change it to something only you know!
         </div>
-        <div style="display:flex;gap:12px;margin-top:16px">
-          <button class="btn btn-orange" onclick="showToast('Password changed! ✅')">Update Password</button>
-          <button class="btn btn-danger" onclick="logout()">🚪 Logout All Devices</button>
+        <div class="form-grid" style="max-width:400px">
+          <div class="form-group form-full"><label>Current PIN</label><input type="password" id="old-pin" maxlength="6" placeholder="••••••" inputmode="numeric" pattern="[0-9]*"></div>
+          <div class="form-group form-full"><label>New PIN (6 digits)</label><input type="password" id="new-pin" maxlength="6" placeholder="••••••" inputmode="numeric" pattern="[0-9]*"></div>
+          <div class="form-group form-full"><label>Confirm New PIN</label><input type="password" id="confirm-pin" maxlength="6" placeholder="••••••" inputmode="numeric" pattern="[0-9]*"></div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:20px">
+          <button class="btn btn-orange" onclick="doChangePin()">🔐 Update PIN</button>
+          <button class="btn btn-danger" onclick="logout()">🚪 Logout</button>
         </div>
       </div>
     </div>
@@ -158,6 +161,21 @@ function testWhatsApp() {
   fetch(`https://api.callmebot.com/whatsapp.php?phone=${num}&text=${msg}&apikey=${key}`)
     .then(() => showToast('Test message sent! Check WhatsApp 📱'))
     .catch(() => showToast('Error sending. Check API key!', 'error'));
+}
+
+function doChangePin() {
+  const old = document.getElementById('old-pin').value;
+  const nw = document.getElementById('new-pin').value;
+  const cf = document.getElementById('confirm-pin').value;
+  const CURRENT = localStorage.getItem('jbs_custom_pin') || '260326';
+  if (old !== CURRENT) { showToast('Current PIN is wrong! ❌', 'error'); return; }
+  if (nw !== cf) { showToast('New PINs do not match! ❌', 'error'); return; }
+  if (nw.length !== 6 || !/^\d+$/.test(nw)) { showToast('PIN must be 6 digits! ❌', 'error'); return; }
+  localStorage.setItem('jbs_custom_pin', nw);
+  document.getElementById('old-pin').value = '';
+  document.getElementById('new-pin').value = '';
+  document.getElementById('confirm-pin').value = '';
+  showToast('PIN changed successfully! 🔐 ✅');
 }
 </script>
 </body></html>

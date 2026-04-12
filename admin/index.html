@@ -4,21 +4,173 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Admin Login — Jatin Brand Studio</title>
 <link rel="stylesheet" href="css/admin.css">
+<style>
+.pin-page{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--black);position:relative;overflow:hidden}
+.pin-page::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(255,102,0,0.07),transparent 70%);pointer-events:none}
+.pin-card{width:100%;max-width:360px;background:var(--dark2);border:1px solid rgba(255,102,0,0.2);padding:48px 32px;position:relative;z-index:1;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%);text-align:center}
+.pin-logo{font-family:var(--font-d);font-size:3rem;letter-spacing:4px;margin-bottom:6px}
+.pin-logo span{color:var(--orange)}
+.pin-sub{font-family:var(--font-c);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-bottom:36px}
+.pin-dots{display:flex;justify-content:center;gap:14px;margin-bottom:32px}
+.pin-dot{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.12);background:transparent;transition:all .2s ease}
+.pin-dot.filled{background:var(--orange);border-color:var(--orange);box-shadow:0 0 12px rgba(255,102,0,.5)}
+.pin-dot.error{background:#ef4444;border-color:#ef4444;animation:shake .4s ease}
+.pin-dot.ok{background:#22c55e;border-color:#22c55e}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.kbtn{height:64px;background:var(--dark3);border:1px solid rgba(255,255,255,.06);color:var(--white);font-family:var(--font-d);font-size:1.8rem;cursor:pointer;transition:all .15s ease;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);user-select:none}
+.kbtn:hover{background:var(--dark4);border-color:rgba(255,102,0,.3);color:var(--orange)}
+.kbtn:active{transform:scale(.93);background:rgba(255,102,0,.12)}
+.kbtn.del{font-size:1.2rem;color:var(--gray-light)}
+.kbtn.del:hover{color:#ef4444;border-color:rgba(239,68,68,.3)}
+.kbtn.empty{background:transparent;border-color:transparent;cursor:default}
+.kbtn.empty:hover{background:transparent;border-color:transparent}
+.pin-msg{font-family:var(--font-c);font-size:.8rem;letter-spacing:1.5px;min-height:22px;margin-top:10px;transition:.3s}
+.pin-msg.err{color:#fca5a5}
+.pin-msg.lock{color:#fcd34d}
+.pin-msg.hint{color:var(--gray)}
+.tries{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.try-dot{width:8px;height:8px;border-radius:50%;background:rgba(239,68,68,.25);border:1px solid rgba(239,68,68,.3);transition:.3s}
+.try-dot.used{background:#ef4444;border-color:#ef4444}
+</style>
 </head>
 <body>
-<div class="login-page">
-  <div class="login-card">
-    <div class="login-logo"><span>J</span>BS</div>
-    <div class="login-sub">Admin Panel</div>
-    <div class="login-error" id="login-error"></div>
-    <form class="login-form" id="login-form">
-      <div class="l-group"><label>Email Address</label><input type="email" id="email" placeholder="admin@jatinbrandstudio.com" required></div>
-      <div class="l-group"><label>Password</label><input type="password" id="password" placeholder="••••••••" required></div>
-      <label class="login-remember"><input type="checkbox" id="remember"> Remember me for 7 days</label>
-      <button type="submit" class="login-btn" id="login-btn">Login to Admin →</button>
-      <div class="login-forgot" onclick="alert('Contact: +91 92569 90806')">Forgot Password?</div>
-    </form>
+<div class="pin-page">
+  <div class="pin-card">
+    <div class="pin-logo"><span>J</span>BS</div>
+    <div class="pin-sub">Admin Access</div>
+
+    <div class="pin-dots">
+      <div class="pin-dot" id="d0"></div>
+      <div class="pin-dot" id="d1"></div>
+      <div class="pin-dot" id="d2"></div>
+      <div class="pin-dot" id="d3"></div>
+      <div class="pin-dot" id="d4"></div>
+      <div class="pin-dot" id="d5"></div>
+    </div>
+
+    <div class="keypad">
+      <button class="kbtn" onclick="pk('1')">1</button>
+      <button class="kbtn" onclick="pk('2')">2</button>
+      <button class="kbtn" onclick="pk('3')">3</button>
+      <button class="kbtn" onclick="pk('4')">4</button>
+      <button class="kbtn" onclick="pk('5')">5</button>
+      <button class="kbtn" onclick="pk('6')">6</button>
+      <button class="kbtn" onclick="pk('7')">7</button>
+      <button class="kbtn" onclick="pk('8')">8</button>
+      <button class="kbtn" onclick="pk('9')">9</button>
+      <button class="kbtn empty" disabled></button>
+      <button class="kbtn" onclick="pk('0')">0</button>
+      <button class="kbtn del" onclick="dk()">⌫</button>
+    </div>
+
+    <div class="pin-msg hint" id="msg">Enter your 6-digit PIN</div>
+    <div class="tries">
+      <div class="try-dot" id="t0"></div>
+      <div class="try-dot" id="t1"></div>
+      <div class="try-dot" id="t2"></div>
+    </div>
   </div>
 </div>
-<script src="js/auth.js"></script>
-</body></html>
+
+<script>
+// ⚠️ CHANGE THIS PIN — Default: 260326
+const PIN = '260326';
+
+let cur = '', fails = parseInt(localStorage.getItem('jbs_f')||'0'), lk = false;
+
+// Already logged in?
+if(localStorage.getItem('jbs_admin')||sessionStorage.getItem('jbs_admin')) location.href='dashboard.html';
+
+// Check lock
+(function(){
+  const lu = localStorage.getItem('jbs_lu');
+  if(lu && Date.now() < +lu){ lk=true; startLockTimer(Math.ceil((+lu-Date.now())/1000)); }
+  updateTries();
+})();
+
+function pk(n){
+  if(lk || cur.length>=6) return;
+  cur+=n; draw();
+  if(cur.length===6) setTimeout(check,150);
+}
+
+function dk(){
+  if(lk) return;
+  cur=cur.slice(0,-1); draw(); setMsg('Enter your 6-digit PIN','hint');
+}
+
+function draw(){
+  for(let i=0;i<6;i++){
+    const d=document.getElementById('d'+i);
+    d.className='pin-dot'+(i<cur.length?' filled':'');
+  }
+}
+
+function setDots(cls){
+  for(let i=0;i<6;i++){
+    const d=document.getElementById('d'+i);
+    d.className='pin-dot '+cls;
+  }
+}
+
+function setMsg(txt,cls){
+  const el=document.getElementById('msg');
+  el.className='pin-msg '+(cls||'hint');
+  el.textContent=txt;
+}
+
+function check(){
+  if(cur===PIN){
+    setDots('ok');
+    setMsg('✅ Access Granted!','');
+    localStorage.setItem('jbs_admin','true');
+    localStorage.removeItem('jbs_f');
+    localStorage.removeItem('jbs_lu');
+    setTimeout(()=>location.href='dashboard.html',600);
+  } else {
+    setDots('error');
+    fails++; localStorage.setItem('jbs_f',fails); updateTries();
+    if(fails>=3){
+      const lu=Date.now()+5*60*1000;
+      localStorage.setItem('jbs_lu',lu);
+      lk=true; startLockTimer(300);
+    } else {
+      setMsg('⚠️ Wrong PIN! '+(3-fails)+' attempt'+(3-fails===1?'':'s')+' left','err');
+    }
+    setTimeout(()=>{ cur=''; draw(); },600);
+  }
+}
+
+function startLockTimer(secs){
+  let s=secs;
+  setMsg('🔒 Locked! Try again in '+s+'s','lock');
+  const t=setInterval(()=>{
+    s--;
+    if(s<=0){
+      clearInterval(t); lk=false; fails=0;
+      localStorage.removeItem('jbs_f');
+      localStorage.removeItem('jbs_lu');
+      setMsg('Enter your 6-digit PIN','hint');
+      resetTries();
+    } else {
+      setMsg('🔒 Locked! Try again in '+s+'s','lock');
+    }
+  },1000);
+}
+
+function updateTries(){
+  for(let i=0;i<3;i++) document.getElementById('t'+i).className='try-dot'+(i<fails?' used':'');
+}
+function resetTries(){
+  for(let i=0;i<3;i++) document.getElementById('t'+i).className='try-dot';
+}
+
+// Keyboard support
+document.addEventListener('keydown',e=>{
+  if(e.key>='0'&&e.key<='9') pk(e.key);
+  if(e.key==='Backspace'||e.key==='Delete') dk();
+});
+</script>
+</body>
+</html>
