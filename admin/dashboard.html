@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item active" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div>
+</div>
+
+<!-- MAIN -->
+<div class="main-content">
+  <div class="topbar">
+    <div class="topbar-left">
+      <button class="ham-mob">☰</button>
+      <div class="page-title-top">Dashboard</div>
+    </div>
+    <div class="topbar-right">
+      <div style="font-family:var(--font-c);font-size:.85rem;color:var(--gray-light)" id="live-time"></div>
+      <button class="notif-btn" onclick="window.location.href='messages.html'">🔔<span class="notif-dot"></span></button>
+      <a href="../index.html" target="_blank" class="btn btn-ghost btn-sm">🌐 View Site</a>
+    </div>
+  </div>
+
+  <div class="page-content">
+
+    <!-- STATS ROW -->
+    <div class="stats-row">
+      <div class="stat-card orange"><div class="stat-ic">📦</div><div class="stat-val">47</div><div class="stat-lbl">Total Orders</div></div>
+      <div class="stat-card green"><div class="stat-ic">💰</div><div class="stat-val">₹89K</div><div class="stat-lbl">Total Earnings</div></div>
+      <div class="stat-card blue"><div class="stat-ic">👥</div><div class="stat-val">32</div><div class="stat-lbl">Total Clients</div></div>
+      <div class="stat-card yellow"><div class="stat-ic">📩</div><div class="stat-val">5</div><div class="stat-lbl">New Messages</div></div>
+      <div class="stat-card red"><div class="stat-ic">⏳</div><div class="stat-val">8</div><div class="stat-lbl">Pending Work</div></div>
+      <div class="stat-card purple"><div class="stat-ic">⭐</div><div class="stat-val">4.9</div><div class="stat-lbl">Avg Rating</div></div>
+    </div>
+
+    <!-- CHARTS ROW -->
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Monthly <span>Earnings</span></div>
+        <div class="chart-box"><div class="chart-icon">📊</div><div>Chart loads with Firebase data</div><div style="font-size:.75rem;color:var(--gray)">Connect Firebase to see live chart</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Services <span>Popularity</span></div>
+        <div class="chart-box"><div class="chart-icon">🥧</div><div>Pie chart loads with data</div><div style="font-size:.75rem;color:var(--gray)">Connect Firebase to see live chart</div></div>
+      </div>
+    </div>
+
+    <!-- RECENT ORDERS + ACTIVITY -->
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Recent <span>Orders</span> <a href="orders.html" class="btn btn-ghost btn-sm">View All →</a></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Client</th><th>Service</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr data-status="new" data-id="1"><td><strong>Rahul Sharma</strong><br><small style="color:var(--gray)">9876543210</small></td><td>Logo Design</td><td><span class="badge badge-new">🔵 New</span></td><td class="act-btns"><button class="act-btn wa" onclick="waClient('919876543210','Rahul','Logo Design')">💬</button><button class="act-btn view" onclick="window.location.href='orders.html'">👁️</button></td></tr>
+              <tr data-status="in-progress" data-id="2"><td><strong>Priya Singh</strong><br><small style="color:var(--gray)">9765432109</small></td><td>Website Design</td><td><span class="badge badge-wip">🟡 In Progress</span></td><td class="act-btns"><button class="act-btn wa" onclick="waClient('919765432109','Priya','Website Design')">💬</button><button class="act-btn view">👁️</button></td></tr>
+              <tr data-status="completed" data-id="3"><td><strong>Amit Kumar</strong><br><small style="color:var(--gray)">9654321098</small></td><td>Branding</td><td><span class="badge badge-done">🟢 Done</span></td><td class="act-btns"><button class="act-btn wa">💬</button><button class="act-btn view">👁️</button></td></tr>
+              <tr data-status="new" data-id="4"><td><strong>Neha Gupta</strong><br><small style="color:var(--gray)">9543210987</small></td><td>Social Media</td><td><span class="badge badge-new">🔵 New</span></td><td class="act-btns"><button class="act-btn wa">💬</button><button class="act-btn view">👁️</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Recent <span>Activity</span></div>
+        <div class="activity-list">
+          <div class="activity-item"><div class="activity-dot orange"></div><div><div class="activity-text"><strong>New inquiry</strong> from Rahul Sharma — Logo Design</div><div class="activity-time">2 minutes ago</div></div></div>
+          <div class="activity-item"><div class="activity-dot green"></div><div><div class="activity-text"><strong>Order completed</strong> for Amit Kumar — Branding</div><div class="activity-time">1 hour ago</div></div></div>
+          <div class="activity-item"><div class="activity-dot blue"></div><div><div class="activity-text"><strong>New message</strong> from Priya Singh via contact form</div><div class="activity-time">3 hours ago</div></div></div>
+          <div class="activity-item"><div class="activity-dot orange"></div><div><div class="activity-text"><strong>Portfolio updated</strong> — 2 new projects added</div><div class="activity-time">Yesterday</div></div></div>
+          <div class="activity-item"><div class="activity-dot green"></div><div><div class="activity-text"><strong>New review</strong> added — 5 stars from Vikram M.</div><div class="activity-time">2 days ago</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="card">
+      <div class="card-title">Quick <span>Actions</span></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="orders.html" class="btn btn-orange">📦 View Orders</a>
+        <a href="portfolio.html" class="btn btn-outline-o">🖼️ Add Portfolio</a>
+        <a href="messages.html" class="btn btn-outline-o">📩 Check Messages</a>
+        <a href="reviews.html" class="btn btn-outline-o">⭐ Add Review</a>
+        <a href="blog.html" class="btn btn-outline-o">📝 Write Blog</a>
+        <a href="settings.html" class="btn btn-ghost">⚙️ Settings</a>
+        <a href="../index.html" target="_blank" class="btn btn-ghost">🌐 View Website</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<script src="js/admin.js"></script>
+</body></html>

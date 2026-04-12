@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pricing — Jatin Brand Studio</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.compare-table{width:100%;border-collapse:collapse;margin-top:20px}
+.compare-table th,.compare-table td{padding:14px 20px;border:1px solid rgba(255,255,255,.06);font-size:.9rem;text-align:center}
+.compare-table th{font-family:var(--font-c);letter-spacing:2px;text-transform:uppercase;background:var(--dark3);color:var(--orange)}
+.compare-table th:first-child{text-align:left}
+.compare-table td:first-child{text-align:left;color:var(--gray-light)}
+.compare-table tr:hover td{background:rgba(255,102,0,.05)}
+.compare-table .yes{color:var(--orange);font-size:1.1rem}
+.compare-table .no{color:var(--gray);font-size:1.1rem}
+.compare-table .feat-col{background:rgba(255,102,0,.08)}
+</style>
+</head>
+<body>
+
+<nav id="navbar"><div class="container"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-text"><span>J</span>BS</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a><a href="pricing.html" class="active">Pricing</a>
+    <a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a>
+  </div>
+  <button class="hamburger"><span></span><span></span><span></span></button>
+</div></div></nav>
+<div class="mobile-menu"><button class="mob-close">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+  <a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="container"><div class="fade-up">
+    <div class="page-hero-ttl">Our <span>Pricing</span></div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Pricing</span></div>
+  </div></div>
+</section>
+
+<!-- PRICING CARDS -->
+<section style="padding:100px 0;background:var(--dark2)">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="sec-title">Choose Your <span>Plan</span></div>
+      <p class="sec-sub">Transparent pricing — no hidden charges, ever</p>
+      <div class="o-line" style="margin:15px auto 40px"></div>
+    </div>
+    <div class="price-grid">
+      <div class="price-card fade-up">
+        <div class="plan-nm">Basic</div>
+        <div class="plan-pr"><sup>₹</sup>999</div>
+        <div class="plan-pd">One-time Payment</div>
+        <div class="plan-div"></div>
+        <ul class="plan-feats">
+          <li><span class="ck">✓</span> Logo Design (1 Concept)</li>
+          <li><span class="ck">✓</span> Business Card Design</li>
+          <li><span class="ck">✓</span> PNG + PDF Files</li>
+          <li><span class="ck">✓</span> 2 Revisions</li>
+          <li><span class="ck">✓</span> 3 Day Delivery</li>
+          <li><span class="no">✗</span> Website</li>
+          <li><span class="no">✗</span> Social Media Kit</li>
+          <li><span class="no">✗</span> Source Files</li>
+        </ul>
+        <a href="javascript:void(0)" onclick="orderPlan('Basic Plan - ₹999')" class="plan-btn">Order Basic →</a>
+      </div>
+      <div class="price-card feat fade-up">
+        <div class="pop-badge">⭐ Most Popular</div>
+        <div class="plan-nm">Standard</div>
+        <div class="plan-pr"><sup>₹</sup>2,499</div>
+        <div class="plan-pd">One-time Payment</div>
+        <div class="plan-div"></div>
+        <ul class="plan-feats">
+          <li><span class="ck">✓</span> Logo Design (3 Concepts)</li>
+          <li><span class="ck">✓</span> Full Branding Package</li>
+          <li><span class="ck">✓</span> Social Media Kit</li>
+          <li><span class="ck">✓</span> 1 Page Website</li>
+          <li><span class="ck">✓</span> All File Formats</li>
+          <li><span class="ck">✓</span> 5 Revisions</li>
+          <li><span class="ck">✓</span> 5 Day Delivery</li>
+          <li><span class="ck">✓</span> Source Files Included</li>
+        </ul>
+        <a href="javascript:void(0)" onclick="orderPlan('Standard Plan - ₹2,499')" class="plan-btn">Order Now ⚡</a>
+      </div>
+      <div class="price-card fade-up">
+        <div class="plan-nm">Premium</div>
+        <div class="plan-pr"><sup>₹</sup>4,999</div>
+        <div class="plan-pd">One-time Payment</div>
+        <div class="plan-div"></div>
+        <ul class="plan-feats">
+          <li><span class="ck">✓</span> Everything in Standard</li>
+          <li><span class="ck">✓</span> 5 Page Website</li>
+          <li><span class="ck">✓</span> SEO Basic Setup</li>
+          <li><span class="ck">✓</span> Unlimited Revisions</li>
+          <li><span class="ck">✓</span> 1 Month Free Support</li>
+          <li><span class="ck">✓</span> Priority Delivery</li>
+          <li><span class="ck">✓</span> WhatsApp Support</li>
+          <li><span class="ck">✓</span> All Rights Transferred</li>
+        </ul>
+        <a href="javascript:void(0)" onclick="orderPlan('Premium Plan - ₹4,999')" class="plan-btn">Order Premium →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section style="padding:80px 0;background:var(--black)">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="sec-title">Plan <span>Comparison</span></div>
+      <div class="o-line" style="margin:15px auto 40px"></div>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="compare-table fade-up">
+        <tr><th>Feature</th><th>Basic ₹999</th><th class="feat-col">Standard ₹2,499</th><th>Premium ₹4,999</th></tr>
+        <tr><td>Logo Design</td><td>1 Concept</td><td class="feat-col">3 Concepts</td><td>3 Concepts</td></tr>
+        <tr><td>Business Card</td><td class="yes">✓</td><td class="feat-col yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Social Media Kit</td><td class="no">✗</td><td class="feat-col yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Website</td><td class="no">✗</td><td class="feat-col">1 Page</td><td>5 Pages</td></tr>
+        <tr><td>SEO Setup</td><td class="no">✗</td><td class="feat-col no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Revisions</td><td>2</td><td class="feat-col">5</td><td>Unlimited</td></tr>
+        <tr><td>Source Files</td><td class="no">✗</td><td class="feat-col yes">✓</td><td class="yes">✓</td></tr>
+        <tr><td>Support</td><td>Email</td><td class="feat-col">WhatsApp</td><td>Priority WhatsApp</td></tr>
+        <tr><td>Delivery Time</td><td>3 Days</td><td class="feat-col">5 Days</td><td>Priority</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:80px 0;background:var(--dark2)">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="sec-title">Pricing <span>FAQs</span></div>
+      <div class="o-line" style="margin:15px auto 40px"></div>
+    </div>
+    <div class="faq-list" style="max-width:800px;margin:0 auto">
+      <div class="faq-item"><div class="faq-q">Can I upgrade my plan later? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">Yes! You can always upgrade to a higher plan. We'll charge only the difference between plans.</div></div></div>
+      <div class="faq-item"><div class="faq-q">Do you offer custom quotes for larger projects? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">Absolutely. For complex projects, multiple services, or bulk orders, we offer custom pricing. WhatsApp us to discuss!</div></div></div>
+      <div class="faq-item"><div class="faq-q">How do I pay? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">We accept UPI (GPay, PhonePe, Paytm), NEFT/IMPS bank transfer, and all major payment methods. 50% advance to start, 50% on delivery.</div></div></div>
+      <div class="faq-item"><div class="faq-q">What if I'm not satisfied with the design? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">We offer revisions as per your plan. If you're still not happy after revisions, we work with you until you are. Your satisfaction is guaranteed.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-banner"><div class="container">
+  <h2 class="cta-ttl">Not Sure Which Plan? Let's Talk!</h2>
+  <p class="cta-sub">WhatsApp us and we'll help you choose the right plan for your business.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/919256990806?text=Hi%20Jatin!%20I%20need%20help%20choosing%20a%20plan." target="_blank" class="btn-w">💬 Ask on WhatsApp</a>
+    <a href="contact.html" class="btn-o" style="border-color:#fff;color:#fff">Get Custom Quote →</a>
+  </div>
+</div></section>
+
+<footer id="footer"><div class="container">
+  <div class="ft-grid">
+    <div><div class="ft-logo"><span>J</span>atin Brand Studio</div><p class="ft-tag">"Design That Drives Growth."</p></div>
+    <div><div class="ft-col-ttl">Quick Links</div><div class="ft-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a></div></div>
+    <div><div class="ft-col-ttl">Services</div><div class="ft-links"><a href="services.html">Website Design</a><a href="services.html">Logo Design</a><a href="services.html">Brand Identity</a></div></div>
+    <div><div class="ft-col-ttl">Contact</div><div class="ft-links"><a href="https://wa.me/919256990806">WhatsApp Us</a><a href="#">Ludhiana, Punjab</a></div></div>
+  </div>
+  <div class="ft-bottom"><div class="ft-copy">© 2026 <span>Jatin Brand Studio</span>. All rights reserved.</div><div class="ft-made">Made with <span>❤️</span> in Ludhiana</div></div>
+</div></footer>
+<a href="https://wa.me/919256990806" target="_blank" class="wa-float">💬</a>
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script src="js/main.js"></script>
+</body></html>

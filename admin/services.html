@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Services — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item active" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div>
+</div>
+<div class="main-content">
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Services</div></div>
+    <div class="topbar-right"><button class="btn btn-orange" onclick="openModal('add-srv-modal')">+ Add Service</button></div>
+  </div>
+  <div class="page-content">
+    <div class="grid-2">
+
+      <!-- WEBSITE DESIGN -->
+      <div class="card">
+        <div class="card-title">🌐 Website <span>Design</span> <label class="toggle-wrap" style="font-size:.85rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span></label></div>
+        <div class="form-section" style="margin:0">
+          <div class="form-grid">
+            <div class="form-group"><label>Service Name</label><input value="Website Design"></div>
+            <div class="form-group"><label>Starting Price ₹</label><input type="number" value="2999"></div>
+            <div class="form-group form-full"><label>Short Description</label><input value="Modern, responsive & fast websites that convert visitors into clients."></div>
+          </div>
+          <div style="margin:16px 0 8px"><label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light)">Features List</label></div>
+          <ul id="feats-1" style="display:flex;flex-direction:column;gap:0">
+            <li style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span> Landing Pages <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer">✕</button></li>
+            <li style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span> Business Websites <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer">✕</button></li>
+            <li style="display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.88rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span> E-commerce Sites <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer">✕</button></li>
+          </ul>
+          <div style="display:flex;gap:8px;margin-top:12px"><input id="new-feature-feats-1" placeholder="Add feature..." style="flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:8px 12px;font-size:.85rem;outline:none"><button class="btn btn-ghost btn-sm" onclick="addFeature('feats-1')">+ Add</button></div>
+          <div style="margin-top:16px"><button class="btn btn-orange btn-sm" onclick="showToast('Service saved! ✅')">Save Changes</button></div>
+        </div>
+      </div>
+
+      <!-- LOGO DESIGN -->
+      <div class="card">
+        <div class="card-title">🎨 Logo <span>Design</span> <label class="toggle-wrap" style="font-size:.85rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span></label></div>
+        <div class="form-section" style="margin:0">
+          <div class="form-grid">
+            <div class="form-group"><label>Service Name</label><input value="Logo Design"></div>
+            <div class="form-group"><label>Starting Price ₹</label><input type="number" value="499"></div>
+            <div class="form-group form-full"><label>Short Description</label><input value="Memorable logos that define your brand and leave a lasting impression."></div>
+          </div>
+          <div style="margin:16px 0 8px"><label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light)">Features List</label></div>
+          <ul id="feats-2" style="display:flex;flex-direction:column;gap:0">
+            <li style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span> Wordmark Logo <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer">✕</button></li>
+            <li style="display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.88rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span> Emblem Logo <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer">✕</button></li>
+          </ul>
+          <div style="display:flex;gap:8px;margin-top:12px"><input id="new-feature-feats-2" placeholder="Add feature..." style="flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:8px 12px;font-size:.85rem;outline:none"><button class="btn btn-ghost btn-sm" onclick="addFeature('feats-2')">+ Add</button></div>
+          <div style="margin-top:16px"><button class="btn btn-orange btn-sm" onclick="showToast('Service saved! ✅')">Save Changes</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ADD SERVICE MODAL -->
+<div class="modal-overlay" id="add-srv-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add New <span>Service</span></div><button class="modal-close" onclick="closeModal('add-srv-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Service Name *</label><input placeholder="e.g. Video Editing"></div>
+        <div class="form-group"><label>Icon (Emoji)</label><input placeholder="e.g. 🎬"></div>
+        <div class="form-group"><label>Starting Price ₹ *</label><input type="number" placeholder="999"></div>
+        <div class="form-group"><label>Status</label><select><option>Active</option><option>Hidden</option></select></div>
+        <div class="form-group form-full"><label>Short Description *</label><textarea placeholder="Brief description of this service..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('add-srv-modal')">Cancel</button><button class="btn btn-orange" onclick="showToast('Service added! ✅');closeModal('add-srv-modal')">Save Service</button></div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body></html>

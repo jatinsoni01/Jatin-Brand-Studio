@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Blog — JBS Admin</title><link rel="stylesheet" href="css/admin.css"></head>
+<body><div class="admin-layout">
+<div class="sidebar"><div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div><div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div><nav class="sidebar-nav"><div class="nav-section-title">Main</div><a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a><a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a><a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a><div class="nav-section-title">Content</div><a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a><a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a><a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a><a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a><a class="nav-item active" href="blog.html"><span class="nav-icon">📝</span> Blog</a><div class="nav-section-title">Settings</div><a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a><a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a></nav><div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div></div>
+<div class="main-content">
+  <div class="topbar"><div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Blog Manager</div></div><div class="topbar-right"><button class="btn btn-orange" onclick="openModal('write-blog-modal')">+ New Post</button></div></div>
+  <div class="page-content">
+
+    <!-- POSTS LIST -->
+    <div class="card" id="posts-list">
+      <div class="card-title">All <span>Posts</span></div>
+      <div class="filter-bar"><div class="search-box"><span>🔍</span><input type="text" placeholder="Search posts..."></div>
+        <div class="filter-tab-group"><button class="filter-tab active">All (6)</button><button class="filter-tab">Published (5)</button><button class="filter-tab">Draft (1)</button></div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr><td><strong>5 Logo Design Mistakes That Kill Your Brand</strong></td><td>Design Tips</td><td style="color:var(--gray-light);font-size:.82rem">Apr 10, 2026</td><td><span class="badge badge-pub">Published</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','1')">🗑️</button></td></tr>
+          <tr><td><strong>Why Every Small Business Needs a Website in 2026</strong></td><td>Website</td><td style="color:var(--gray-light);font-size:.82rem">Apr 5, 2026</td><td><span class="badge badge-pub">Published</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','2')">🗑️</button></td></tr>
+          <tr><td><strong>How Consistent Branding Doubles Your Social Media Growth</strong></td><td>Social Media</td><td style="color:var(--gray-light);font-size:.82rem">Mar 28, 2026</td><td><span class="badge badge-pub">Published</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','3')">🗑️</button></td></tr>
+          <tr><td><strong>Top 10 Colors for Brand Identity (Draft)</strong></td><td>Branding</td><td style="color:var(--gray-light);font-size:.82rem">Apr 12, 2026</td><td><span class="badge badge-draft">Draft</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','4')">🗑️</button></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- WRITE BLOG MODAL -->
+<div class="modal-overlay" id="write-blog-modal" style="align-items:flex-start;padding-top:40px">
+  <div class="modal" style="max-width:780px">
+    <div class="modal-header"><div class="modal-title">Write New <span>Post</span></div><button class="modal-close" onclick="closeModal('write-blog-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid" style="margin-bottom:16px">
+        <div class="form-group form-full"><label>Post Title *</label><input placeholder="Write an engaging title..."></div>
+        <div class="form-group"><label>Category</label><select><option>Design Tips</option><option>Branding</option><option>Website</option><option>Social Media</option><option>Business</option></select></div>
+        <div class="form-group"><label>Featured Image</label><input type="file" accept="image/*" style="background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--gray-light);padding:10px;font-size:.85rem;outline:none"></div>
+        <div class="form-group"><label>SEO Title</label><input placeholder="SEO optimized title..."></div>
+        <div class="form-group"><label>SEO Description</label><input placeholder="Meta description..."></div>
+      </div>
+      <label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);display:block;margin-bottom:8px">Post Content *</label>
+      <div class="editor-toolbar">
+        <button class="editor-btn" onclick="execEdit('bold')"><b>B</b></button>
+        <button class="editor-btn" onclick="execEdit('italic')"><i>I</i></button>
+        <button class="editor-btn" onclick="execEdit('underline')"><u>U</u></button>
+        <button class="editor-btn" onclick="execEdit('formatBlock','h2')">H2</button>
+        <button class="editor-btn" onclick="execEdit('formatBlock','h3')">H3</button>
+        <button class="editor-btn" onclick="execEdit('insertUnorderedList')">• List</button>
+        <button class="editor-btn" onclick="execEdit('insertOrderedList')">1. List</button>
+      </div>
+      <div id="blog-editor" class="editor-area" contenteditable="true" placeholder="Write your post content here...">Start writing your blog post here...</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('write-blog-modal')">Cancel</button>
+      <button class="btn btn-ghost" onclick="showToast('Saved as draft! 📝');closeModal('write-blog-modal')">Save Draft</button>
+      <button class="btn btn-orange" onclick="showToast('Post published! 🚀');closeModal('write-blog-modal')">Publish Post</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body></html>

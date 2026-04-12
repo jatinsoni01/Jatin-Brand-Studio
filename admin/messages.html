@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Messages — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item active" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div>
+</div>
+<div class="main-content">
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Messages</div></div>
+    <div class="topbar-right"><button class="notif-btn">🔔<span class="notif-dot"></span></button></div>
+  </div>
+  <div class="page-content">
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="msg-layout">
+        <!-- MESSAGE LIST -->
+        <div class="msg-list">
+          <div class="msg-list-header">📩 Inbox (5 Unread)</div>
+          <div style="padding:10px"><input type="text" style="width:100%;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:8px 12px;font-size:.85rem;outline:none" placeholder="🔍 Search messages..."></div>
+
+          <div class="msg-item unread active" onclick="selectMessage(this,'1')">
+            <div class="msg-item-name">Rahul Sharma</div>
+            <div class="msg-item-preview">Logo Design — Need a logo for my clothing brand...</div>
+            <div class="msg-item-time">⏰ Just now · Logo Design · ₹1-2K</div>
+          </div>
+          <div class="msg-item unread" onclick="selectMessage(this,'2')">
+            <div class="msg-item-name">Priya Singh</div>
+            <div class="msg-item-preview">Website Design — I want a website for my boutique...</div>
+            <div class="msg-item-time">⏰ 2 hours ago · Website · ₹5K+</div>
+          </div>
+          <div class="msg-item unread" onclick="selectMessage(this,'3')">
+            <div class="msg-item-name">Amit Kumar</div>
+            <div class="msg-item-preview">Brand Identity — Complete branding package needed...</div>
+            <div class="msg-item-time">⏰ Yesterday · Branding · ₹2-5K</div>
+          </div>
+          <div class="msg-item" onclick="selectMessage(this,'4')">
+            <div class="msg-item-name">Neha Gupta</div>
+            <div class="msg-item-preview">Social Media — Need Instagram post templates...</div>
+            <div class="msg-item-time">⏰ 2 days ago · Social · ₹500-2K</div>
+          </div>
+          <div class="msg-item" onclick="selectMessage(this,'5')">
+            <div class="msg-item-name">Vikram Malhotra</div>
+            <div class="msg-item-preview">Print Design — Business cards and flyers needed...</div>
+            <div class="msg-item-time">⏰ 3 days ago · Print · Under ₹500</div>
+          </div>
+        </div>
+
+        <!-- MESSAGE DETAIL -->
+        <div class="msg-detail">
+          <div id="msg-empty" class="msg-detail-empty">📩<div style="font-size:1rem">Select a message to view</div></div>
+          <div id="msg-detail-content" style="display:none">
+            <div class="msg-detail-header">
+              <div class="msg-detail-name">Rahul Sharma</div>
+              <div class="msg-detail-service">🎨 Logo Design</div>
+              <div class="msg-detail-actions">
+                <button class="btn btn-orange btn-sm" onclick="waClient('919876543210','Rahul','Logo Design')">💬 WhatsApp</button>
+                <button class="btn btn-ghost btn-sm" onclick="confirmDelete('message','1')">🗑️ Delete</button>
+                <button class="btn btn-ghost btn-sm">✅ Mark Read</button>
+              </div>
+            </div>
+            <div class="msg-meta-grid">
+              <div class="msg-meta-item"><div class="msg-meta-label">Phone</div><div class="msg-meta-val">+91 9876543210</div></div>
+              <div class="msg-meta-item"><div class="msg-meta-label">Email</div><div class="msg-meta-val">rahul@gmail.com</div></div>
+              <div class="msg-meta-item"><div class="msg-meta-label">Service</div><div class="msg-meta-val">Logo Design</div></div>
+              <div class="msg-meta-item"><div class="msg-meta-label">Budget</div><div class="msg-meta-val" style="color:var(--orange)">₹1,000 – ₹2,000</div></div>
+              <div class="msg-meta-item"><div class="msg-meta-label">Date</div><div class="msg-meta-val">Apr 12, 2026 · 11:30 AM</div></div>
+              <div class="msg-meta-item"><div class="msg-meta-label">Status</div><div class="msg-meta-val"><span class="badge badge-new">🔵 Unread</span></div></div>
+            </div>
+            <div style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);margin-bottom:10px">Message</div>
+            <div class="msg-text-box">Mujhe ek logo chahiye apni clothing brand ke liye. Something modern and clean with a premium feel. Brand name is "RK Clothing". I want it in black and gold colors. Please let me know the process and timeline.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="js/admin.js"></script>
+<script>
+// Show first message by default
+document.querySelector('.msg-item')?.click();
+setTimeout(() => { document.getElementById('msg-empty').style.display='none'; document.getElementById('msg-detail-content').style.display='block'; }, 100);
+</script>
+</body></html>

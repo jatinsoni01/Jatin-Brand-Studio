@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Settings — JBS Admin</title><link rel="stylesheet" href="css/admin.css"></head>
+<body><div class="admin-layout">
+<div class="sidebar"><div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div><div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div><nav class="sidebar-nav"><div class="nav-section-title">Main</div><a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a><a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a><a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a><div class="nav-section-title">Content</div><a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a><a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a><a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a><a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a><a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a><div class="nav-section-title">Settings</div><a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a><a class="nav-item active" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a></nav><div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div></div>
+<div class="main-content">
+  <div class="topbar"><div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Settings</div></div></div>
+  <div class="page-content">
+
+    <div class="settings-tabs">
+      <button class="settings-tab active" onclick="switchTab('tab-general')">⚙️ General</button>
+      <button class="settings-tab" onclick="switchTab('tab-contact')">📱 Contact</button>
+      <button class="settings-tab" onclick="switchTab('tab-social')">🌐 Social</button>
+      <button class="settings-tab" onclick="switchTab('tab-notif')">🔔 Notifications</button>
+      <button class="settings-tab" onclick="switchTab('tab-seo')">📈 SEO</button>
+      <button class="settings-tab" onclick="switchTab('tab-firebase')">🔥 Firebase</button>
+      <button class="settings-tab" onclick="switchTab('tab-security')">🔐 Security</button>
+    </div>
+
+    <!-- GENERAL -->
+    <div class="settings-panel active" id="tab-general">
+      <div class="card"><div class="card-title">General <span>Settings</span></div>
+        <div class="form-grid">
+          <div class="form-group"><label>Website Title</label><input value="Jatin Brand Studio"></div>
+          <div class="form-group"><label>Tagline</label><input value="Design That Drives Growth."></div>
+          <div class="form-group"><label>Logo (Upload)</label><input type="file" accept="image/*" style="background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--gray-light);padding:10px;font-size:.85rem;outline:none"></div>
+          <div class="form-group"><label>Favicon (Upload)</label><input type="file" accept="image/*" style="background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--gray-light);padding:10px;font-size:.85rem;outline:none"></div>
+          <div class="form-group"><label>Working Hours</label><input value="Mon–Sat: 10 AM – 7 PM"></div>
+          <div class="form-group"><label>Location</label><input value="Ludhiana, Punjab, India"></div>
+          <div class="form-group form-full"><div style="display:flex;align-items:center;justify-content:space-between"><label>Maintenance Mode</label><label class="toggle-wrap"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span> <span style="color:var(--gray-light);font-size:.85rem">Enable maintenance page</span></label></div></div>
+        </div>
+        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('General settings saved! ✅')">Save Settings</button>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="settings-panel" id="tab-contact">
+      <div class="card"><div class="card-title">Contact <span>Info</span></div>
+        <div class="form-grid">
+          <div class="form-group"><label>WhatsApp Number</label><input value="919256990806" placeholder="+91XXXXXXXXXX"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" value="jatin@brandstudio.com"></div>
+          <div class="form-group"><label>Location</label><input value="Ludhiana, Punjab, India"></div>
+          <div class="form-group"><label>Working Hours</label><input value="Mon–Sat: 10 AM – 7 PM"></div>
+          <div class="form-group form-full"><label>Auto-reply Message to Clients</label><textarea style="height:100px">Hi! Thank you for contacting Jatin Brand Studio. We have received your inquiry and will get back to you within 2 hours. — Jatin Brand Studio 🚀</textarea></div>
+        </div>
+        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('Contact info saved! ✅')">Save Contact Info</button>
+      </div>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="settings-panel" id="tab-social">
+      <div class="card"><div class="card-title">Social Media <span>Links</span></div>
+        <div class="form-grid">
+          <div class="form-group"><label>📸 Instagram</label><input placeholder="https://instagram.com/yourprofile"></div>
+          <div class="form-group"><label>🎨 Behance</label><input placeholder="https://behance.net/yourprofile"></div>
+          <div class="form-group"><label>💼 LinkedIn</label><input placeholder="https://linkedin.com/in/yourprofile"></div>
+          <div class="form-group"><label>▶️ YouTube</label><input placeholder="https://youtube.com/@yourchannel"></div>
+          <div class="form-group"><label>🐦 Twitter/X</label><input placeholder="https://x.com/yourprofile"></div>
+          <div class="form-group"><label>📘 Facebook</label><input placeholder="https://facebook.com/yourpage"></div>
+        </div>
+        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('Social links saved! ✅')">Save Social Links</button>
+      </div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <div class="settings-panel" id="tab-notif">
+      <div class="card"><div class="card-title">WhatsApp <span>Notifications</span></div>
+        <div class="form-grid">
+          <div class="form-group form-full">
+            <div style="background:rgba(255,102,0,.08);border:1px solid rgba(255,102,0,.2);padding:16px;margin-bottom:20px">
+              <div style="font-family:var(--font-c);font-size:.85rem;letter-spacing:1px;color:var(--orange);margin-bottom:8px">📱 HOW TO GET CALLMEBOT API KEY:</div>
+              <div style="color:var(--gray-light);font-size:.85rem;line-height:1.7">1. Send a WhatsApp message to: <strong style="color:var(--white)">+34 644 81 70 95</strong><br>2. Write exactly: <strong style="color:var(--orange)">"I allow callmebot to send me messages"</strong><br>3. You will receive your API key<br>4. Paste it below and save!</div>
+            </div>
+          </div>
+          <div class="form-group"><label>Your WhatsApp Number</label><input value="919256990806" placeholder="91XXXXXXXXXX (with country code)"></div>
+          <div class="form-group"><label>CallMeBot API Key</label><input placeholder="Paste your API key here..." id="callmebot-key"></div>
+          <div class="form-group form-full">
+            <label>Notify Me When</label>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+              <label class="toggle-wrap"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span> New inquiry submitted</label>
+              <label class="toggle-wrap"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span> New message received</label>
+              <label class="toggle-wrap"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span> Order status changed</label>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:16px">
+          <button class="btn btn-orange" onclick="showToast('Notification settings saved! ✅')">Save Settings</button>
+          <button class="btn btn-ghost" onclick="testWhatsApp()">📱 Test WhatsApp</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div class="settings-panel" id="tab-seo">
+      <div class="card"><div class="card-title">SEO <span>Settings</span></div>
+        <div class="form-grid">
+          <div class="form-group form-full"><label>Meta Title</label><input value="Jatin Brand Studio — Design That Drives Growth | Ludhiana"></div>
+          <div class="form-group form-full"><label>Meta Description</label><textarea style="height:80px">Professional website design, logo design and graphic design services in Ludhiana, Punjab. Design That Drives Growth.</textarea></div>
+          <div class="form-group form-full"><label>Keywords</label><input value="logo design ludhiana, website design punjab, graphic design, brand identity"></div>
+          <div class="form-group"><label>Google Analytics ID</label><input placeholder="G-XXXXXXXXXX"></div>
+          <div class="form-group"><label>Facebook Pixel ID</label><input placeholder="Your pixel ID"></div>
+        </div>
+        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('SEO settings saved! ✅')">Save SEO Settings</button>
+      </div>
+    </div>
+
+    <!-- FIREBASE -->
+    <div class="settings-panel" id="tab-firebase">
+      <div class="card"><div class="card-title">🔥 Firebase + ☁️ Cloudinary <span>Config</span></div>
+        <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);padding:16px;margin-bottom:24px">
+          <div style="color:#93c5fd;font-family:var(--font-c);font-size:.85rem;margin-bottom:6px">ℹ️ HOW TO GET FIREBASE CONFIG:</div>
+          <div style="color:var(--gray-light);font-size:.84rem;line-height:1.7">1. Go to console.firebase.google.com<br>2. Create a new project<br>3. Add a web app<br>4. Copy the config values below<br>5. Also enable Firestore Database & Authentication</div>
+        </div>
+        <div style="font-family:var(--font-c);font-size:.9rem;font-weight:700;letter-spacing:2px;color:var(--orange);margin-bottom:16px">FIREBASE CONFIG</div>
+        <div class="form-grid">
+          <div class="form-group"><label>API Key</label><input placeholder="AIza..."></div>
+          <div class="form-group"><label>Project ID</label><input placeholder="your-project-id"></div>
+          <div class="form-group"><label>Auth Domain</label><input placeholder="your-project.firebaseapp.com"></div>
+          <div class="form-group"><label>Storage Bucket</label><input placeholder="your-project.appspot.com"></div>
+          <div class="form-group"><label>Messaging Sender ID</label><input placeholder="123456789"></div>
+          <div class="form-group"><label>App ID</label><input placeholder="1:123:web:abc123"></div>
+        </div>
+        <div style="font-family:var(--font-c);font-size:.9rem;font-weight:700;letter-spacing:2px;color:var(--orange);margin:24px 0 16px">CLOUDINARY CONFIG</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Cloud Name</label><input placeholder="your-cloud-name"></div>
+          <div class="form-group"><label>Upload Preset</label><input placeholder="your-upload-preset"></div>
+        </div>
+        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('Config saved! Reload to apply. ✅')">Save Config</button>
+      </div>
+    </div>
+
+    <!-- SECURITY -->
+    <div class="settings-panel" id="tab-security">
+      <div class="card"><div class="card-title">Change <span>Password</span></div>
+        <div class="form-grid" style="max-width:500px">
+          <div class="form-group form-full"><label>Current Password</label><input type="password" placeholder="••••••••"></div>
+          <div class="form-group form-full"><label>New Password</label><input type="password" placeholder="••••••••"></div>
+          <div class="form-group form-full"><label>Confirm New Password</label><input type="password" placeholder="••••••••"></div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:16px">
+          <button class="btn btn-orange" onclick="showToast('Password changed! ✅')">Update Password</button>
+          <button class="btn btn-danger" onclick="logout()">🚪 Logout All Devices</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<script src="js/admin.js"></script>
+<script>
+function testWhatsApp() {
+  const key = document.getElementById('callmebot-key')?.value;
+  if (!key) { alert('Enter your CallMeBot API key first!'); return; }
+  const num = '919256990806';
+  const msg = encodeURIComponent('🔔 Test from Jatin Brand Studio Admin Panel! ✅');
+  fetch(`https://api.callmebot.com/whatsapp.php?phone=${num}&text=${msg}&apikey=${key}`)
+    .then(() => showToast('Test message sent! Check WhatsApp 📱'))
+    .catch(() => showToast('Error sending. Check API key!', 'error'));
+}
+</script>
+</body></html>

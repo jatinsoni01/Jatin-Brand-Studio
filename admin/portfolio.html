@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Portfolio — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item active" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div>
+</div>
+<div class="main-content">
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Portfolio</div></div>
+    <div class="topbar-right"><button class="btn btn-orange" onclick="openModal('add-port-modal')">+ Add Project</button></div>
+  </div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">All <span>Projects</span> <span style="font-size:1rem;color:var(--gray-light)">(9)</span></div>
+      <div class="filter-bar">
+        <div class="search-box"><span>🔍</span><input type="text" placeholder="Search projects..."></div>
+        <div class="filter-tab-group">
+          <button class="filter-tab active" onclick="filterPortfolio('all',this)">All</button>
+          <button class="filter-tab" onclick="filterPortfolio('website',this)">Websites</button>
+          <button class="filter-tab" onclick="filterPortfolio('logo',this)">Logos</button>
+          <button class="filter-tab" onclick="filterPortfolio('banner',this)">Banners</button>
+          <button class="filter-tab" onclick="filterPortfolio('social',this)">Social</button>
+          <button class="filter-tab" onclick="filterPortfolio('print',this)">Print</button>
+        </div>
+      </div>
+      <div class="port-admin-grid">
+        <div class="port-admin-card" data-cat="website" data-id="1"><div class="port-admin-thumb">🌐</div><div class="port-admin-body"><div class="port-admin-name">Restaurant Website</div><div class="port-admin-cat">Website</div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span>Featured</label></div><div class="port-admin-actions"><button class="act-btn edit" onclick="openModal('edit-port-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('project','1')">🗑️</button></div></div></div>
+        <div class="port-admin-card" data-cat="logo" data-id="2"><div class="port-admin-thumb">🎨</div><div class="port-admin-body"><div class="port-admin-name">Tech Startup Logo</div><div class="port-admin-cat">Logo</div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span>Featured</label></div><div class="port-admin-actions"><button class="act-btn edit" onclick="openModal('edit-port-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('project','2')">🗑️</button></div></div></div>
+        <div class="port-admin-card" data-cat="social" data-id="3"><div class="port-admin-thumb">📱</div><div class="port-admin-body"><div class="port-admin-name">Instagram Kit</div><div class="port-admin-cat">Social Media</div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span>Featured</label></div><div class="port-admin-actions"><button class="act-btn edit" onclick="openModal('edit-port-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('project','3')">🗑️</button></div></div></div>
+        <div class="port-admin-card" data-cat="banner" data-id="4"><div class="port-admin-thumb">🖼️</div><div class="port-admin-body"><div class="port-admin-name">Event Banner</div><div class="port-admin-cat">Banner</div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span>Featured</label></div><div class="port-admin-actions"><button class="act-btn edit" onclick="openModal('edit-port-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('project','4')">🗑️</button></div></div></div>
+        <div class="port-admin-card" data-cat="print" data-id="5"><div class="port-admin-thumb">🖨️</div><div class="port-admin-body"><div class="port-admin-name">Business Card Set</div><div class="port-admin-cat">Print</div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span>Featured</label></div><div class="port-admin-actions"><button class="act-btn edit" onclick="openModal('edit-port-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('project','5')">🗑️</button></div></div></div>
+        <div class="port-admin-card" data-cat="website" data-id="6"><div class="port-admin-thumb">💻</div><div class="port-admin-body"><div class="port-admin-name">Fashion Store</div><div class="port-admin-cat">Website</div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span>Featured</label></div><div class="port-admin-actions"><button class="act-btn edit" onclick="openModal('edit-port-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('project','6')">🗑️</button></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ADD PROJECT MODAL -->
+<div class="modal-overlay" id="add-port-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add New <span>Project</span></div><button class="modal-close" onclick="closeModal('add-port-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Project Title *</label><input type="text" placeholder="e.g. Restaurant Website"></div>
+        <div class="form-group"><label>Category *</label><select><option>Select Category</option><option>website</option><option>logo</option><option>banner</option><option>social</option><option>print</option></select></div>
+        <div class="form-group"><label>Client Name</label><input type="text" placeholder="Client name (optional)"></div>
+        <div class="form-group"><label>Featured</label><label class="toggle-wrap"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span> Show on homepage</label></div>
+        <div class="form-group form-full"><label>Description</label><textarea placeholder="Brief project description..."></textarea></div>
+        <div class="form-group form-full"><label>Upload Images</label>
+          <div class="upload-zone"><span class="up-icon">📸</span><p>Drag & drop images or click to upload</p><small>PNG, JPG, GIF up to 5MB each · Multiple files allowed</small><input type="file" multiple accept="image/*" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('add-port-modal')">Cancel</button><button class="btn btn-orange" onclick="showToast('Project saved! ✅');closeModal('add-port-modal')">Save Project</button></div>
+  </div>
+</div>
+
+<!-- EDIT PROJECT MODAL -->
+<div class="modal-overlay" id="edit-port-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Edit <span>Project</span></div><button class="modal-close" onclick="closeModal('edit-port-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group"><label>Project Title *</label><input type="text" value="Restaurant Website"></div>
+        <div class="form-group"><label>Category *</label><select><option selected>website</option><option>logo</option><option>banner</option><option>social</option><option>print</option></select></div>
+        <div class="form-group"><label>Client Name</label><input type="text" value="Sharma Restaurant"></div>
+        <div class="form-group"><label>Featured</label><label class="toggle-wrap"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span> Show on homepage</label></div>
+        <div class="form-group form-full"><label>Description</label><textarea>A modern restaurant website with online menu and reservations.</textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('edit-port-modal')">Cancel</button><button class="btn btn-orange" onclick="showToast('Project updated! ✅');closeModal('edit-port-modal')">Update Project</button></div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body></html>

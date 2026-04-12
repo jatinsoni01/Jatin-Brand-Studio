@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About Editor — JBS Admin</title><link rel="stylesheet" href="css/admin.css"></head>
+<body><div class="admin-layout">
+<div class="sidebar"><div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div><div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div><nav class="sidebar-nav"><div class="nav-section-title">Main</div><a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a><a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a><a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a><div class="nav-section-title">Content</div><a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a><a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a><a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a><a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a><a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a><div class="nav-section-title">Settings</div><a class="nav-item active" href="about.html"><span class="nav-icon">👤</span> About Editor</a><a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a></nav><div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div></div>
+<div class="main-content">
+  <div class="topbar"><div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">About Editor</div></div><div class="topbar-right"><button class="btn btn-orange" onclick="showToast('About section saved! ✅')">Save All Changes</button></div></div>
+  <div class="page-content">
+    <div class="grid-2">
+      <div class="card"><div class="card-title">Profile <span>Photo</span></div>
+        <div style="text-align:center;margin-bottom:20px"><div style="width:120px;height:120px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:3rem;margin:0 auto 16px;border:3px solid var(--orange)">🎨</div><button class="btn btn-outline-o btn-sm" onclick="document.getElementById('photo-upload').click()">📸 Change Photo</button><input type="file" id="photo-upload" accept="image/*" style="display:none"></div>
+        <div class="form-grid">
+          <div class="form-group"><label>Your Name</label><input value="Jatin"></div>
+          <div class="form-group"><label>Your Title</label><input value="Designer & Founder"></div>
+        </div>
+      </div>
+      <div class="card"><div class="card-title">Achievement <span>Numbers</span></div>
+        <div class="form-grid">
+          <div class="form-group"><label>Projects Number</label><input type="number" value="50"></div>
+          <div class="form-group"><label>Projects Label</label><input value="Projects Completed"></div>
+          <div class="form-group"><label>Clients Number</label><input type="number" value="30"></div>
+          <div class="form-group"><label>Clients Label</label><input value="Happy Clients"></div>
+          <div class="form-group"><label>Years Number</label><input type="number" value="3"></div>
+          <div class="form-group"><label>Years Label</label><input value="Years Experience"></div>
+          <div class="form-group"><label>Services Number</label><input type="number" value="10"></div>
+          <div class="form-group"><label>Services Label</label><input value="Services Offered"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card"><div class="card-title">Your <span>Story</span></div>
+      <div class="form-grid">
+        <div class="form-group form-full"><label>Short Bio (homepage)</label><textarea style="height:100px">We are a passionate design studio based in Ludhiana, Punjab, dedicated to crafting visual identities that speak volumes.</textarea></div>
+        <div class="form-group form-full"><label>Full Bio (about page)</label><textarea style="height:160px">Jatin Brand Studio was born out of a simple passion — to help businesses look as great as they truly are. Founded in Ludhiana, Punjab, we started with a dream to bring world-class design to local businesses. Over the years, we have worked with startups, small businesses, and entrepreneurs across India, helping them build powerful visual identities that drive real, measurable growth.</textarea></div>
+      </div>
+    </div>
+    <div class="card"><div class="card-title">Skills / <span>Tags</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px" id="skills-list">
+        <span style="background:rgba(255,102,0,.15);color:var(--orange);padding:6px 14px;font-family:var(--font-c);font-size:.8rem;letter-spacing:1.5px;display:flex;align-items:center;gap:8px">Photoshop <button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--orange);cursor:pointer">✕</button></span>
+        <span style="background:rgba(255,102,0,.15);color:var(--orange);padding:6px 14px;font-family:var(--font-c);font-size:.8rem;letter-spacing:1.5px;display:flex;align-items:center;gap:8px">Illustrator <button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--orange);cursor:pointer">✕</button></span>
+        <span style="background:rgba(255,102,0,.15);color:var(--orange);padding:6px 14px;font-family:var(--font-c);font-size:.8rem;letter-spacing:1.5px;display:flex;align-items:center;gap:8px">Figma <button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--orange);cursor:pointer">✕</button></span>
+        <span style="background:rgba(255,102,0,.15);color:var(--orange);padding:6px 14px;font-family:var(--font-c);font-size:.8rem;letter-spacing:1.5px;display:flex;align-items:center;gap:8px">WordPress <button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--orange);cursor:pointer">✕</button></span>
+        <span style="background:rgba(255,102,0,.15);color:var(--orange);padding:6px 14px;font-family:var(--font-c);font-size:.8rem;letter-spacing:1.5px;display:flex;align-items:center;gap:8px">HTML/CSS <button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--orange);cursor:pointer">✕</button></span>
+      </div>
+      <div style="display:flex;gap:10px"><input id="skill-input" placeholder="Add a skill..." style="flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:10px 14px;font-size:.9rem;outline:none"><button class="btn btn-orange btn-sm" onclick="addSkill()">+ Add</button></div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="js/admin.js"></script>
+<script>
+function addSkill() {
+  const inp = document.getElementById('skill-input');
+  if (!inp.value.trim()) return;
+  const span = document.createElement('span');
+  span.style.cssText = 'background:rgba(255,102,0,.15);color:var(--orange);padding:6px 14px;font-family:var(--font-c);font-size:.8rem;letter-spacing:1.5px;display:flex;align-items:center;gap:8px';
+  span.innerHTML = `${inp.value} <button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--orange);cursor:pointer">✕</button>`;
+  document.getElementById('skills-list').appendChild(span);
+  inp.value = '';
+}
+</script>
+</body></html>

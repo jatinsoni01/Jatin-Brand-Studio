@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Orders — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item active" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div>
+</div>
+<div class="main-content">
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Orders</div></div>
+    <div class="topbar-right"><button class="notif-btn">🔔<span class="notif-dot"></span></button></div>
+  </div>
+  <div class="page-content">
+
+    <!-- STATS -->
+    <div class="stats-row" style="grid-template-columns:repeat(4,1fr)">
+      <div class="stat-card blue"><div class="stat-ic">🔵</div><div class="stat-val">12</div><div class="stat-lbl">New Orders</div></div>
+      <div class="stat-card yellow"><div class="stat-ic">🟡</div><div class="stat-val">8</div><div class="stat-lbl">In Progress</div></div>
+      <div class="stat-card green"><div class="stat-ic">🟢</div><div class="stat-val">24</div><div class="stat-lbl">Completed</div></div>
+      <div class="stat-card red"><div class="stat-ic">🔴</div><div class="stat-val">3</div><div class="stat-lbl">Cancelled</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">All <span>Orders</span></div>
+
+      <!-- FILTER -->
+      <div class="filter-bar">
+        <div class="search-box"><span>🔍</span><input type="text" placeholder="Search by name, service..." oninput="searchTable(this.value)"></div>
+        <select class="filter-select"><option>All Services</option><option>Website Design</option><option>Logo Design</option><option>Brand Identity</option><option>Social Media</option><option>Print Design</option></select>
+        <select class="filter-select"><option>All Dates</option><option>Today</option><option>This Week</option><option>This Month</option></select>
+      </div>
+      <div class="filter-tab-group" style="margin-bottom:20px">
+        <button class="filter-tab active" onclick="filterTable('all',this)">All (47)</button>
+        <button class="filter-tab" onclick="filterTable('new',this)">🔵 New (12)</button>
+        <button class="filter-tab" onclick="filterTable('in-progress',this)">🟡 In Progress (8)</button>
+        <button class="filter-tab" onclick="filterTable('completed',this)">🟢 Completed (24)</button>
+        <button class="filter-tab" onclick="filterTable('cancelled',this)">🔴 Cancelled (3)</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Client</th><th>Service</th><th>Budget</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr data-status="new" data-id="1"><td style="color:var(--gray)">#001</td><td><strong>Rahul Sharma</strong><br><small style="color:var(--gray)">📱 9876543210 · rahul@gmail.com</small></td><td>Logo Design</td><td style="color:var(--orange)">₹1,000–2,000</td><td style="color:var(--gray-light);font-size:.82rem">Apr 12, 2026<br>11:30 AM</td><td><select onchange="changeStatus('1',this.value)" style="background:var(--dark3);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:6px 10px;font-size:.8rem;outline:none;cursor:pointer"><option value="new" selected>🔵 New</option><option value="in-progress">🟡 In Progress</option><option value="completed">🟢 Completed</option><option value="cancelled">🔴 Cancelled</option></select></td><td class="act-btns"><button class="act-btn view" onclick="openModal('modal-order-1')" title="View Details">👁️</button><button class="act-btn wa" onclick="waClient('919876543210','Rahul','Logo Design')" title="WhatsApp">💬</button><button class="act-btn del" onclick="confirmDelete('order','1')" title="Delete">🗑️</button></td></tr>
+            <tr data-status="in-progress" data-id="2"><td style="color:var(--gray)">#002</td><td><strong>Priya Singh</strong><br><small style="color:var(--gray)">📱 9765432109 · priya@gmail.com</small></td><td>Website Design</td><td style="color:var(--orange)">₹5,000+</td><td style="color:var(--gray-light);font-size:.82rem">Apr 11, 2026<br>3:00 PM</td><td><select onchange="changeStatus('2',this.value)" style="background:var(--dark3);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:6px 10px;font-size:.8rem;outline:none;cursor:pointer"><option value="new">🔵 New</option><option value="in-progress" selected>🟡 In Progress</option><option value="completed">🟢 Completed</option><option value="cancelled">🔴 Cancelled</option></select></td><td class="act-btns"><button class="act-btn view" onclick="openModal('modal-order-1')">👁️</button><button class="act-btn wa" onclick="waClient('919765432109','Priya','Website')">💬</button><button class="act-btn del" onclick="confirmDelete('order','2')">🗑️</button></td></tr>
+            <tr data-status="completed" data-id="3"><td style="color:var(--gray)">#003</td><td><strong>Amit Kumar</strong><br><small style="color:var(--gray)">📱 9654321098 · amit@gmail.com</small></td><td>Brand Identity</td><td style="color:var(--orange)">₹2,000–5,000</td><td style="color:var(--gray-light);font-size:.82rem">Apr 10, 2026<br>9:15 AM</td><td><select onchange="changeStatus('3',this.value)" style="background:var(--dark3);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:6px 10px;font-size:.8rem;outline:none;cursor:pointer"><option value="new">🔵 New</option><option value="in-progress">🟡 In Progress</option><option value="completed" selected>🟢 Completed</option><option value="cancelled">🔴 Cancelled</option></select></td><td class="act-btns"><button class="act-btn view" onclick="openModal('modal-order-1')">👁️</button><button class="act-btn wa" onclick="waClient('919654321098','Amit','Branding')">💬</button><button class="act-btn del" onclick="confirmDelete('order','3')">🗑️</button></td></tr>
+            <tr data-status="new" data-id="4"><td style="color:var(--gray)">#004</td><td><strong>Neha Gupta</strong><br><small style="color:var(--gray)">📱 9543210987 · neha@gmail.com</small></td><td>Social Media Design</td><td style="color:var(--orange)">₹500–2,000</td><td style="color:var(--gray-light);font-size:.82rem">Apr 12, 2026<br>10:00 AM</td><td><select onchange="changeStatus('4',this.value)" style="background:var(--dark3);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:6px 10px;font-size:.8rem;outline:none;cursor:pointer"><option value="new" selected>🔵 New</option><option value="in-progress">🟡 In Progress</option><option value="completed">🟢 Completed</option><option value="cancelled">🔴 Cancelled</option></select></td><td class="act-btns"><button class="act-btn view" onclick="openModal('modal-order-1')">👁️</button><button class="act-btn wa" onclick="waClient('919543210987','Neha','Social Media')">💬</button><button class="act-btn del" onclick="confirmDelete('order','4')">🗑️</button></td></tr>
+            <tr data-status="cancelled" data-id="5"><td style="color:var(--gray)">#005</td><td><strong>Vikram Malhotra</strong><br><small style="color:var(--gray)">📱 9432109876 · vikram@gmail.com</small></td><td>Print Design</td><td style="color:var(--orange)">Under ₹500</td><td style="color:var(--gray-light);font-size:.82rem">Apr 8, 2026<br>2:30 PM</td><td><select onchange="changeStatus('5',this.value)" style="background:var(--dark3);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:6px 10px;font-size:.8rem;outline:none;cursor:pointer"><option value="new">🔵 New</option><option value="in-progress">🟡 In Progress</option><option value="completed">🟢 Completed</option><option value="cancelled" selected>🔴 Cancelled</option></select></td><td class="act-btns"><button class="act-btn view" onclick="openModal('modal-order-1')">👁️</button><button class="act-btn wa">💬</button><button class="act-btn del" onclick="confirmDelete('order','5')">🗑️</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="modal-overlay" id="modal-order-1">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Order <span>#001</span> Details</div><button class="modal-close" onclick="closeModal('modal-order-1')">✕</button></div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+        <div style="background:var(--dark3);padding:14px"><div style="font-family:var(--font-c);font-size:.72rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:4px">Client Name</div><div>Rahul Sharma</div></div>
+        <div style="background:var(--dark3);padding:14px"><div style="font-family:var(--font-c);font-size:.72rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:4px">Phone</div><div>+91 9876543210</div></div>
+        <div style="background:var(--dark3);padding:14px"><div style="font-family:var(--font-c);font-size:.72rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:4px">Email</div><div>rahul@gmail.com</div></div>
+        <div style="background:var(--dark3);padding:14px"><div style="font-family:var(--font-c);font-size:.72rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:4px">Service</div><div>Logo Design</div></div>
+        <div style="background:var(--dark3);padding:14px"><div style="font-family:var(--font-c);font-size:.72rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:4px">Budget</div><div style="color:var(--orange)">₹1,000 – ₹2,000</div></div>
+        <div style="background:var(--dark3);padding:14px"><div style="font-family:var(--font-c);font-size:.72rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:4px">Received</div><div>Apr 12, 2026 · 11:30 AM</div></div>
+      </div>
+      <div style="background:var(--dark3);padding:16px;margin-bottom:20px">
+        <div style="font-family:var(--font-c);font-size:.72rem;letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:8px">Message</div>
+        <div style="color:var(--gray-light);font-size:.9rem;line-height:1.7">Mujhe ek logo chahiye apni clothing brand ke liye. Something modern and clean. Brand name is "RK Clothing".</div>
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);display:block;margin-bottom:8px">Update Status</label>
+        <select style="background:var(--dark3);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:10px 16px;font-size:.9rem;outline:none;width:100%">
+          <option>🔵 New</option><option>🟡 In Progress</option><option>🟢 Completed</option><option>🔴 Cancelled</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-order-1')">Close</button>
+      <button class="btn btn-orange" onclick="waClient('919876543210','Rahul','Logo Design');closeModal('modal-order-1')">💬 WhatsApp Client</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body></html>

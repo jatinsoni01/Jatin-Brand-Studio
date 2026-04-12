@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contact Us — Jatin Brand Studio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav id="navbar"><div class="container"><div class="nav-inner">
+  <a href="index.html" class="nav-logo-text"><span>J</span>BS</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a>
+    <a href="blog.html">Blog</a><a href="contact.html" class="active">Contact</a>
+    <a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a>
+  </div>
+  <button class="hamburger"><span></span><span></span><span></span></button>
+</div></div></nav>
+<div class="mobile-menu"><button class="mob-close">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+  <a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="container"><div class="fade-up">
+    <div class="page-hero-ttl">Contact <span>Us</span></div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Contact</span></div>
+  </div></div>
+</section>
+
+<section style="padding:100px 0;background:var(--black)">
+  <div class="container">
+    <div class="con-grid">
+      <div class="con-info fade-left">
+        <div class="fade-up">
+          <div class="sec-title">Let's Work <span>Together</span></div>
+          <p class="sec-sub">Tell us about your project</p>
+          <div class="o-line"></div>
+        </div>
+        <div class="con-item">
+          <div class="con-ic">📱</div>
+          <div>
+            <div class="con-ttl">WhatsApp</div>
+            <div class="con-val">+91 92569 90806</div>
+            <a href="https://wa.me/919256990806" target="_blank" class="btn-p" style="margin-top:10px;display:inline-flex;padding:10px 20px;font-size:.8rem">Chat Now 💬</a>
+          </div>
+        </div>
+        <div class="con-item">
+          <div class="con-ic">📍</div>
+          <div><div class="con-ttl">Location</div><div class="con-val">Ludhiana, Punjab, India</div></div>
+        </div>
+        <div class="con-item">
+          <div class="con-ic">⏰</div>
+          <div><div class="con-ttl">Working Hours</div><div class="con-val">Monday – Saturday<br>10:00 AM – 7:00 PM</div></div>
+        </div>
+        <div class="con-item">
+          <div class="con-ic">🌐</div>
+          <div>
+            <div class="con-ttl">Follow Us</div>
+            <div class="soc-links" style="margin-top:10px">
+              <a href="#" class="soc-link" title="Instagram">📸</a>
+              <a href="#" class="soc-link" title="Behance">🎨</a>
+              <a href="#" class="soc-link" title="LinkedIn">💼</a>
+              <a href="#" class="soc-link" title="YouTube">▶️</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="con-form fade-right" onsubmit="submitToWhatsApp(event)">
+        <div style="margin-bottom:30px">
+          <div class="sec-title" style="font-size:2rem">Send a <span style="color:var(--orange)">Message</span></div>
+          <p style="color:var(--gray);margin-top:8px;font-size:.9rem">Fill the form — it opens WhatsApp with your message pre-filled. Just hit send! 📱</p>
+        </div>
+        <div class="form-row">
+          <div class="form-grp"><label>Your Name *</label><input type="text" name="name" placeholder="Rahul Sharma" required></div>
+          <div class="form-grp"><label>Phone Number</label><input type="tel" name="phone" placeholder="+91 98765 43210"></div>
+        </div>
+        <div class="form-grp"><label>Email Address</label><input type="email" name="email" placeholder="rahul@email.com"></div>
+        <div class="form-row">
+          <div class="form-grp"><label>Service Needed *</label>
+            <select name="service" required>
+              <option value="">Select a Service</option>
+              <option>Website Design</option>
+              <option>Logo Design</option>
+              <option>Brand Identity</option>
+              <option>Social Media Design</option>
+              <option>Print Design</option>
+              <option>UI/UX Design</option>
+              <option>Complete Package</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-grp"><label>Your Budget</label>
+            <select name="budget">
+              <option value="">Select Budget Range</option>
+              <option>Under ₹500</option>
+              <option>₹500 – ₹2,000</option>
+              <option>₹2,000 – ₹5,000</option>
+              <option>₹5,000 – ₹10,000</option>
+              <option>₹10,000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-grp"><label>Tell Us About Your Project *</label>
+          <textarea name="message" placeholder="Describe your project, what you need, any references, timeline..." required style="height:160px"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">📱 Send via WhatsApp — Opens Automatically!</button>
+        <p style="color:var(--gray);font-size:.8rem;margin-top:12px;text-align:center">⚡ We respond within 2 hours • Mon–Sat 10AM–7PM</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section style="padding:80px 0;background:var(--dark2)">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="sec-title">Common <span>Questions</span></div>
+      <div class="o-line" style="margin:15px auto 40px"></div>
+    </div>
+    <div class="faq-list" style="max-width:800px;margin:0 auto">
+      <div class="faq-item"><div class="faq-q">How quickly do you respond? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">We respond to all WhatsApp messages within 2 hours during working hours (Mon–Sat, 10AM–7PM).</div></div></div>
+      <div class="faq-item"><div class="faq-q">Do you work with clients outside Ludhiana? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">Yes! We work with clients across India. Everything is done digitally via WhatsApp and email. No need to visit in person.</div></div></div>
+      <div class="faq-item"><div class="faq-q">How do I share my requirements? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">Simply fill the form above or WhatsApp us directly. Share any reference images, brand guidelines, or just describe your vision in words — we'll take it from there!</div></div></div>
+      <div class="faq-item"><div class="faq-q">What is your payment method? <span class="faq-ic">+</span></div><div class="faq-a"><div class="faq-a-in">We accept UPI (GPay, PhonePe, Paytm), bank transfer (NEFT/IMPS). Typically 50% advance to start, remaining 50% on final delivery.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"><div class="container">
+  <div class="ft-grid">
+    <div><div class="ft-logo"><span>J</span>atin Brand Studio</div><p class="ft-tag">"Design That Drives Growth."</p></div>
+    <div><div class="ft-col-ttl">Quick Links</div><div class="ft-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a></div></div>
+    <div><div class="ft-col-ttl">Services</div><div class="ft-links"><a href="services.html">Website Design</a><a href="services.html">Logo Design</a><a href="services.html">Brand Identity</a></div></div>
+    <div><div class="ft-col-ttl">Contact</div><div class="ft-links"><a href="https://wa.me/919256990806">WhatsApp Us</a><a href="#">Ludhiana, Punjab</a><a href="#">Mon–Sat 10AM–7PM</a></div></div>
+  </div>
+  <div class="ft-bottom"><div class="ft-copy">© 2026 <span>Jatin Brand Studio</span>. All rights reserved.</div><div class="ft-made">Made with <span>❤️</span> in Ludhiana</div></div>
+</div></footer>
+<a href="https://wa.me/919256990806" target="_blank" class="wa-float">💬</a>
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script src="js/main.js"></script>
+</body></html>
