@@ -1,181 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Settings — JBS Admin</title><link rel="stylesheet" href="css/admin.css"></head>
-<body><div class="admin-layout">
-<div class="sidebar"><div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div><div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div><nav class="sidebar-nav"><div class="nav-section-title">Main</div><a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a><a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a><a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a><div class="nav-section-title">Content</div><a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a><a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a><a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a><a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a><a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a><div class="nav-section-title">Settings</div><a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a><a class="nav-item active" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a></nav><div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div></div>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Settings — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About</a>
+    <a class="nav-item active" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="doLogout()">🚪 Logout</div></div>
+</div>
 <div class="main-content">
-  <div class="topbar"><div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Settings</div></div></div>
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button><div class="page-title-top">Settings</div></div>
+  </div>
   <div class="page-content">
 
     <div class="settings-tabs">
-      <button class="settings-tab active" onclick="switchTab('tab-general')">⚙️ General</button>
+      <button class="settings-tab active" onclick="switchTab('tab-pin')">🔐 PIN</button>
       <button class="settings-tab" onclick="switchTab('tab-contact')">📱 Contact</button>
-      <button class="settings-tab" onclick="switchTab('tab-social')">🌐 Social</button>
-      <button class="settings-tab" onclick="switchTab('tab-notif')">🔔 Notifications</button>
+      <button class="settings-tab" onclick="switchTab('tab-notif')">🔔 WhatsApp</button>
       <button class="settings-tab" onclick="switchTab('tab-seo')">📈 SEO</button>
-      <button class="settings-tab" onclick="switchTab('tab-firebase')">🔥 Firebase</button>
-      <button class="settings-tab" onclick="switchTab('tab-security')">🔐 Security</button>
+      <button class="settings-tab" onclick="switchTab('tab-firebase')">🔥 Config</button>
     </div>
 
-    <!-- GENERAL -->
-    <div class="settings-panel active" id="tab-general">
-      <div class="card"><div class="card-title">General <span>Settings</span></div>
-        <div class="form-grid">
-          <div class="form-group"><label>Website Title</label><input value="Jatin Brand Studio"></div>
-          <div class="form-group"><label>Tagline</label><input value="Design That Drives Growth."></div>
-          <div class="form-group"><label>Logo (Upload)</label><input type="file" accept="image/*" style="background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--gray-light);padding:10px;font-size:.85rem;outline:none"></div>
-          <div class="form-group"><label>Favicon (Upload)</label><input type="file" accept="image/*" style="background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--gray-light);padding:10px;font-size:.85rem;outline:none"></div>
-          <div class="form-group"><label>Working Hours</label><input value="Mon–Sat: 10 AM – 7 PM"></div>
-          <div class="form-group"><label>Location</label><input value="Ludhiana, Punjab, India"></div>
-          <div class="form-group form-full"><div style="display:flex;align-items:center;justify-content:space-between"><label>Maintenance Mode</label><label class="toggle-wrap"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span> <span style="color:var(--gray-light);font-size:.85rem">Enable maintenance page</span></label></div></div>
+    <!-- PIN CHANGE -->
+    <div class="settings-panel active" id="tab-pin">
+      <div class="card">
+        <div class="card-title">Change Admin <span>PIN</span></div>
+        <div style="background:rgba(255,102,0,.08);border:1px solid rgba(255,102,0,.2);padding:16px;margin-bottom:24px;font-size:.88rem;color:#aaa;line-height:1.7">
+          🔐 PIN is stored in <strong style="color:#ff6600">Firebase</strong> — works on all devices. Must be exactly <strong style="color:#fff">6 digits</strong>. Current default: <strong style="color:#ff6600">123456</strong>
         </div>
-        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('General settings saved! ✅')">Save Settings</button>
+        <div style="max-width:400px">
+          <div class="form-group" style="margin-bottom:16px"><label>Current PIN</label><input type="password" id="old-pin" maxlength="6" inputmode="numeric" placeholder="••••••"></div>
+          <div class="form-group" style="margin-bottom:16px"><label>New PIN (6 digits)</label><input type="password" id="new-pin" maxlength="6" inputmode="numeric" placeholder="••••••"></div>
+          <div class="form-group" style="margin-bottom:20px"><label>Confirm New PIN</label><input type="password" id="confirm-pin" maxlength="6" inputmode="numeric" placeholder="••••••"></div>
+          <div id="pin-msg" style="margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;min-height:20px"></div>
+          <button class="btn btn-orange" onclick="changePinNow()">🔐 Update PIN in Firebase</button>
+        </div>
       </div>
     </div>
 
     <!-- CONTACT -->
     <div class="settings-panel" id="tab-contact">
-      <div class="card"><div class="card-title">Contact <span>Info</span></div>
-        <div class="form-grid">
-          <div class="form-group"><label>WhatsApp Number</label><input value="919256990806" placeholder="+91XXXXXXXXXX"></div>
-          <div class="form-group"><label>Email Address</label><input type="email" value="jatin@brandstudio.com"></div>
-          <div class="form-group"><label>Location</label><input value="Ludhiana, Punjab, India"></div>
-          <div class="form-group"><label>Working Hours</label><input value="Mon–Sat: 10 AM – 7 PM"></div>
-          <div class="form-group form-full"><label>Auto-reply Message to Clients</label><textarea style="height:100px">Hi! Thank you for contacting Jatin Brand Studio. We have received your inquiry and will get back to you within 2 hours. — Jatin Brand Studio 🚀</textarea></div>
+      <div class="card">
+        <div class="card-title">Contact <span>Info</span></div>
+        <div class="form-grid" style="max-width:700px">
+          <div class="form-group"><label>WhatsApp Number</label><input id="s-wa" value="919256990806"></div>
+          <div class="form-group"><label>Email Address</label><input id="s-email" type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>Location</label><input id="s-location" value="Ludhiana, Punjab, India"></div>
+          <div class="form-group"><label>Working Hours</label><input id="s-hours" value="Mon–Sat: 10 AM – 7 PM"></div>
+          <div class="form-group"><label>Instagram Link</label><input id="s-ig" placeholder="https://instagram.com/..."></div>
+          <div class="form-group"><label>Behance Link</label><input id="s-be" placeholder="https://behance.net/..."></div>
         </div>
-        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('Contact info saved! ✅')">Save Contact Info</button>
+        <button class="btn btn-orange" style="margin-top:20px" onclick="saveContactInfo()">Save Contact Info</button>
       </div>
     </div>
 
-    <!-- SOCIAL -->
-    <div class="settings-panel" id="tab-social">
-      <div class="card"><div class="card-title">Social Media <span>Links</span></div>
-        <div class="form-grid">
-          <div class="form-group"><label>📸 Instagram</label><input placeholder="https://instagram.com/yourprofile"></div>
-          <div class="form-group"><label>🎨 Behance</label><input placeholder="https://behance.net/yourprofile"></div>
-          <div class="form-group"><label>💼 LinkedIn</label><input placeholder="https://linkedin.com/in/yourprofile"></div>
-          <div class="form-group"><label>▶️ YouTube</label><input placeholder="https://youtube.com/@yourchannel"></div>
-          <div class="form-group"><label>🐦 Twitter/X</label><input placeholder="https://x.com/yourprofile"></div>
-          <div class="form-group"><label>📘 Facebook</label><input placeholder="https://facebook.com/yourpage"></div>
-        </div>
-        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('Social links saved! ✅')">Save Social Links</button>
-      </div>
-    </div>
-
-    <!-- NOTIFICATIONS -->
+    <!-- WHATSAPP NOTIFICATIONS -->
     <div class="settings-panel" id="tab-notif">
-      <div class="card"><div class="card-title">WhatsApp <span>Notifications</span></div>
-        <div class="form-grid">
-          <div class="form-group form-full">
-            <div style="background:rgba(255,102,0,.08);border:1px solid rgba(255,102,0,.2);padding:16px;margin-bottom:20px">
-              <div style="font-family:var(--font-c);font-size:.85rem;letter-spacing:1px;color:var(--orange);margin-bottom:8px">📱 HOW TO GET CALLMEBOT API KEY:</div>
-              <div style="color:var(--gray-light);font-size:.85rem;line-height:1.7">1. Send a WhatsApp message to: <strong style="color:var(--white)">+34 644 81 70 95</strong><br>2. Write exactly: <strong style="color:var(--orange)">"I allow callmebot to send me messages"</strong><br>3. You will receive your API key<br>4. Paste it below and save!</div>
-            </div>
-          </div>
-          <div class="form-group"><label>Your WhatsApp Number</label><input value="919256990806" readonly></div>
-          <div class="form-group"><label>CallMeBot API Key</label><input placeholder="Paste your API key here..." id="callmebot-key" onchange="saveCallmebotKey(this.value)"></div>
+      <div class="card">
+        <div class="card-title">WhatsApp <span>Notifications</span></div>
+        <div style="background:rgba(255,102,0,.08);border:1px solid rgba(255,102,0,.2);padding:16px;margin-bottom:24px;font-size:.88rem;color:#aaa;line-height:1.8">
+          <strong style="color:#ff6600">📱 SETUP STEPS:</strong><br>
+          1. Send WhatsApp message to: <strong style="color:#fff">+34 644 81 70 95</strong><br>
+          2. Write: <strong style="color:#ff6600">"I allow callmebot to send me messages"</strong><br>
+          3. Copy the API key they send back<br>
+          4. Paste below and save!
+        </div>
+        <div class="form-grid" style="max-width:500px">
+          <div class="form-group"><label>Your WhatsApp Number</label><input value="919256990806" readonly style="opacity:.7"></div>
+          <div class="form-group"><label>CallMeBot API Key</label><input id="s-cbkey" placeholder="Paste API key here..."></div>
           <div class="form-group form-full">
             <label>Notify Me When</label>
             <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
-              <label class="toggle-wrap"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span> New inquiry submitted</label>
-              <label class="toggle-wrap"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span> New message received</label>
-              <label class="toggle-wrap"><span class="toggle"><input type="checkbox"><span class="toggle-slider"></span></span> Order status changed</label>
+              <label class="toggle-wrap"><span class="toggle"><input type="checkbox" id="n-inquiry" checked><span class="toggle-slider"></span></span> New inquiry submitted</label>
+              <label class="toggle-wrap"><span class="toggle"><input type="checkbox" id="n-message" checked><span class="toggle-slider"></span></span> New message received</label>
             </div>
           </div>
         </div>
-        <div style="display:flex;gap:12px;margin-top:16px">
-          <button class="btn btn-orange" onclick="showToast('Notification settings saved! ✅')">Save Settings</button>
-          <button class="btn btn-ghost" onclick="testWhatsApp()">📱 Test WhatsApp</button>
+        <div style="display:flex;gap:12px;margin-top:20px">
+          <button class="btn btn-orange" onclick="saveNotifSettings()">Save Settings</button>
+          <button class="btn btn-ghost" onclick="testWA()">📱 Test WhatsApp</button>
         </div>
       </div>
     </div>
 
     <!-- SEO -->
     <div class="settings-panel" id="tab-seo">
-      <div class="card"><div class="card-title">SEO <span>Settings</span></div>
+      <div class="card">
+        <div class="card-title">SEO <span>Settings</span></div>
         <div class="form-grid">
-          <div class="form-group form-full"><label>Meta Title</label><input value="Jatin Brand Studio — Design That Drives Growth | Ludhiana"></div>
-          <div class="form-group form-full"><label>Meta Description</label><textarea style="height:80px">Professional website design, logo design and graphic design services in Ludhiana, Punjab. Design That Drives Growth.</textarea></div>
-          <div class="form-group form-full"><label>Keywords</label><input value="logo design ludhiana, website design punjab, graphic design, brand identity"></div>
-          <div class="form-group"><label>Google Analytics ID</label><input placeholder="G-XXXXXXXXXX"></div>
-          <div class="form-group"><label>Facebook Pixel ID</label><input placeholder="Your pixel ID"></div>
+          <div class="form-group form-full"><label>Meta Title</label><input id="s-title" value="Jatin Brand Studio — Design That Drives Growth"></div>
+          <div class="form-group form-full"><label>Meta Description</label><textarea id="s-desc" style="height:80px">Professional website design, logo design and graphic design services in Ludhiana, Punjab.</textarea></div>
+          <div class="form-group form-full"><label>Keywords</label><input id="s-kw" value="logo design ludhiana, website design punjab, graphic design, brand identity"></div>
+          <div class="form-group"><label>Google Analytics ID</label><input id="s-ga" placeholder="G-XXXXXXXXXX"></div>
         </div>
-        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('SEO settings saved! ✅')">Save SEO Settings</button>
+        <button class="btn btn-orange" style="margin-top:16px" onclick="saveSEO()">Save SEO Settings</button>
       </div>
     </div>
 
-    <!-- FIREBASE -->
+    <!-- CONFIG INFO -->
     <div class="settings-panel" id="tab-firebase">
-      <div class="card"><div class="card-title">🔥 Firebase + ☁️ Cloudinary <span>Config</span></div>
-        <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);padding:16px;margin-bottom:24px">
-          <div style="color:#93c5fd;font-family:var(--font-c);font-size:.85rem;margin-bottom:6px">ℹ️ HOW TO GET FIREBASE CONFIG:</div>
-          <div style="color:var(--gray-light);font-size:.84rem;line-height:1.7">1. Go to console.firebase.google.com<br>2. Create a new project<br>3. Add a web app<br>4. Copy the config values below<br>5. Also enable Firestore Database & Authentication</div>
+      <div class="card">
+        <div class="card-title">🔥 Firebase + ☁️ Cloudinary <span>Config</span></div>
+        <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);padding:16px;margin-bottom:20px">
+          <div style="color:#86efac;font-family:'Barlow Condensed',sans-serif;font-size:.85rem;margin-bottom:6px">✅ BOTH CONNECTED & LIVE</div>
         </div>
-        <div style="font-family:var(--font-c);font-size:.9rem;font-weight:700;letter-spacing:2px;color:var(--orange);margin-bottom:16px">FIREBASE CONFIG</div>
         <div class="form-grid">
-          <div class="form-group"><label>API Key</label><input value="AIzaSyAFVqoM9SDu_YkjWLo6O1MBM0pIv-GTrp0"></div>
-          <div class="form-group"><label>Project ID</label><input value="jatinbrandstudio-fecc8"></div>
-          <div class="form-group"><label>Auth Domain</label><input value="jatinbrandstudio-fecc8.firebaseapp.com"></div>
-          <div class="form-group"><label>Storage Bucket</label><input value="jatinbrandstudio-fecc8.firebasestorage.app"></div>
-          <div class="form-group"><label>Messaging Sender ID</label><input value="895387928657"></div>
-          <div class="form-group"><label>App ID</label><input value="1:895387928657:web:9454f887b2e2259c379070"></div>
+          <div class="form-group"><label>Firebase Project ID</label><input value="jatinbrandstudio-fecc8" readonly style="opacity:.7"></div>
+          <div class="form-group"><label>Firebase Auth Domain</label><input value="jatinbrandstudio-fecc8.firebaseapp.com" readonly style="opacity:.7"></div>
+          <div class="form-group"><label>Cloudinary Cloud Name</label><input value="dxi4bsikl" readonly style="opacity:.7"></div>
+          <div class="form-group"><label>Cloudinary Upload Preset</label><input value="JBS_default" readonly style="opacity:.7"></div>
         </div>
-        <div style="font-family:var(--font-c);font-size:.9rem;font-weight:700;letter-spacing:2px;color:var(--orange);margin:24px 0 16px">CLOUDINARY CONFIG</div>
-        <div class="form-grid">
-          <div class="form-group"><label>Cloud Name</label><input value="dxi4bsikl"></div>
-          <div class="form-group"><label>Upload Preset</label><input value="JBS_default"></div>
-        </div>
-        <button class="btn btn-orange" style="margin-top:16px" onclick="showToast('Config saved! Reload to apply. ✅')">Save Config</button>
-      </div>
-    </div>
-
-    <!-- SECURITY -->
-    <div class="settings-panel" id="tab-security">
-      <div class="card"><div class="card-title">Change Admin <span>PIN</span></div>
-        <div style="background:rgba(255,102,0,.08);border:1px solid rgba(255,102,0,.2);padding:16px;margin-bottom:24px;font-size:.88rem;color:var(--gray-light);line-height:1.7">
-          🔐 PIN must be exactly <strong style="color:var(--white)">6 digits</strong>. Default PIN is <strong style="color:var(--orange)">260326</strong>. Change it to something only you know!
-        </div>
-        <div class="form-grid" style="max-width:400px">
-          <div class="form-group form-full"><label>Current PIN</label><input type="password" id="old-pin" maxlength="6" placeholder="••••••" inputmode="numeric" pattern="[0-9]*"></div>
-          <div class="form-group form-full"><label>New PIN (6 digits)</label><input type="password" id="new-pin" maxlength="6" placeholder="••••••" inputmode="numeric" pattern="[0-9]*"></div>
-          <div class="form-group form-full"><label>Confirm New PIN</label><input type="password" id="confirm-pin" maxlength="6" placeholder="••••••" inputmode="numeric" pattern="[0-9]*"></div>
-        </div>
-        <div style="display:flex;gap:12px;margin-top:20px">
-          <button class="btn btn-orange" onclick="doChangePin()">🔐 Update PIN</button>
-          <button class="btn btn-danger" onclick="logout()">🚪 Logout</button>
-        </div>
+        <p style="color:#666;font-size:.85rem;margin-top:16px">To change these, edit <code style="color:#ff6600">admin/js/firebase.js</code> directly.</p>
       </div>
     </div>
 
   </div>
 </div>
 </div>
-<script src="js/admin.js"></script>
-<script>
-function testWhatsApp() {
-  const key = document.getElementById('callmebot-key')?.value;
-  if (!key) { alert('Enter your CallMeBot API key first!'); return; }
-  const num = '919256990806';
-  const msg = encodeURIComponent('🔔 Test from Jatin Brand Studio Admin Panel! ✅');
-  fetch(`https://api.callmebot.com/whatsapp.php?phone=${num}&text=${msg}&apikey=${key}`)
-    .then(() => showToast('Test message sent! Check WhatsApp 📱'))
-    .catch(() => showToast('Error sending. Check API key!', 'error'));
-}
 
-function doChangePin() {
+<script type="module">
+import { getSettings, saveSettings, getPin, updatePin } from './js/firebase.js';
+
+if(!localStorage.getItem('jbs_admin') && !sessionStorage.getItem('jbs_admin')) location.href = 'index.html';
+window.doLogout = () => { if(confirm('Logout?')) { localStorage.removeItem('jbs_admin'); location.href = 'index.html'; } };
+
+// Load settings
+let currentPin = '123456';
+(async () => {
+  try {
+    currentPin = await getPin();
+    const s = await getSettings();
+    if(s.callmebotKey) document.getElementById('s-cbkey').value = s.callmebotKey;
+    if(s.instagram) document.getElementById('s-ig').value = s.instagram;
+    if(s.behance) document.getElementById('s-be').value = s.behance;
+    if(s.email) document.getElementById('s-email').value = s.email;
+    if(s.gaId) document.getElementById('s-ga').value = s.gaId;
+  } catch(e) { console.log('Settings load:', e); }
+})();
+
+// Tabs
+window.switchTab = (id) => {
+  document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.settings-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${id}')"]`).classList.add('active');
+  document.getElementById(id).classList.add('active');
+};
+
+// Change PIN — saves to Firebase!
+window.changePinNow = async () => {
   const old = document.getElementById('old-pin').value;
   const nw = document.getElementById('new-pin').value;
   const cf = document.getElementById('confirm-pin').value;
-  const CURRENT = localStorage.getItem('jbs_custom_pin') || '260326';
-  if (old !== CURRENT) { showToast('Current PIN is wrong! ❌', 'error'); return; }
-  if (nw !== cf) { showToast('New PINs do not match! ❌', 'error'); return; }
-  if (nw.length !== 6 || !/^\d+$/.test(nw)) { showToast('PIN must be 6 digits! ❌', 'error'); return; }
-  localStorage.setItem('jbs_custom_pin', nw);
+  const msg = document.getElementById('pin-msg');
+
+  if(old !== currentPin) { msg.style.color='#fca5a5'; msg.textContent = '❌ Current PIN is wrong!'; return; }
+  if(nw.length !== 6 || !/^\d+$/.test(nw)) { msg.style.color='#fca5a5'; msg.textContent = '❌ PIN must be exactly 6 digits!'; return; }
+  if(nw !== cf) { msg.style.color='#fca5a5'; msg.textContent = '❌ New PINs do not match!'; return; }
+
+  msg.style.color = '#fcd34d'; msg.textContent = '⏳ Saving to Firebase...';
+  await updatePin(nw);
+  currentPin = nw;
+  msg.style.color = '#86efac'; msg.textContent = '✅ PIN updated in Firebase! Works on all devices now.';
   document.getElementById('old-pin').value = '';
   document.getElementById('new-pin').value = '';
   document.getElementById('confirm-pin').value = '';
-  showToast('PIN changed successfully! 🔐 ✅');
+};
+
+// Save contact
+window.saveContactInfo = async () => {
+  await saveSettings({
+    instagram: document.getElementById('s-ig').value,
+    behance: document.getElementById('s-be').value,
+    email: document.getElementById('s-email').value,
+    location: document.getElementById('s-location').value,
+    hours: document.getElementById('s-hours').value,
+  });
+  toast('Contact info saved! ✅');
+};
+
+// Save notifications
+window.saveNotifSettings = async () => {
+  await saveSettings({ callmebotKey: document.getElementById('s-cbkey').value });
+  toast('Notification settings saved! ✅');
+};
+
+// Test WhatsApp
+window.testWA = async () => {
+  const key = document.getElementById('s-cbkey').value;
+  if(!key) { alert('Enter CallMeBot API key first!'); return; }
+  const msg = encodeURIComponent('🔔 Test from Jatin Brand Studio Admin! ✅ WhatsApp notifications are working!');
+  await fetch(`https://api.callmebot.com/whatsapp.php?phone=919256990806&text=${msg}&apikey=${key}`);
+  toast('Test sent! Check WhatsApp 📱');
+};
+
+// Save SEO
+window.saveSEO = async () => {
+  await saveSettings({
+    seoTitle: document.getElementById('s-title').value,
+    seoDesc: document.getElementById('s-desc').value,
+    seoKeywords: document.getElementById('s-kw').value,
+    gaId: document.getElementById('s-ga').value,
+  });
+  toast('SEO settings saved! ✅');
+};
+
+function toast(msg, err=false) {
+  const t = document.createElement('div');
+  t.style.cssText = `position:fixed;bottom:24px;right:24px;background:${err?'#ef4444':'#22c55e'};color:#fff;padding:12px 24px;font-family:"Barlow Condensed",sans-serif;font-size:.9rem;font-weight:700;z-index:9999;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)`;
+  t.textContent = msg; document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
 }
 </script>
-</body></html>
+</body>
+</html>

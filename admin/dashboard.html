@@ -8,15 +8,14 @@
 <body>
 <div class="admin-layout">
 
-<!-- SIDEBAR -->
 <div class="sidebar">
   <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
   <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
   <nav class="sidebar-nav">
     <div class="nav-section-title">Main</div>
     <a class="nav-item active" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
-    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
-    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders <span class="nav-badge" id="nb-orders">0</span></a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages <span class="nav-badge" id="nb-msgs">0</span></a>
     <div class="nav-section-title">Content</div>
     <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
     <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
@@ -24,75 +23,55 @@
     <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
     <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
     <div class="nav-section-title">Settings</div>
-    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About</a>
     <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
   </nav>
-  <div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="doLogout()">🚪 Logout</div></div>
 </div>
 
-<!-- MAIN -->
 <div class="main-content">
   <div class="topbar">
     <div class="topbar-left">
-      <button class="ham-mob">☰</button>
+      <button class="ham-mob" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
       <div class="page-title-top">Dashboard</div>
     </div>
     <div class="topbar-right">
-      <div style="font-family:var(--font-c);font-size:.85rem;color:var(--gray-light)" id="live-time"></div>
-      <button class="notif-btn" onclick="window.location.href='messages.html'">🔔<span class="notif-dot"></span></button>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.85rem;color:#999" id="live-time"></div>
       <a href="../index.html" target="_blank" class="btn btn-ghost btn-sm">🌐 View Site</a>
     </div>
   </div>
 
   <div class="page-content">
 
-    <!-- STATS ROW -->
+    <!-- STATS -->
     <div class="stats-row">
-      <div class="stat-card orange"><div class="stat-ic">📦</div><div class="stat-val">47</div><div class="stat-lbl">Total Orders</div></div>
-      <div class="stat-card green"><div class="stat-ic">💰</div><div class="stat-val">₹89K</div><div class="stat-lbl">Total Earnings</div></div>
-      <div class="stat-card blue"><div class="stat-ic">👥</div><div class="stat-val">32</div><div class="stat-lbl">Total Clients</div></div>
-      <div class="stat-card yellow"><div class="stat-ic">📩</div><div class="stat-val">5</div><div class="stat-lbl">New Messages</div></div>
-      <div class="stat-card red"><div class="stat-ic">⏳</div><div class="stat-val">8</div><div class="stat-lbl">Pending Work</div></div>
-      <div class="stat-card purple"><div class="stat-ic">⭐</div><div class="stat-val">4.9</div><div class="stat-lbl">Avg Rating</div></div>
+      <div class="stat-card orange"><div class="stat-ic">📦</div><div class="stat-val" id="s-total">—</div><div class="stat-lbl">Total Orders</div></div>
+      <div class="stat-card blue"><div class="stat-ic">🔵</div><div class="stat-val" id="s-new">—</div><div class="stat-lbl">New Orders</div></div>
+      <div class="stat-card yellow"><div class="stat-ic">⏳</div><div class="stat-val" id="s-pending">—</div><div class="stat-lbl">In Progress</div></div>
+      <div class="stat-card green"><div class="stat-ic">✅</div><div class="stat-val" id="s-done">—</div><div class="stat-lbl">Completed</div></div>
+      <div class="stat-card red"><div class="stat-ic">📩</div><div class="stat-val" id="s-msgs">—</div><div class="stat-lbl">Unread Messages</div></div>
+      <div class="stat-card purple"><div class="stat-ic">🖼️</div><div class="stat-val" id="s-port">—</div><div class="stat-lbl">Portfolio Items</div></div>
     </div>
 
-    <!-- CHARTS ROW -->
     <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Monthly <span>Earnings</span></div>
-        <div class="chart-box"><div class="chart-icon">📊</div><div>Chart loads with Firebase data</div><div style="font-size:.75rem;color:var(--gray)">Connect Firebase to see live chart</div></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Services <span>Popularity</span></div>
-        <div class="chart-box"><div class="chart-icon">🥧</div><div>Pie chart loads with data</div><div style="font-size:.75rem;color:var(--gray)">Connect Firebase to see live chart</div></div>
-      </div>
-    </div>
-
-    <!-- RECENT ORDERS + ACTIVITY -->
-    <div class="grid-2">
+      <!-- RECENT ORDERS -->
       <div class="card">
         <div class="card-title">Recent <span>Orders</span> <a href="orders.html" class="btn btn-ghost btn-sm">View All →</a></div>
         <div class="table-wrap">
           <table>
             <thead><tr><th>Client</th><th>Service</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody>
-              <tr data-status="new" data-id="1"><td><strong>Rahul Sharma</strong><br><small style="color:var(--gray)">9876543210</small></td><td>Logo Design</td><td><span class="badge badge-new">🔵 New</span></td><td class="act-btns"><button class="act-btn wa" onclick="waClient('919876543210','Rahul','Logo Design')">💬</button><button class="act-btn view" onclick="window.location.href='orders.html'">👁️</button></td></tr>
-              <tr data-status="in-progress" data-id="2"><td><strong>Priya Singh</strong><br><small style="color:var(--gray)">9765432109</small></td><td>Website Design</td><td><span class="badge badge-wip">🟡 In Progress</span></td><td class="act-btns"><button class="act-btn wa" onclick="waClient('919765432109','Priya','Website Design')">💬</button><button class="act-btn view">👁️</button></td></tr>
-              <tr data-status="completed" data-id="3"><td><strong>Amit Kumar</strong><br><small style="color:var(--gray)">9654321098</small></td><td>Branding</td><td><span class="badge badge-done">🟢 Done</span></td><td class="act-btns"><button class="act-btn wa">💬</button><button class="act-btn view">👁️</button></td></tr>
-              <tr data-status="new" data-id="4"><td><strong>Neha Gupta</strong><br><small style="color:var(--gray)">9543210987</small></td><td>Social Media</td><td><span class="badge badge-new">🔵 New</span></td><td class="act-btns"><button class="act-btn wa">💬</button><button class="act-btn view">👁️</button></td></tr>
+            <tbody id="recent-orders">
+              <tr><td colspan="4" style="text-align:center;color:#666;padding:30px">Loading orders...</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
+      <!-- RECENT MESSAGES -->
       <div class="card">
-        <div class="card-title">Recent <span>Activity</span></div>
-        <div class="activity-list">
-          <div class="activity-item"><div class="activity-dot orange"></div><div><div class="activity-text"><strong>New inquiry</strong> from Rahul Sharma — Logo Design</div><div class="activity-time">2 minutes ago</div></div></div>
-          <div class="activity-item"><div class="activity-dot green"></div><div><div class="activity-text"><strong>Order completed</strong> for Amit Kumar — Branding</div><div class="activity-time">1 hour ago</div></div></div>
-          <div class="activity-item"><div class="activity-dot blue"></div><div><div class="activity-text"><strong>New message</strong> from Priya Singh via contact form</div><div class="activity-time">3 hours ago</div></div></div>
-          <div class="activity-item"><div class="activity-dot orange"></div><div><div class="activity-text"><strong>Portfolio updated</strong> — 2 new projects added</div><div class="activity-time">Yesterday</div></div></div>
-          <div class="activity-item"><div class="activity-dot green"></div><div><div class="activity-text"><strong>New review</strong> added — 5 stars from Vikram M.</div><div class="activity-time">2 days ago</div></div></div>
+        <div class="card-title">Recent <span>Messages</span> <a href="messages.html" class="btn btn-ghost btn-sm">View All →</a></div>
+        <div id="recent-msgs">
+          <div style="text-align:center;color:#666;padding:30px">Loading messages...</div>
         </div>
       </div>
     </div>
@@ -101,18 +80,97 @@
     <div class="card">
       <div class="card-title">Quick <span>Actions</span></div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a href="orders.html" class="btn btn-orange">📦 View Orders</a>
+        <a href="orders.html" class="btn btn-orange">📦 Orders</a>
         <a href="portfolio.html" class="btn btn-outline-o">🖼️ Add Portfolio</a>
-        <a href="messages.html" class="btn btn-outline-o">📩 Check Messages</a>
-        <a href="reviews.html" class="btn btn-outline-o">⭐ Add Review</a>
-        <a href="blog.html" class="btn btn-outline-o">📝 Write Blog</a>
+        <a href="messages.html" class="btn btn-outline-o">📩 Messages</a>
+        <a href="reviews.html" class="btn btn-outline-o">⭐ Reviews</a>
+        <a href="blog.html" class="btn btn-outline-o">📝 Blog</a>
         <a href="settings.html" class="btn btn-ghost">⚙️ Settings</a>
-        <a href="../index.html" target="_blank" class="btn btn-ghost">🌐 View Website</a>
+        <a href="../index.html" target="_blank" class="btn btn-ghost">🌐 Website</a>
       </div>
     </div>
 
   </div>
 </div>
 </div>
-<script src="js/admin.js"></script>
-</body></html>
+
+<script type="module">
+import { listenOrders, listenMessages, getDashboardStats } from './js/firebase.js';
+
+// Auth check
+if(!localStorage.getItem('jbs_admin') && !sessionStorage.getItem('jbs_admin')) location.href = 'index.html';
+
+// Clock
+setInterval(() => {
+  document.getElementById('live-time').textContent = new Date().toLocaleTimeString('en-IN');
+}, 1000);
+
+// Logout
+window.doLogout = () => { if(confirm('Logout?')) { localStorage.removeItem('jbs_admin'); sessionStorage.removeItem('jbs_admin'); location.href = 'index.html'; } };
+
+// Status badge helper
+function statusBadge(s) {
+  const map = { new: 'badge-new', 'in-progress': 'badge-wip', completed: 'badge-done', cancelled: 'badge-cancel' };
+  const lbl = { new: '🔵 New', 'in-progress': '🟡 In Progress', completed: '🟢 Done', cancelled: '🔴 Cancelled' };
+  return `<span class="badge ${map[s]||'badge-new'}">${lbl[s]||s}</span>`;
+}
+
+// Live orders
+listenOrders((orders) => {
+  const newCount = orders.filter(o => o.status === 'new').length;
+  const pending = orders.filter(o => o.status === 'in-progress').length;
+  const done = orders.filter(o => o.status === 'completed').length;
+
+  document.getElementById('s-total').textContent = orders.length;
+  document.getElementById('s-new').textContent = newCount;
+  document.getElementById('s-pending').textContent = pending;
+  document.getElementById('s-done').textContent = done;
+  document.getElementById('nb-orders').textContent = newCount;
+
+  const tbody = document.getElementById('recent-orders');
+  if(orders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#666;padding:30px">No orders yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = orders.slice(0, 5).map(o => `
+    <tr>
+      <td><strong>${o.name||'—'}</strong><br><small style="color:#666">${o.phone||''}</small></td>
+      <td>${o.service||'—'}</td>
+      <td>${statusBadge(o.status)}</td>
+      <td class="act-btns">
+        <button class="act-btn wa" onclick="window.open('https://wa.me/${o.phone?.replace(/\D/g,'')||'919256990806'}?text=Hi ${encodeURIComponent(o.name||'')}!')" title="WhatsApp">💬</button>
+      </td>
+    </tr>
+  `).join('');
+});
+
+// Live messages
+listenMessages((msgs) => {
+  const unread = msgs.filter(m => !m.read).length;
+  document.getElementById('s-msgs').textContent = unread;
+  document.getElementById('nb-msgs').textContent = unread;
+
+  const el = document.getElementById('recent-msgs');
+  if(msgs.length === 0) {
+    el.innerHTML = '<div style="text-align:center;color:#666;padding:30px">No messages yet</div>';
+    return;
+  }
+  el.innerHTML = msgs.slice(0, 5).map(m => `
+    <div class="activity-item">
+      <div class="activity-dot ${m.read ? 'blue' : 'orange'}"></div>
+      <div>
+        <div class="activity-text"><strong>${m.name||'Unknown'}</strong> — ${m.service||'Inquiry'}</div>
+        <div class="activity-time">${m.budget||''} · ${new Date(m.createdAt).toLocaleString('en-IN')}</div>
+      </div>
+    </div>
+  `).join('');
+});
+
+// Portfolio count
+import { listenPortfolio } from './js/firebase.js';
+listenPortfolio((items) => {
+  document.getElementById('s-port').textContent = items.length;
+});
+</script>
+</body>
+</html>

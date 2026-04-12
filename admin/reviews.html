@@ -1,43 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Reviews — JBS Admin</title><link rel="stylesheet" href="css/admin.css"></head>
-<body><div class="admin-layout">
-<div class="sidebar"><div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div><div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div><nav class="sidebar-nav"><div class="nav-section-title">Main</div><a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a><a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a><a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a><div class="nav-section-title">Content</div><a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a><a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a><a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a><a class="nav-item active" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a><a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a><div class="nav-section-title">Settings</div><a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a><a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a></nav><div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div></div>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reviews — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item active" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="doLogout()">🚪 Logout</div></div>
+</div>
 <div class="main-content">
-  <div class="topbar"><div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Reviews</div></div><div class="topbar-right"><button class="btn btn-orange" onclick="openModal('add-rev-modal')">+ Add Review</button></div></div>
-  <div class="page-content">
-    <div class="card"><div class="card-title">All <span>Reviews</span> <span style="background:var(--orange);color:var(--white);padding:2px 10px;font-size:.8rem;font-family:var(--font-c);letter-spacing:1px">⭐ Avg: 4.9</span></div>
-    <div class="grid-3">
-      <div class="review-admin-card"><div class="rev-stars">★★★★★</div><p class="rev-text-admin">"Amazing work! Jatin delivered exactly what I wanted. Very professional."</p><div class="rev-client"><div class="rev-av-sm">👤</div><div><div class="rev-client-name">Rahul Sharma</div><div class="rev-client-role">CEO, TechStartup India</div></div></div><div style="display:flex;gap:8px;margin-top:14px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span>Published</label><button class="act-btn edit" onclick="openModal('add-rev-modal')" style="margin-left:auto">✏️</button><button class="act-btn del" onclick="confirmDelete('review','1')">🗑️</button></div></div>
-      <div class="review-admin-card"><div class="rev-stars">★★★★★</div><p class="rev-text-admin">"Got my logo within 24 hours. Outstanding quality and excellent communication!"</p><div class="rev-client"><div class="rev-av-sm">👤</div><div><div class="rev-client-name">Priya Singh</div><div class="rev-client-role">Owner, Priya Boutique</div></div></div><div style="display:flex;gap:8px;margin-top:14px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span>Published</label><button class="act-btn edit" onclick="openModal('add-rev-modal')" style="margin-left:auto">✏️</button><button class="act-btn del" onclick="confirmDelete('review','2')">🗑️</button></div></div>
-      <div class="review-admin-card"><div class="rev-stars">★★★★★</div><p class="rev-text-admin">"Best design studio! My website looks absolutely stunning. 10/10 recommend."</p><div class="rev-client"><div class="rev-av-sm">👤</div><div><div class="rev-client-name">Amit Kumar</div><div class="rev-client-role">Director, AK Enterprises</div></div></div><div style="display:flex;gap:8px;margin-top:14px"><label class="toggle-wrap" style="font-size:.78rem"><span class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></span>Published</label><button class="act-btn edit" onclick="openModal('add-rev-modal')" style="margin-left:auto">✏️</button><button class="act-btn del" onclick="confirmDelete('review','3')">🗑️</button></div></div>
-    </div>
-    </div>
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button><div class="page-title-top">Reviews</div></div>
+    <div class="topbar-right"><button class="btn btn-orange" onclick="openAdd()">+ Add Review</button></div>
   </div>
-</div>
-</div>
-
-<!-- ADD REVIEW MODAL -->
-<div class="modal-overlay" id="add-rev-modal">
-  <div class="modal">
-    <div class="modal-header"><div class="modal-title">Add <span>Review</span></div><button class="modal-close" onclick="closeModal('add-rev-modal')">✕</button></div>
-    <div class="modal-body">
-      <div class="form-grid">
-        <div class="form-group"><label>Client Name *</label><input placeholder="Rahul Sharma"></div>
-        <div class="form-group"><label>Designation</label><input placeholder="CEO, TechStartup India"></div>
-        <div class="form-group form-full"><label>Star Rating *</label>
-          <div class="star-rating"><button class="star-btn" onclick="setRating(1)">★</button><button class="star-btn" onclick="setRating(2)">★</button><button class="star-btn" onclick="setRating(3)">★</button><button class="star-btn active" onclick="setRating(4)">★</button><button class="star-btn active" onclick="setRating(5)">★</button></div>
-          <input type="hidden" id="rating-val" value="5">
-        </div>
-        <div class="form-group form-full"><label>Review Text *</label><textarea placeholder="Write the client's review here..."></textarea></div>
-        <div class="form-group"><label>Status</label><select><option>Published</option><option>Hidden</option></select></div>
-        <div class="form-group"><label>Display Order</label><input type="number" placeholder="1"></div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-title">All <span>Reviews</span> <span id="rev-count" style="background:var(--orange);color:#fff;padding:2px 10px;font-size:.8rem;font-family:'Barlow Condensed',sans-serif">0</span></div>
+      <div class="grid-3" id="reviews-grid">
+        <div style="grid-column:1/-1;text-align:center;color:#666;padding:40px">Loading reviews...</div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('add-rev-modal')">Cancel</button><button class="btn btn-orange" onclick="showToast('Review saved! ✅');closeModal('add-rev-modal')">Save Review</button></div>
+  </div>
+</div>
+</div>
+
+<!-- ADD/EDIT MODAL -->
+<div class="modal-overlay" id="rev-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="rev-modal-title">Add <span>Review</span></div><button class="modal-close" onclick="closeM()">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="rev-edit-id">
+      <div class="form-grid">
+        <div class="form-group"><label>Client Name *</label><input id="r-name" placeholder="Rahul Sharma"></div>
+        <div class="form-group"><label>Designation</label><input id="r-role" placeholder="CEO, Company Name"></div>
+        <div class="form-group form-full"><label>Star Rating *</label>
+          <div class="star-rating" id="star-btns">
+            <button class="star-btn active" onclick="setRating(1)">★</button>
+            <button class="star-btn active" onclick="setRating(2)">★</button>
+            <button class="star-btn active" onclick="setRating(3)">★</button>
+            <button class="star-btn active" onclick="setRating(4)">★</button>
+            <button class="star-btn active" onclick="setRating(5)">★</button>
+          </div>
+          <input type="hidden" id="r-rating" value="5">
+        </div>
+        <div class="form-group form-full"><label>Review Text *</label><textarea id="r-text" placeholder="Write the client review..."></textarea></div>
+        <div class="form-group"><label>Status</label>
+          <select id="r-status"><option value="published">Published</option><option value="hidden">Hidden</option></select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeM()">Cancel</button>
+      <button class="btn btn-orange" onclick="saveReviewData()" id="rev-save-btn">Save Review</button>
+    </div>
   </div>
 </div>
 
-<script src="js/admin.js"></script>
-</body></html>
+<script type="module">
+import { listenReviews, addReview, deleteReview, db, doc, updateDoc } from './js/firebase.js';
+
+if(!localStorage.getItem('jbs_admin') && !sessionStorage.getItem('jbs_admin')) location.href = 'index.html';
+window.doLogout = () => { if(confirm('Logout?')) { localStorage.removeItem('jbs_admin'); location.href = 'index.html'; } };
+
+let allRevs = [];
+
+listenReviews((revs) => {
+  allRevs = revs;
+  document.getElementById('rev-count').textContent = revs.length;
+  renderRevs();
+});
+
+function renderRevs() {
+  const grid = document.getElementById('reviews-grid');
+  if(allRevs.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#666;padding:40px">No reviews yet — add your first client review! ⭐</div>';
+    return;
+  }
+  grid.innerHTML = allRevs.map(r => `
+    <div class="review-admin-card">
+      <div class="rev-stars">${'★'.repeat(r.rating||5)}${'☆'.repeat(5-(r.rating||5))}</div>
+      <p class="rev-text-admin">"${(r.text||'').slice(0,120)}..."</p>
+      <div class="rev-client">
+        <div class="rev-av-sm">👤</div>
+        <div><div class="rev-client-name">${r.name||'—'}</div><div class="rev-client-role">${r.role||''}</div></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:14px;align-items:center">
+        <span class="badge ${r.status==='hidden'?'badge-cancel':'badge-done'}">${r.status==='hidden'?'Hidden':'Published'}</span>
+        <button class="act-btn edit" onclick="editRev('${r.id}')" style="margin-left:auto">✏️</button>
+        <button class="act-btn del" onclick="delRev('${r.id}')">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+window.setRating = (n) => {
+  document.getElementById('r-rating').value = n;
+  document.querySelectorAll('.star-btn').forEach((s,i) => s.classList.toggle('active', i < n));
+};
+
+window.openAdd = () => {
+  document.getElementById('rev-modal-title').innerHTML = 'Add <span>Review</span>';
+  document.getElementById('rev-edit-id').value = '';
+  ['r-name','r-role','r-text'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('r-status').value = 'published';
+  window.setRating(5);
+  document.getElementById('rev-modal').classList.add('open');
+};
+
+window.editRev = (id) => {
+  const r = allRevs.find(x => x.id === id);
+  if(!r) return;
+  document.getElementById('rev-modal-title').innerHTML = 'Edit <span>Review</span>';
+  document.getElementById('rev-edit-id').value = id;
+  document.getElementById('r-name').value = r.name||'';
+  document.getElementById('r-role').value = r.role||'';
+  document.getElementById('r-text').value = r.text||'';
+  document.getElementById('r-status').value = r.status||'published';
+  window.setRating(r.rating||5);
+  document.getElementById('rev-modal').classList.add('open');
+};
+
+window.saveReviewData = async () => {
+  const name = document.getElementById('r-name').value.trim();
+  const text = document.getElementById('r-text').value.trim();
+  if(!name || !text) { alert('Name and review text required!'); return; }
+
+  const data = {
+    name, role: document.getElementById('r-role').value,
+    text, rating: parseInt(document.getElementById('r-rating').value),
+    status: document.getElementById('r-status').value
+  };
+
+  const editId = document.getElementById('rev-edit-id').value;
+  if(editId) { await updateDoc(doc(db, 'reviews', editId), data); }
+  else { await addReview(data); }
+
+  closeM(); toast('Review saved! ✅');
+};
+
+window.delRev = async (id) => {
+  if(!confirm('Delete this review?')) return;
+  await deleteReview(id); toast('Deleted! 🗑️');
+};
+
+window.closeM = () => document.getElementById('rev-modal').classList.remove('open');
+
+function toast(msg) {
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#22c55e;color:#fff;padding:12px 24px;font-family:"Barlow Condensed",sans-serif;font-size:.9rem;font-weight:700;z-index:9999;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)';
+  t.textContent = msg; document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+</script>
+</body>
+</html>

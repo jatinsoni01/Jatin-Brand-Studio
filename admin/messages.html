@@ -22,74 +22,32 @@
     <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
     <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
     <div class="nav-section-title">Settings</div>
-    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About</a>
     <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
   </nav>
-  <div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="doLogout()">🚪 Logout</div></div>
 </div>
 <div class="main-content">
   <div class="topbar">
-    <div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Messages</div></div>
-    <div class="topbar-right"><button class="notif-btn">🔔<span class="notif-dot"></span></button></div>
+    <div class="topbar-left"><button class="ham-mob" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button><div class="page-title-top">Messages</div></div>
+    <div class="topbar-right"><span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#22c55e">🟢 Live</span></div>
   </div>
   <div class="page-content">
     <div class="card" style="padding:0;overflow:hidden">
       <div class="msg-layout">
-        <!-- MESSAGE LIST -->
         <div class="msg-list">
-          <div class="msg-list-header">📩 Inbox (5 Unread)</div>
-          <div style="padding:10px"><input type="text" style="width:100%;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:8px 12px;font-size:.85rem;outline:none" placeholder="🔍 Search messages..."></div>
-
-          <div class="msg-item unread active" onclick="selectMessage(this,'1')">
-            <div class="msg-item-name">Rahul Sharma</div>
-            <div class="msg-item-preview">Logo Design — Need a logo for my clothing brand...</div>
-            <div class="msg-item-time">⏰ Just now · Logo Design · ₹1-2K</div>
+          <div class="msg-list-header">
+            📩 Messages <span id="unread-count" style="background:var(--orange);color:#fff;padding:1px 8px;font-size:.75rem;border-radius:10px;font-family:'Barlow Condensed',sans-serif">0</span>
           </div>
-          <div class="msg-item unread" onclick="selectMessage(this,'2')">
-            <div class="msg-item-name">Priya Singh</div>
-            <div class="msg-item-preview">Website Design — I want a website for my boutique...</div>
-            <div class="msg-item-time">⏰ 2 hours ago · Website · ₹5K+</div>
-          </div>
-          <div class="msg-item unread" onclick="selectMessage(this,'3')">
-            <div class="msg-item-name">Amit Kumar</div>
-            <div class="msg-item-preview">Brand Identity — Complete branding package needed...</div>
-            <div class="msg-item-time">⏰ Yesterday · Branding · ₹2-5K</div>
-          </div>
-          <div class="msg-item" onclick="selectMessage(this,'4')">
-            <div class="msg-item-name">Neha Gupta</div>
-            <div class="msg-item-preview">Social Media — Need Instagram post templates...</div>
-            <div class="msg-item-time">⏰ 2 days ago · Social · ₹500-2K</div>
-          </div>
-          <div class="msg-item" onclick="selectMessage(this,'5')">
-            <div class="msg-item-name">Vikram Malhotra</div>
-            <div class="msg-item-preview">Print Design — Business cards and flyers needed...</div>
-            <div class="msg-item-time">⏰ 3 days ago · Print · Under ₹500</div>
+          <div style="padding:10px"><input type="text" id="msg-search" oninput="filterMsgs()" style="width:100%;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:#fff;padding:8px 12px;font-size:.85rem;outline:none" placeholder="🔍 Search..."></div>
+          <div id="msg-list-items">
+            <div style="text-align:center;color:#666;padding:30px">Loading messages...</div>
           </div>
         </div>
-
-        <!-- MESSAGE DETAIL -->
-        <div class="msg-detail">
-          <div id="msg-empty" class="msg-detail-empty">📩<div style="font-size:1rem">Select a message to view</div></div>
-          <div id="msg-detail-content" style="display:none">
-            <div class="msg-detail-header">
-              <div class="msg-detail-name">Rahul Sharma</div>
-              <div class="msg-detail-service">🎨 Logo Design</div>
-              <div class="msg-detail-actions">
-                <button class="btn btn-orange btn-sm" onclick="waClient('919876543210','Rahul','Logo Design')">💬 WhatsApp</button>
-                <button class="btn btn-ghost btn-sm" onclick="confirmDelete('message','1')">🗑️ Delete</button>
-                <button class="btn btn-ghost btn-sm">✅ Mark Read</button>
-              </div>
-            </div>
-            <div class="msg-meta-grid">
-              <div class="msg-meta-item"><div class="msg-meta-label">Phone</div><div class="msg-meta-val">+91 9876543210</div></div>
-              <div class="msg-meta-item"><div class="msg-meta-label">Email</div><div class="msg-meta-val">rahul@gmail.com</div></div>
-              <div class="msg-meta-item"><div class="msg-meta-label">Service</div><div class="msg-meta-val">Logo Design</div></div>
-              <div class="msg-meta-item"><div class="msg-meta-label">Budget</div><div class="msg-meta-val" style="color:var(--orange)">₹1,000 – ₹2,000</div></div>
-              <div class="msg-meta-item"><div class="msg-meta-label">Date</div><div class="msg-meta-val">Apr 12, 2026 · 11:30 AM</div></div>
-              <div class="msg-meta-item"><div class="msg-meta-label">Status</div><div class="msg-meta-val"><span class="badge badge-new">🔵 Unread</span></div></div>
-            </div>
-            <div style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);margin-bottom:10px">Message</div>
-            <div class="msg-text-box">Mujhe ek logo chahiye apni clothing brand ke liye. Something modern and clean with a premium feel. Brand name is "RK Clothing". I want it in black and gold colors. Please let me know the process and timeline.</div>
+        <div class="msg-detail" id="msg-detail">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#555;gap:16px">
+            <div style="font-size:4rem">📩</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;letter-spacing:2px;font-size:.9rem">SELECT A MESSAGE</div>
           </div>
         </div>
       </div>
@@ -97,10 +55,82 @@
   </div>
 </div>
 </div>
-<script src="js/admin.js"></script>
-<script>
-// Show first message by default
-document.querySelector('.msg-item')?.click();
-setTimeout(() => { document.getElementById('msg-empty').style.display='none'; document.getElementById('msg-detail-content').style.display='block'; }, 100);
+
+<script type="module">
+import { listenMessages, markMessageRead, deleteMessage } from './js/firebase.js';
+
+if(!localStorage.getItem('jbs_admin') && !sessionStorage.getItem('jbs_admin')) location.href = 'index.html';
+window.doLogout = () => { if(confirm('Logout?')) { localStorage.removeItem('jbs_admin'); location.href = 'index.html'; } };
+
+let allMsgs = [];
+let activeId = null;
+
+listenMessages((msgs) => {
+  allMsgs = msgs;
+  const unread = msgs.filter(m => !m.read).length;
+  document.getElementById('unread-count').textContent = unread;
+  renderList();
+  if(activeId) showDetail(activeId);
+});
+
+window.filterMsgs = () => renderList();
+
+function renderList() {
+  const search = document.getElementById('msg-search').value.toLowerCase();
+  const filtered = allMsgs.filter(m => !search || (m.name||'').toLowerCase().includes(search) || (m.service||'').toLowerCase().includes(search));
+  const el = document.getElementById('msg-list-items');
+
+  if(filtered.length === 0) {
+    el.innerHTML = `<div style="text-align:center;color:#666;padding:30px">${allMsgs.length === 0 ? 'No messages yet 📬' : 'No results'}</div>`;
+    return;
+  }
+
+  el.innerHTML = filtered.map(m => `
+    <div class="msg-item ${!m.read?'unread':''} ${m.id===activeId?'active':''}" onclick="selectMsg('${m.id}')">
+      <div class="msg-item-name">${m.name||'Unknown'}</div>
+      <div class="msg-item-preview">${m.service||''} — ${(m.message||'').slice(0,50)}...</div>
+      <div class="msg-item-time">⏰ ${m.createdAt ? new Date(m.createdAt).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}) : '—'}</div>
+    </div>
+  `).join('');
+}
+
+window.selectMsg = async (id) => {
+  activeId = id;
+  await markMessageRead(id);
+  renderList();
+  showDetail(id);
+};
+
+function showDetail(id) {
+  const m = allMsgs.find(x => x.id === id);
+  if(!m) return;
+  document.getElementById('msg-detail').innerHTML = `
+    <div class="msg-detail-header">
+      <div class="msg-detail-name">${m.name||'Unknown'}</div>
+      <div class="msg-detail-service">🎨 ${m.service||'Inquiry'}</div>
+      <div class="msg-detail-actions">
+        <button class="btn btn-orange btn-sm" onclick="window.open('https://wa.me/${(m.phone||'919256990806').replace(/\D/g,'')}?text=Hi ${encodeURIComponent(m.name||'')}! I am Jatin from Jatin Brand Studio.','_blank')">💬 WhatsApp</button>
+        <button class="btn btn-danger btn-sm" onclick="delMsg('${m.id}')">🗑️ Delete</button>
+        <span class="badge ${m.read?'badge-done':'badge-new'}">${m.read?'✅ Read':'🔵 Unread'}</span>
+      </div>
+    </div>
+    <div class="msg-meta-grid">
+      <div class="msg-meta-item"><div class="msg-meta-label">Phone</div><div class="msg-meta-val">${m.phone||'—'}</div></div>
+      <div class="msg-meta-item"><div class="msg-meta-label">Email</div><div class="msg-meta-val">${m.email||'—'}</div></div>
+      <div class="msg-meta-item"><div class="msg-meta-label">Service</div><div class="msg-meta-val">${m.service||'—'}</div></div>
+      <div class="msg-meta-item"><div class="msg-meta-label">Budget</div><div class="msg-meta-val" style="color:var(--orange)">${m.budget||'—'}</div></div>
+      <div class="msg-meta-item"><div class="msg-meta-label">Date</div><div class="msg-meta-val">${m.createdAt?new Date(m.createdAt).toLocaleString('en-IN'):'—'}</div></div>
+    </div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:10px">Message</div>
+    <div class="msg-text-box">${m.message||'No message'}</div>
+  `;
+}
+
+window.delMsg = async (id) => {
+  if(!confirm('Delete this message?')) return;
+  if(id === activeId) { activeId = null; document.getElementById('msg-detail').innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#555;gap:16px"><div style="font-size:4rem">📩</div></div>'; }
+  await deleteMessage(id);
+};
 </script>
-</body></html>
+</body>
+</html>
