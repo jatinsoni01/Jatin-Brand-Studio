@@ -1,14 +1,150 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Pricing — JBS Admin</title><link rel="stylesheet" href="css/admin.css"></head>
-<body><div class="admin-layout">
-<div class="sidebar"><div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div><div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div><nav class="sidebar-nav"><div class="nav-section-title">Main</div><a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a><a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a><a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a><div class="nav-section-title">Content</div><a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a><a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a><a class="nav-item active" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a><a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a><a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a><div class="nav-section-title">Settings</div><a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a><a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a></nav><div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div></div>
-<div class="main-content"><div class="topbar"><div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Pricing</div></div></div>
-<div class="page-content">
-<div class="grid-3">
-  <div class="card"><div class="card-title">Basic <span>Plan</span></div><div class="form-section" style="margin:0"><div class="form-group"><label>Plan Name</label><input value="Basic"></div><div class="form-group"><label>Price ₹</label><input type="number" value="999"></div><div class="form-group"><label>Badge Text</label><input placeholder="e.g. Best Value"></div><div class="form-group"><label>Button Text</label><input value="Order Basic →"></div><div style="margin:16px 0 8px"><label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light)">Features</label></div><ul id="pfeats-1"><li style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span>Logo Design<button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem">✕</button></li><li style="display:flex;align-items:center;gap:8px;padding:8px 0;font-size:.85rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span>Business Card<button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem">✕</button></li></ul><div style="display:flex;gap:8px;margin-top:10px"><input id="new-feature-pfeats-1" placeholder="Add feature..." style="flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:8px 12px;font-size:.82rem;outline:none"><button class="btn btn-ghost btn-sm" onclick="addFeature('pfeats-1')">+</button></div><div style="margin-top:16px"><button class="btn btn-orange btn-sm" onclick="showToast('Basic plan saved! ✅')">Save Plan</button></div></div></div>
-  
-  <div class="card" style="border-color:var(--orange)"><div class="card-title">⭐ Standard <span>Plan</span></div><div class="form-section" style="margin:0"><div class="form-group"><label>Plan Name</label><input value="Standard"></div><div class="form-group"><label>Price ₹</label><input type="number" value="2499"></div><div class="form-group"><label>Badge Text</label><input value="Most Popular"></div><div class="form-group"><label>Button Text</label><input value="Order Now ⚡"></div><div style="margin:16px 0 8px"><label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light)">Features</label></div><ul id="pfeats-2"><li style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span>Full Branding<button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem">✕</button></li><li style="display:flex;align-items:center;gap:8px;padding:8px 0;font-size:.85rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span>1 Page Website<button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem">✕</button></li></ul><div style="display:flex;gap:8px;margin-top:10px"><input id="new-feature-pfeats-2" placeholder="Add feature..." style="flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:8px 12px;font-size:.82rem;outline:none"><button class="btn btn-ghost btn-sm" onclick="addFeature('pfeats-2')">+</button></div><div style="margin-top:16px"><button class="btn btn-orange btn-sm" onclick="showToast('Standard plan saved! ✅')">Save Plan</button></div></div></div>
-  
-  <div class="card"><div class="card-title">Premium <span>Plan</span></div><div class="form-section" style="margin:0"><div class="form-group"><label>Plan Name</label><input value="Premium"></div><div class="form-group"><label>Price ₹</label><input type="number" value="4999"></div><div class="form-group"><label>Badge Text</label><input placeholder="e.g. Best Deal"></div><div class="form-group"><label>Button Text</label><input value="Order Premium →"></div><div style="margin:16px 0 8px"><label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light)">Features</label></div><ul id="pfeats-3"><li style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span>5 Page Website<button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem">✕</button></li><li style="display:flex;align-items:center;gap:8px;padding:8px 0;font-size:.85rem;color:var(--gray-light)"><span style="color:var(--orange)">✓</span>Unlimited Revisions<button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem">✕</button></li></ul><div style="display:flex;gap:8px;margin-top:10px"><input id="new-feature-pfeats-3" placeholder="Add feature..." style="flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:8px 12px;font-size:.82rem;outline:none"><button class="btn btn-ghost btn-sm" onclick="addFeature('pfeats-3')">+</button></div><div style="margin-top:16px"><button class="btn btn-orange btn-sm" onclick="showToast('Premium plan saved! ✅')">Save Plan</button></div></div></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pricing — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item active" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="doLogout()">🚪 Logout</div></div>
 </div>
-</div></div></div>
-<script src="js/admin.js"></script></body></html>
+<div class="main-content">
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button><div class="page-title-top">Pricing</div></div>
+    <div class="topbar-right"><span style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#22c55e">🟢 Auto-saves</span></div>
+  </div>
+  <div class="page-content">
+
+    <div id="price-loading" style="text-align:center;padding:60px;color:#666">
+      <div style="font-size:3rem;margin-bottom:16px">💰</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;letter-spacing:2px">Loading pricing...</div>
+    </div>
+
+    <div class="grid-3" id="price-grid" style="display:none"></div>
+
+  </div>
+</div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+const app = initializeApp({
+  apiKey: "AIzaSyAFVqoM9SDu_YkjWLo6O1MBM0pIv-GTrp0",
+  authDomain: "jatinbrandstudio-fecc8.firebaseapp.com",
+  projectId: "jatinbrandstudio-fecc8",
+  storageBucket: "jatinbrandstudio-fecc8.firebasestorage.app",
+  messagingSenderId: "895387928657",
+  appId: "1:895387928657:web:9454f887b2e2259c379070"
+});
+const db = getFirestore(app);
+
+if(!localStorage.getItem('jbs_admin')&&!sessionStorage.getItem('jbs_admin')) location.href='index.html';
+window.doLogout = () => { if(confirm('Logout?')){ localStorage.removeItem('jbs_admin'); location.href='index.html'; } };
+
+const defaultPlans = [
+  { name:'Basic', price:999, badge:'', btnText:'Order Basic →', featured:false, features:['Logo Design (1 Concept)','Business Card Design','PNG + PDF Files','2 Revisions','3 Day Delivery'] },
+  { name:'Standard', price:2499, badge:'Most Popular', btnText:'Order Now ⚡', featured:true, features:['Logo Design (3 Concepts)','Full Branding Package','Social Media Kit','1 Page Website','All File Formats','5 Revisions','5 Day Delivery'] },
+  { name:'Premium', price:4999, badge:'', btnText:'Order Premium →', featured:false, features:['Everything in Standard','5 Page Website','SEO Basic Setup','Unlimited Revisions','1 Month Free Support','Priority Delivery','WhatsApp Support'] }
+];
+
+let allPlans = [];
+
+onSnapshot(collection(db, 'pricing'), async (snap) => {
+  document.getElementById('price-loading').style.display = 'none';
+  document.getElementById('price-grid').style.display = 'grid';
+
+  if (snap.empty) {
+    for (const p of defaultPlans) await addDoc(collection(db, 'pricing'), { ...p, createdAt: new Date().toISOString() });
+    return;
+  }
+
+  allPlans = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    .sort((a, b) => (a.price || 0) - (b.price || 0));
+  renderPlans();
+});
+
+function renderPlans() {
+  const grid = document.getElementById('price-grid');
+  grid.innerHTML = allPlans.map(p => `
+    <div class="card" style="${p.featured ? 'border-color:var(--orange)' : ''}">
+      <div class="card-title">
+        ${p.featured ? '⭐ ' : ''}${p.name || 'Plan'}
+        <label class="toggle-wrap" style="font-size:.8rem">
+          <span class="toggle"><input type="checkbox" ${p.featured?'checked':''} onchange="save('${p.id}','featured',this.checked)"><span class="toggle-slider"></span></span>
+          Featured
+        </label>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label>Plan Name</label><input value="${p.name||''}" onchange="save('${p.id}','name',this.value)"></div>
+        <div class="form-group"><label>Price ₹</label><input type="number" value="${p.price||''}" onchange="save('${p.id}','price',+this.value)"></div>
+        <div class="form-group"><label>Badge Text</label><input value="${p.badge||''}" placeholder="e.g. Most Popular" onchange="save('${p.id}','badge',this.value)"></div>
+        <div class="form-group"><label>Button Text</label><input value="${p.btnText||''}" onchange="save('${p.id}','btnText',this.value)"></div>
+      </div>
+      <div style="margin-top:16px">
+        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:#999;display:block;margin-bottom:8px">Features</label>
+        <ul id="pf-${p.id}">
+          ${(p.features||[]).map((f,i) => `
+            <li style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85rem;color:#ccc">
+              <span style="color:var(--orange)">✓</span> ${f}
+              <button onclick="removePFeat('${p.id}',${i})" style="margin-left:auto;background:none;border:none;color:#666;cursor:pointer">✕</button>
+            </li>`).join('')}
+        </ul>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <input id="pfi-${p.id}" placeholder="Add feature..." style="flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:#fff;padding:7px 10px;font-size:.82rem;outline:none" onkeydown="if(event.key==='Enter'){addPFeat('${p.id}');event.preventDefault()}">
+          <button class="btn btn-ghost btn-sm" onclick="addPFeat('${p.id}')">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+window.save = async (id, field, val) => {
+  await updateDoc(doc(db, 'pricing', id), { [field]: val });
+  toast('Saved! ✅');
+};
+
+window.addPFeat = async (id) => {
+  const inp = document.getElementById('pfi-' + id);
+  if (!inp?.value.trim()) return;
+  const plan = allPlans.find(p => p.id === id);
+  const feats = [...(plan?.features || []), inp.value.trim()];
+  await updateDoc(doc(db, 'pricing', id), { features: feats });
+  inp.value = ''; toast('Feature added! ✅');
+};
+
+window.removePFeat = async (id, idx) => {
+  const plan = allPlans.find(p => p.id === id);
+  const feats = (plan?.features || []).filter((_, i) => i !== idx);
+  await updateDoc(doc(db, 'pricing', id), { features: feats });
+  toast('Removed!');
+};
+
+function toast(msg) {
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#22c55e;color:#fff;padding:12px 24px;font-family:"Barlow Condensed",sans-serif;font-size:.9rem;font-weight:700;z-index:9999;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)';
+  t.textContent = msg; document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+</script>
+</body></html>

@@ -1,64 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Blog — JBS Admin</title><link rel="stylesheet" href="css/admin.css"></head>
-<body><div class="admin-layout">
-<div class="sidebar"><div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div><div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div><nav class="sidebar-nav"><div class="nav-section-title">Main</div><a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a><a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a><a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a><div class="nav-section-title">Content</div><a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a><a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a><a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a><a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a><a class="nav-item active" href="blog.html"><span class="nav-icon">📝</span> Blog</a><div class="nav-section-title">Settings</div><a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About Editor</a><a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a></nav><div class="sidebar-footer"><div class="logout-btn" onclick="logout()">🚪 Logout</div></div></div>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Blog — JBS Admin</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="sidebar-logo-text"><span>J</span>BS</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+  <div class="sidebar-admin"><div class="sidebar-avatar">👤</div><div><div class="sidebar-name">Jatin</div><div class="sidebar-role">Administrator</div></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-title">Main</div>
+    <a class="nav-item" href="dashboard.html"><span class="nav-icon">📊</span> Dashboard</a>
+    <a class="nav-item" href="orders.html"><span class="nav-icon">📦</span> Orders</a>
+    <a class="nav-item" href="messages.html"><span class="nav-icon">📩</span> Messages</a>
+    <div class="nav-section-title">Content</div>
+    <a class="nav-item" href="portfolio.html"><span class="nav-icon">🖼️</span> Portfolio</a>
+    <a class="nav-item" href="services.html"><span class="nav-icon">🎨</span> Services</a>
+    <a class="nav-item" href="pricing.html"><span class="nav-icon">💰</span> Pricing</a>
+    <a class="nav-item" href="reviews.html"><span class="nav-icon">⭐</span> Reviews</a>
+    <a class="nav-item active" href="blog.html"><span class="nav-icon">📝</span> Blog</a>
+    <div class="nav-section-title">Settings</div>
+    <a class="nav-item" href="about.html"><span class="nav-icon">👤</span> About</a>
+    <a class="nav-item" href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><div class="logout-btn" onclick="doLogout()">🚪 Logout</div></div>
+</div>
 <div class="main-content">
-  <div class="topbar"><div class="topbar-left"><button class="ham-mob">☰</button><div class="page-title-top">Blog Manager</div></div><div class="topbar-right"><button class="btn btn-orange" onclick="openModal('write-blog-modal')">+ New Post</button></div></div>
+  <div class="topbar">
+    <div class="topbar-left"><button class="ham-mob" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button><div class="page-title-top">Blog Manager</div></div>
+    <div class="topbar-right">
+      <button class="btn btn-orange" onclick="openEditor()">+ New Post</button>
+    </div>
+  </div>
   <div class="page-content">
 
-    <!-- POSTS LIST -->
-    <div class="card" id="posts-list">
-      <div class="card-title">All <span>Posts</span></div>
-      <div class="filter-bar"><div class="search-box"><span>🔍</span><input type="text" placeholder="Search posts..."></div>
-        <div class="filter-tab-group"><button class="filter-tab active">All (6)</button><button class="filter-tab">Published (5)</button><button class="filter-tab">Draft (1)</button></div>
+    <!-- POSTS LIST VIEW -->
+    <div id="list-view">
+      <div class="card">
+        <div class="card-title">All <span>Posts</span> <span id="blog-count" style="background:var(--orange);color:#fff;padding:2px 10px;font-size:.8rem;font-family:'Barlow Condensed',sans-serif">0</span></div>
+        <div class="filter-bar">
+          <div class="search-box"><span>🔍</span><input type="text" id="blog-search" oninput="filterPosts()" placeholder="Search posts..."></div>
+          <div class="filter-tab-group">
+            <button class="filter-tab active" onclick="setStatus('all',this)">All</button>
+            <button class="filter-tab" onclick="setStatus('published',this)">Published</button>
+            <button class="filter-tab" onclick="setStatus('draft',this)">Draft</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="blog-tbody">
+              <tr><td colspan="5" style="text-align:center;color:#666;padding:40px">Loading posts...</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
-        <tbody>
-          <tr><td><strong>5 Logo Design Mistakes That Kill Your Brand</strong></td><td>Design Tips</td><td style="color:var(--gray-light);font-size:.82rem">Apr 10, 2026</td><td><span class="badge badge-pub">Published</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','1')">🗑️</button></td></tr>
-          <tr><td><strong>Why Every Small Business Needs a Website in 2026</strong></td><td>Website</td><td style="color:var(--gray-light);font-size:.82rem">Apr 5, 2026</td><td><span class="badge badge-pub">Published</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','2')">🗑️</button></td></tr>
-          <tr><td><strong>How Consistent Branding Doubles Your Social Media Growth</strong></td><td>Social Media</td><td style="color:var(--gray-light);font-size:.82rem">Mar 28, 2026</td><td><span class="badge badge-pub">Published</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','3')">🗑️</button></td></tr>
-          <tr><td><strong>Top 10 Colors for Brand Identity (Draft)</strong></td><td>Branding</td><td style="color:var(--gray-light);font-size:.82rem">Apr 12, 2026</td><td><span class="badge badge-draft">Draft</span></td><td class="act-btns"><button class="act-btn edit" onclick="openModal('write-blog-modal')">✏️</button><button class="act-btn del" onclick="confirmDelete('post','4')">🗑️</button></td></tr>
-        </tbody>
-      </table></div>
     </div>
+
+    <!-- EDITOR VIEW -->
+    <div id="editor-view" style="display:none">
+      <div class="card">
+        <div class="card-title" id="editor-title">New <span>Post</span>
+          <button class="btn btn-ghost btn-sm" onclick="closeEditor()">← Back to List</button>
+        </div>
+        <input type="hidden" id="edit-post-id">
+        <div class="form-grid" style="margin-bottom:20px">
+          <div class="form-group form-full"><label>Post Title *</label><input id="p-title" placeholder="Write an engaging title..."></div>
+          <div class="form-group"><label>Category</label>
+            <select id="p-cat">
+              <option value="Design Tips">Design Tips</option>
+              <option value="Website">Website</option>
+              <option value="Branding">Branding</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Business">Business</option>
+              <option value="Strategy">Strategy</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Status</label>
+            <select id="p-status"><option value="published">Published</option><option value="draft">Draft</option></select>
+          </div>
+          <div class="form-group form-full"><label>Short Excerpt (for blog listing)</label><textarea id="p-excerpt" style="height:70px" placeholder="Brief description shown in blog listing..."></textarea></div>
+          <div class="form-group form-full"><label>Featured Image (Cloudinary)</label>
+            <input type="file" id="p-img" accept="image/*" style="background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:#999;padding:10px;font-size:.85rem;outline:none;width:100%" onchange="uploadImg(this)">
+            <div id="img-prev" style="margin-top:8px"></div>
+            <div id="img-status" style="font-size:.8rem;color:#666;margin-top:4px"></div>
+            <input type="hidden" id="p-imgurl">
+          </div>
+        </div>
+
+        <!-- EDITOR TOOLBAR -->
+        <label style="font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#999;display:block;margin-bottom:8px">Post Content *</label>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;padding:10px;background:var(--dark3);border:1px solid rgba(255,255,255,.08);border-bottom:none">
+          <button class="btn btn-ghost btn-sm" onclick="fmt('bold')"><b>B</b></button>
+          <button class="btn btn-ghost btn-sm" onclick="fmt('italic')"><i>I</i></button>
+          <button class="btn btn-ghost btn-sm" onclick="fmt('underline')"><u>U</u></button>
+          <button class="btn btn-ghost btn-sm" onclick="fmt('formatBlock','h2')">H2</button>
+          <button class="btn btn-ghost btn-sm" onclick="fmt('formatBlock','h3')">H3</button>
+          <button class="btn btn-ghost btn-sm" onclick="fmt('insertUnorderedList')">• List</button>
+          <button class="btn btn-ghost btn-sm" onclick="fmt('insertOrderedList')">1. List</button>
+          <button class="btn btn-ghost btn-sm" onclick="fmt('removeFormat')">Clear</button>
+        </div>
+        <div id="p-content" contenteditable="true"
+          style="min-height:300px;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:#fff;padding:16px;font-size:.95rem;outline:none;line-height:1.8;transition:border-color .3s"
+          onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='rgba(255,255,255,.08)'"
+          placeholder="Write your post content here...">
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:20px">
+          <button class="btn btn-ghost" onclick="savePost('draft')">💾 Save Draft</button>
+          <button class="btn btn-orange" onclick="savePost('published')" id="pub-btn">🚀 Publish Post</button>
+          <button class="btn btn-ghost" onclick="closeEditor()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 </div>
 
-<!-- WRITE BLOG MODAL -->
-<div class="modal-overlay" id="write-blog-modal" style="align-items:flex-start;padding-top:40px">
-  <div class="modal" style="max-width:780px">
-    <div class="modal-header"><div class="modal-title">Write New <span>Post</span></div><button class="modal-close" onclick="closeModal('write-blog-modal')">✕</button></div>
-    <div class="modal-body">
-      <div class="form-grid" style="margin-bottom:16px">
-        <div class="form-group form-full"><label>Post Title *</label><input placeholder="Write an engaging title..."></div>
-        <div class="form-group"><label>Category</label><select><option>Design Tips</option><option>Branding</option><option>Website</option><option>Social Media</option><option>Business</option></select></div>
-        <div class="form-group"><label>Featured Image</label><input type="file" accept="image/*" style="background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--gray-light);padding:10px;font-size:.85rem;outline:none"></div>
-        <div class="form-group"><label>SEO Title</label><input placeholder="SEO optimized title..."></div>
-        <div class="form-group"><label>SEO Description</label><input placeholder="Meta description..."></div>
-      </div>
-      <label style="font-family:var(--font-c);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);display:block;margin-bottom:8px">Post Content *</label>
-      <div class="editor-toolbar">
-        <button class="editor-btn" onclick="execEdit('bold')"><b>B</b></button>
-        <button class="editor-btn" onclick="execEdit('italic')"><i>I</i></button>
-        <button class="editor-btn" onclick="execEdit('underline')"><u>U</u></button>
-        <button class="editor-btn" onclick="execEdit('formatBlock','h2')">H2</button>
-        <button class="editor-btn" onclick="execEdit('formatBlock','h3')">H3</button>
-        <button class="editor-btn" onclick="execEdit('insertUnorderedList')">• List</button>
-        <button class="editor-btn" onclick="execEdit('insertOrderedList')">1. List</button>
-      </div>
-      <div id="blog-editor" class="editor-area" contenteditable="true" placeholder="Write your post content here...">Start writing your blog post here...</div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal('write-blog-modal')">Cancel</button>
-      <button class="btn btn-ghost" onclick="showToast('Saved as draft! 📝');closeModal('write-blog-modal')">Save Draft</button>
-      <button class="btn btn-orange" onclick="showToast('Post published! 🚀');closeModal('write-blog-modal')">Publish Post</button>
-    </div>
-  </div>
-</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-<script src="js/admin.js"></script>
+const CLOUDINARY = { cloudName:"dxi4bsikl", uploadPreset:"JBS_default" };
+
+const app = initializeApp({
+  apiKey: "AIzaSyAFVqoM9SDu_YkjWLo6O1MBM0pIv-GTrp0",
+  authDomain: "jatinbrandstudio-fecc8.firebaseapp.com",
+  projectId: "jatinbrandstudio-fecc8",
+  storageBucket: "jatinbrandstudio-fecc8.firebasestorage.app",
+  messagingSenderId: "895387928657",
+  appId: "1:895387928657:web:9454f887b2e2259c379070"
+});
+const db = getFirestore(app);
+
+if(!localStorage.getItem('jbs_admin')&&!sessionStorage.getItem('jbs_admin')) location.href='index.html';
+window.doLogout = () => { if(confirm('Logout?')){ localStorage.removeItem('jbs_admin'); location.href='index.html'; } };
+
+let allPosts = []; let statusFilter = 'all';
+
+const q = query(collection(db, 'blog'), orderBy('createdAt', 'desc'));
+onSnapshot(q, (snap) => {
+  allPosts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  document.getElementById('blog-count').textContent = allPosts.length;
+  renderPosts();
+});
+
+function renderPosts() {
+  const search = document.getElementById('blog-search').value.toLowerCase();
+  const filtered = allPosts.filter(p => {
+    const matchStatus = statusFilter === 'all' || p.status === statusFilter;
+    const matchSearch = !search || (p.title||'').toLowerCase().includes(search);
+    return matchStatus && matchSearch;
+  });
+
+  const tbody = document.getElementById('blog-tbody');
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:#666;padding:40px">${allPosts.length===0?'No posts yet — write your first article! 📝':'No results found'}</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(p => `
+    <tr>
+      <td><strong>${p.title||'Untitled'}</strong></td>
+      <td style="color:#999">${p.category||'—'}</td>
+      <td style="color:#999;font-size:.82rem">${p.createdAt?new Date(p.createdAt).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}):'—'}</td>
+      <td><span class="badge ${p.status==='published'?'badge-pub':'badge-draft'}">${p.status==='published'?'Published':'Draft'}</span></td>
+      <td class="act-btns">
+        <button class="act-btn edit" onclick="editPost('${p.id}')" title="Edit">✏️</button>
+        <a href="../jbs/blog-single.html?id=${p.id}" target="_blank" class="act-btn view" title="Preview" style="display:flex;align-items:center;justify-content:center">👁️</a>
+        <button class="act-btn del" onclick="delPost('${p.id}')" title="Delete">🗑️</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+window.setStatus = (s, el) => {
+  statusFilter = s;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderPosts();
+};
+
+window.filterPosts = renderPosts;
+
+window.openEditor = () => {
+  document.getElementById('editor-title').innerHTML = 'New <span>Post</span>';
+  document.getElementById('edit-post-id').value = '';
+  ['p-title','p-excerpt'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('p-content').innerHTML = '';
+  document.getElementById('p-cat').value = 'Design Tips';
+  document.getElementById('p-status').value = 'published';
+  document.getElementById('p-imgurl').value = '';
+  document.getElementById('img-prev').innerHTML = '';
+  document.getElementById('list-view').style.display = 'none';
+  document.getElementById('editor-view').style.display = 'block';
+  window.scrollTo(0, 0);
+};
+
+window.editPost = (id) => {
+  const p = allPosts.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('editor-title').innerHTML = 'Edit <span>Post</span>';
+  document.getElementById('edit-post-id').value = id;
+  document.getElementById('p-title').value = p.title || '';
+  document.getElementById('p-excerpt').value = p.excerpt || '';
+  document.getElementById('p-content').innerHTML = p.content || '';
+  document.getElementById('p-cat').value = p.category || 'Design Tips';
+  document.getElementById('p-status').value = p.status || 'published';
+  document.getElementById('p-imgurl').value = p.imageUrl || '';
+  document.getElementById('img-prev').innerHTML = p.imageUrl ? `<img src="${p.imageUrl}" style="max-height:80px;object-fit:cover">` : '';
+  document.getElementById('list-view').style.display = 'none';
+  document.getElementById('editor-view').style.display = 'block';
+  window.scrollTo(0, 0);
+};
+
+window.closeEditor = () => {
+  document.getElementById('list-view').style.display = 'block';
+  document.getElementById('editor-view').style.display = 'none';
+};
+
+window.uploadImg = async (input) => {
+  const file = input.files[0]; if (!file) return;
+  document.getElementById('img-status').textContent = '⬆️ Uploading...';
+  try {
+    const fd = new FormData();
+    fd.append('file', file); fd.append('upload_preset', CLOUDINARY.uploadPreset);
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY.cloudName}/image/upload`, { method:'POST', body:fd });
+    const data = await res.json();
+    document.getElementById('p-imgurl').value = data.secure_url;
+    document.getElementById('img-prev').innerHTML = `<img src="${data.secure_url}" style="max-height:80px;object-fit:cover">`;
+    document.getElementById('img-status').textContent = '✅ Uploaded!';
+  } catch(e) { document.getElementById('img-status').textContent = '❌ Failed'; }
+};
+
+window.fmt = (cmd, val) => {
+  document.getElementById('p-content').focus();
+  document.execCommand(cmd, false, val || null);
+};
+
+window.savePost = async (forceStatus) => {
+  const title = document.getElementById('p-title').value.trim();
+  if (!title) { alert('Title required!'); return; }
+
+  const btn = document.getElementById('pub-btn');
+  btn.textContent = 'Saving...'; btn.disabled = true;
+
+  const content = document.getElementById('p-content').innerHTML;
+  const data = {
+    title,
+    excerpt: document.getElementById('p-excerpt').value,
+    content,
+    category: document.getElementById('p-cat').value,
+    status: forceStatus || document.getElementById('p-status').value,
+    imageUrl: document.getElementById('p-imgurl').value || ''
+  };
+
+  const editId = document.getElementById('edit-post-id').value;
+  if (editId) {
+    await updateDoc(doc(db, 'blog', editId), { ...data, updatedAt: new Date().toISOString() });
+  } else {
+    await addDoc(collection(db, 'blog'), { ...data, createdAt: new Date().toISOString() });
+  }
+
+  btn.textContent = '🚀 Publish Post'; btn.disabled = false;
+  closeEditor();
+  toast(forceStatus === 'draft' ? 'Saved as draft! 💾' : 'Post published! 🚀 Live on website!');
+};
+
+window.delPost = async (id) => {
+  if (!confirm('Delete this post? It will be removed from website too.')) return;
+  await deleteDoc(doc(db, 'blog', id));
+  toast('Post deleted! 🗑️');
+};
+
+function toast(msg) {
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#22c55e;color:#fff;padding:12px 24px;font-family:"Barlow Condensed",sans-serif;font-size:.9rem;font-weight:700;z-index:9999;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)';
+  t.textContent = msg; document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+</script>
 </body></html>

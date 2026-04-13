@@ -6,66 +6,149 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <nav id="navbar"><div class="container"><div class="nav-inner">
   <a href="index.html" class="nav-logo-text"><span>J</span>BS</a>
-  <div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html" class="active">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a></div>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="services.html">Services</a><a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a><a href="blog.html" class="active">Blog</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a>
+  </div>
   <button class="hamburger"><span></span><span></span><span></span></button>
 </div></div></nav>
-<div class="mobile-menu"><button class="mob-close">✕</button><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
+<div class="mobile-menu"><button class="mob-close">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+  <a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+</div>
 
-<section class="page-hero"><div class="container"><div class="fade-up">
-  <div class="page-hero-ttl">Blog & <span>Tips</span></div>
-  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Blog</span></div>
-</div></div></section>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container"><div class="fade-up">
+    <div class="page-hero-ttl">Blog & <span>Tips</span></div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Blog</span></div>
+  </div></div>
+</section>
 
+<!-- BLOG GRID -->
 <section style="padding:100px 0;background:var(--black)">
   <div class="container">
-    <div class="fade-up"><div class="sec-title">Latest <span>Articles</span></div><p class="sec-sub">Design tips, branding insights and business growth advice</p><div class="o-line"></div></div>
-    <div class="blog-grid" id="blog-grid">
-      <div style="grid-column:1/-1;text-align:center;color:#555;padding:60px;font-family:'Barlow Condensed',sans-serif;letter-spacing:2px">Loading articles from Firebase... 🔥</div>
+    <div class="fade-up">
+      <div class="sec-title">Latest <span>Articles</span></div>
+      <p class="sec-sub">Design tips, branding insights and business growth advice</p>
+      <div class="o-line"></div>
     </div>
+
+    <!-- Loading state -->
+    <div id="blog-loading" style="text-align:center;padding:60px;color:var(--gray)">
+      <div style="font-size:3rem;margin-bottom:16px">📝</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;letter-spacing:2px">Loading articles...</div>
+    </div>
+
+    <!-- Blog grid - filled from Firebase -->
+    <div class="blog-grid" id="blog-grid" style="display:none"></div>
+
+    <!-- Empty state -->
+    <div id="blog-empty" style="display:none;text-align:center;padding:60px;color:var(--gray)">
+      <div style="font-size:3rem;margin-bottom:16px">📝</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;letter-spacing:2px;font-size:1.1rem">No articles yet</div>
+      <p style="margin-top:10px;font-size:.9rem">Check back soon for design tips and updates!</p>
+    </div>
+
   </div>
 </section>
 
+<!-- CTA -->
 <section id="cta-banner"><div class="container">
   <h2 class="cta-ttl">Want Us to Design for You?</h2>
   <p class="cta-sub">Let's transform your brand today!</p>
-  <div class="cta-btns"><a href="https://wa.me/919256990806" target="_blank" class="btn-w">💬 WhatsApp Now</a><a href="services.html" class="btn-o" style="border-color:#fff;color:#fff">View Services →</a></div>
+  <div class="cta-btns">
+    <a href="https://wa.me/919256990806" target="_blank" class="btn-w">💬 WhatsApp Now</a>
+    <a href="services.html" class="btn-o" style="border-color:#fff;color:#fff">View Services →</a>
+  </div>
 </div></section>
 
+<!-- FOOTER -->
 <footer id="footer"><div class="container">
-  <div class="ft-grid"><div><div class="ft-logo"><span>J</span>atin Brand Studio</div><p class="ft-tag">"Design That Drives Growth."</p></div><div><div class="ft-col-ttl">Quick Links</div><div class="ft-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a></div></div><div><div class="ft-col-ttl">Services</div><div class="ft-links"><a href="services.html">Website Design</a><a href="services.html">Logo Design</a><a href="services.html">Brand Identity</a></div></div><div><div class="ft-col-ttl">Contact</div><div class="ft-links"><a href="https://wa.me/919256990806">WhatsApp Us</a><a href="#">Ludhiana, Punjab</a></div></div></div>
+  <div class="ft-grid">
+    <div><div class="ft-logo"><span>J</span>atin Brand Studio</div><p class="ft-tag">"Design That Drives Growth."</p></div>
+    <div><div class="ft-col-ttl">Quick Links</div><div class="ft-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a></div></div>
+    <div><div class="ft-col-ttl">Services</div><div class="ft-links"><a href="services.html">Website Design</a><a href="services.html">Logo Design</a><a href="services.html">Brand Identity</a></div></div>
+    <div><div class="ft-col-ttl">Contact</div><div class="ft-links"><a href="https://wa.me/919256990806">WhatsApp Us</a><a href="#">Ludhiana, Punjab</a></div></div>
+  </div>
   <div class="ft-bottom"><div class="ft-copy">© 2026 <span>Jatin Brand Studio</span>. All rights reserved.</div><div class="ft-made">Made with <span>❤️</span> in Ludhiana</div></div>
 </div></footer>
+
 <a href="https://wa.me/919256990806" target="_blank" class="wa-float">💬</a>
-<button class="scroll-top">↑</button>
-<script type="module" src="js/main.js"></script>
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
 <script type="module">
-import { getBlogs } from './js/firebase.js';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import { getFirestore, collection, getDocs, query, orderBy, where } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+const app = initializeApp({
+  apiKey: "AIzaSyAFVqoM9SDu_YkjWLo6O1MBM0pIv-GTrp0",
+  authDomain: "jatinbrandstudio-fecc8.firebaseapp.com",
+  projectId: "jatinbrandstudio-fecc8",
+  storageBucket: "jatinbrandstudio-fecc8.firebasestorage.app",
+  messagingSenderId: "895387928657",
+  appId: "1:895387928657:web:9454f887b2e2259c379070"
+});
+const db = getFirestore(app);
+
+const catEmojis = {
+  'Design Tips': '🎨', 'Website': '🌐', 'Branding': '🏷️',
+  'Social Media': '📱', 'Business': '💰', 'Strategy': '🎯'
+};
+
 (async () => {
-  const grid = document.getElementById('blog-grid');
   try {
-    const blogs = await getBlogs();
-    if(blogs.length === 0) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#555;padding:60px;font-family:\'Barlow Condensed\',sans-serif;letter-spacing:2px">No blog posts yet — check back soon! ✍️</div>'; return;
+    const q = query(collection(db, 'blog'), orderBy('createdAt', 'desc'));
+    const snap = await getDocs(q);
+
+    document.getElementById('blog-loading').style.display = 'none';
+
+    const posts = snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .filter(p => p.status === 'published' || p.status !== 'draft');
+
+    if (posts.length === 0) {
+      document.getElementById('blog-empty').style.display = 'block';
+      return;
     }
-    grid.innerHTML = blogs.map(b => `
+
+    const grid = document.getElementById('blog-grid');
+    grid.style.display = 'grid';
+    grid.innerHTML = posts.map(post => `
       <div class="blog-card fade-up">
         <div class="blog-thumb">
-          ${b.imageUrl ? `<img src="${b.imageUrl}" style="width:100%;height:100%;object-fit:cover">` : '📝'}
-          <div class="blog-cat-b">${b.category||'Blog'}</div>
+          ${post.imageUrl
+            ? `<img src="${post.imageUrl}" alt="${post.title}" style="width:100%;height:100%;object-fit:cover">`
+            : (catEmojis[post.category] || '📝')
+          }
+          <div class="blog-cat-b">${post.category || 'Design'}</div>
         </div>
         <div class="blog-body">
-          <div class="blog-dt">${b.createdAt ? new Date(b.createdAt).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) : ''}</div>
-          <div class="blog-ttl">${b.title||'Untitled'}</div>
-          <p class="blog-ex">${(b.excerpt||b.content||'').slice(0,120)}...</p>
-          <a href="blog-single.html?id=${b.id}" class="blog-rd">Read More →</a>
+          <div class="blog-dt">${post.createdAt ? new Date(post.createdAt).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'}) : ''}</div>
+          <div class="blog-ttl">${post.title || ''}</div>
+          <p class="blog-ex">${(post.excerpt || post.content || '').slice(0, 120)}...</p>
+          <a href="blog-single.html?id=${post.id}" class="blog-rd">Read More →</a>
         </div>
       </div>
     `).join('');
+
+    // Animate cards
+    document.querySelectorAll('.blog-card.fade-up').forEach((el, i) => {
+      el.dataset.delay = i;
+      setTimeout(() => el.classList.add('visible'), i * 100);
+    });
+
   } catch(e) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#555;padding:60px">Could not load posts. Try again! 🔄</div>';
+    console.log('Blog load error:', e);
+    document.getElementById('blog-loading').style.display = 'none';
+    document.getElementById('blog-empty').style.display = 'block';
   }
 })();
 </script>
+<script type="module" src="js/main.js"></script>
 </body></html>
