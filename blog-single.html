@@ -5,84 +5,64 @@
 <title>Blog Post — Jatin Brand Studio</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-.post-hero{height:400px;background:linear-gradient(135deg,var(--dark2),var(--dark3));display:flex;align-items:center;justify-content:center;font-size:8rem;position:relative;margin-top:70px}
+.post-hero{height:350px;background:linear-gradient(135deg,var(--dark2),var(--dark3));display:flex;align-items:center;justify-content:center;font-size:8rem;margin-top:70px}
 .post-content{max-width:800px;margin:0 auto;padding:60px 20px}
-.post-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:30px;font-family:var(--font-c);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
+.post-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px;font-family:var(--font-c);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
 .post-meta span{color:var(--orange)}
-.post-title{font-family:var(--font-d);font-size:clamp(2rem,5vw,3.5rem);letter-spacing:2px;text-transform:uppercase;line-height:1.1;margin-bottom:30px}
+.post-ttl{font-family:var(--font-d);font-size:clamp(2rem,5vw,3.5rem);letter-spacing:2px;text-transform:uppercase;line-height:1.1;margin-bottom:30px}
 .post-body p{color:#aaa;line-height:1.9;margin-bottom:20px;font-size:1rem}
 .post-body h2{font-family:var(--font-d);font-size:1.8rem;letter-spacing:1px;color:var(--orange);margin:40px 0 16px}
 .post-body ul{margin:0 0 20px 20px}
 .post-body ul li{color:#aaa;line-height:1.8;margin-bottom:8px}
 .post-body ul li::marker{color:var(--orange)}
-.share-bar{display:flex;align-items:center;gap:16px;padding:24px 0;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);margin:40px 0;font-family:var(--font-c);font-size:.85rem;letter-spacing:2px;text-transform:uppercase}
-.share-btn{padding:10px 20px;background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--white);cursor:pointer;transition:var(--tr);font-family:var(--font-c);font-size:.8rem;letter-spacing:2px;text-transform:uppercase}
-.share-btn:hover{background:var(--orange);border-color:var(--orange)}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+.share-bar{display:flex;align-items:center;gap:16px;padding:24px 0;border-top:1px solid rgba(255,255,255,.05);margin:40px 0;flex-wrap:wrap}
+.share-lbl{font-family:var(--font-c);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
 </style>
 </head>
 <body>
 <nav id="navbar"><div class="container"><div class="nav-inner">
   <a href="index.html" class="nav-logo-text"><span>J</span>BS</a>
-  <div class="nav-links">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
-    <a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a>
-    <a href="blog.html" class="active">Blog</a><a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a>
-  </div>
+  <div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html" class="active">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a></div>
   <button class="hamburger"><span></span><span></span><span></span></button>
 </div></div></nav>
-<div class="mobile-menu"><button class="mob-close">✕</button>
-  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
-  <a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-</div>
+<div class="mobile-menu"><button class="mob-close">✕</button><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div>
 
 <div class="post-hero">🎨</div>
 
 <div class="post-content">
-  <div class="breadcrumb fade-up"><a href="index.html">Home</a><span>›</span><a href="blog.html">Blog</a><span>›</span><span>Design Tips</span></div>
-  <div class="post-meta fade-up">
-    <span>April 10, 2026</span>
-    <span>By Jatin</span>
-    <span>Design Tips</span>
-  </div>
-  <div class="post-title fade-up">5 Logo Design Mistakes That Kill Your Brand</div>
+  <div class="breadcrumb fade-up"><a href="index.html">Home</a><span>›</span><a href="blog.html">Blog</a><span>›</span><span style="color:var(--white)">Article</span></div>
+  <div class="post-meta fade-up"><span>April 10, 2026</span><span>By Jatin</span><span>Design Tips</span></div>
+  <div class="post-ttl fade-up">5 Logo Design Mistakes That <span style="color:var(--orange)">Kill</span> Your Brand</div>
 
   <div class="post-body fade-up">
     <p>A logo is the most important visual element of your brand. It's the first thing people notice and the last thing they remember. But many businesses make critical mistakes when getting their logo designed that end up hurting their brand in the long run.</p>
-
     <h2>1. Using Too Many Colors</h2>
-    <p>One of the most common mistakes is using too many colors in a logo. A professional logo should ideally use 2-3 colors maximum. Too many colors make a logo look chaotic and unprofessional, and also make it harder to reproduce in single-color formats like embroidery or stamps.</p>
-
+    <p>One of the most common mistakes is using too many colors. A professional logo should ideally use 2-3 colors maximum. Too many colors make a logo look chaotic and unprofessional, and also make it harder to reproduce in single-color formats like embroidery or stamps.</p>
     <h2>2. Choosing the Wrong Font</h2>
-    <p>Font choice communicates your brand personality. Using a font that doesn't match your brand values can confuse your audience. For example, a law firm using a playful font would seem unprofessional. Always choose fonts that match your brand personality.</p>
-
+    <p>Font choice communicates your brand personality. Using a font that doesn't match your brand values can confuse your audience. Always choose fonts that match your brand personality.</p>
     <h2>3. Making It Too Complex</h2>
     <p>Simplicity is the ultimate sophistication. The best logos in the world are simple, clean and instantly recognizable. Complex logos look great on a computer screen but fail when printed small or used on merchandise.</p>
-
     <h2>4. Not Getting Vector Files</h2>
-    <p>Always insist on receiving your logo in vector format (AI, EPS, SVG). Vector files can be scaled to any size without losing quality. PNG and JPG files are raster formats that pixelate when enlarged.</p>
-
+    <p>Always insist on receiving your logo in vector format (AI, EPS, SVG). Vector files can be scaled to any size without losing quality. PNG and JPG files pixelate when enlarged.</p>
     <h2>5. Copying Competitors</h2>
-    <p>Your logo should be uniquely yours. A logo that looks similar to a competitor's creates confusion and can lead to legal issues. Invest in a unique, custom logo that truly represents your brand.</p>
-
-    <p>Avoiding these 5 mistakes will ensure your logo stands the test of time and truly represents your brand identity. If you're looking for a professional logo design that avoids all these pitfalls, we at Jatin Brand Studio are here to help!</p>
+    <p>Your logo should be uniquely yours. A logo that looks similar to a competitor's creates confusion and can lead to legal issues. Invest in a unique, custom logo.</p>
+    <p>Avoiding these 5 mistakes will ensure your logo stands the test of time. If you need a professional logo, <a href="contact.html" style="color:var(--orange)">contact us today!</a></p>
   </div>
 
   <div class="share-bar fade-up">
-    <span style="color:var(--gray)">Share:</span>
-    <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);alert('Link copied!')">📋 Copy Link</button>
-    <a href="https://wa.me/?text=Check this article: 5 Logo Design Mistakes That Kill Your Brand" target="_blank" class="share-btn" style="text-decoration:none">💬 WhatsApp</a>
+    <span class="share-lbl">Share:</span>
+    <button class="btn-o" style="padding:8px 20px;font-size:.8rem" onclick="navigator.clipboard.writeText(window.location.href);alert('Link copied!')">📋 Copy Link</button>
+    <a href="https://wa.me/?text=Check this article on Logo Design Mistakes!" target="_blank" class="btn-o" style="padding:8px 20px;font-size:.8rem">💬 Share on WhatsApp</a>
   </div>
 </div>
 
-<section style="padding:80px 0;background:var(--dark2)">
+<section style="padding:60px 0;background:var(--dark2)">
   <div class="container">
-    <div class="fade-up"><div class="sec-title">Related <span>Articles</span></div><div class="o-line"></div></div>
-    <div class="related-grid">
+    <div class="sec-title fade-up">More <span>Articles</span></div>
+    <div class="o-line"></div>
+    <div class="blog-grid">
       <div class="blog-card fade-up"><div class="blog-thumb">🌐<div class="blog-cat-b">Website</div></div><div class="blog-body"><div class="blog-dt">April 5, 2026</div><div class="blog-ttl">Why Every Business Needs a Website</div><p class="blog-ex">In today's digital world, not having a website means losing customers...</p><a href="blog-single.html" class="blog-rd">Read More →</a></div></div>
-      <div class="blog-card fade-up"><div class="blog-thumb">🏷️<div class="blog-cat-b">Branding</div></div><div class="blog-body"><div class="blog-dt">March 20, 2026</div><div class="blog-ttl">What is Brand Identity?</div><p class="blog-ex">Brand identity is more than just a logo. It's the complete visual language...</p><a href="blog-single.html" class="blog-rd">Read More →</a></div></div>
+      <div class="blog-card fade-up"><div class="blog-thumb">🏷️<div class="blog-cat-b">Branding</div></div><div class="blog-body"><div class="blog-dt">March 20, 2026</div><div class="blog-ttl">What is Brand Identity?</div><p class="blog-ex">Brand identity is more than just a logo. It's your complete visual language...</p><a href="blog-single.html" class="blog-rd">Read More →</a></div></div>
       <div class="blog-card fade-up"><div class="blog-thumb">🎯<div class="blog-cat-b">Strategy</div></div><div class="blog-body"><div class="blog-dt">March 8, 2026</div><div class="blog-ttl">Top 5 Colors for Your Brand</div><p class="blog-ex">Colors communicate emotions before words do. Choose wisely...</p><a href="blog-single.html" class="blog-rd">Read More →</a></div></div>
     </div>
   </div>
@@ -99,5 +79,5 @@
 </div></footer>
 <a href="https://wa.me/919256990806" target="_blank" class="wa-float">💬</a>
 <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 </body></html>

@@ -5,43 +5,34 @@
 <title>Portfolio — Jatin Brand Studio</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-.filter-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
-.filter-btn{font-family:var(--font-c);font-size:.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;background:transparent;color:var(--gray);border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:var(--tr);clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
-.filter-btn:hover,.filter-btn.active{background:var(--orange);color:var(--white);border-color:var(--orange)}
+.filter-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.filter-btn{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;background:transparent;color:#888;border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .3s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.filter-btn:hover,.filter-btn.active{background:#FF6600;color:#fff;border-color:#FF6600}
 .port-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.port-full-item{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--dark3);cursor:pointer;transition:var(--tr)}
-.port-full-item[data-cat]{display:block}
+.port-full-item{position:relative;overflow:hidden;aspect-ratio:4/3;background:#1a1a1a;cursor:pointer}
 .port-full-item.hidden{display:none}
-.port-ph-full{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--dark2),var(--dark3));font-size:3rem;transition:transform .5s}
+.port-ph-full{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#111,#1a1a1a);font-size:3rem;transition:transform .5s}
 .port-full-item:hover .port-ph-full{transform:scale(1.05)}
+.port-full-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.port-full-item:hover img{transform:scale(1.08)}
 .port-ov-full{position:absolute;bottom:0;left:0;width:100%;background:linear-gradient(to top,rgba(0,0,0,.95),transparent);padding:30px 20px 20px;transform:translateY(100%);transition:.4s}
 .port-full-item:hover .port-ov-full{transform:translateY(0)}
+.loading-grid{text-align:center;padding:60px;color:#555;font-family:'Barlow Condensed',sans-serif;letter-spacing:2px;grid-column:1/-1}
 @media(max-width:768px){.port-full-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
 <nav id="navbar"><div class="container"><div class="nav-inner">
   <a href="index.html" class="nav-logo-text"><span>J</span>BS</a>
-  <div class="nav-links">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
-    <a href="portfolio.html" class="active">Portfolio</a><a href="pricing.html">Pricing</a>
-    <a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a>
-  </div>
+  <div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html" class="active">Portfolio</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="btn-p nav-cta" style="padding:10px 24px">Get Quote</a></div>
   <button class="hamburger"><span></span><span></span><span></span></button>
 </div></div></nav>
-<div class="mobile-menu"><button class="mob-close">✕</button>
-  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
-  <a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a>
-</div>
+<div class="mobile-menu"><button class="mob-close">✕</button><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
 
-<section class="page-hero">
-  <div class="container"><div class="fade-up">
-    <div class="page-hero-ttl">Our <span>Work</span></div>
-    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Portfolio</span></div>
-  </div></div>
-</section>
+<section class="page-hero"><div class="container"><div class="fade-up">
+  <div class="page-hero-ttl">Our <span>Work</span></div>
+  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Portfolio</span></div>
+</div></div></section>
 
 <section style="padding:100px 0;background:var(--black)">
   <div class="container">
@@ -50,7 +41,6 @@
       <p class="sec-sub">Browse our work across all design categories</p>
       <div class="o-line"></div>
     </div>
-
     <div class="filter-btns fade-up">
       <button class="filter-btn active" data-filter="all">All Projects</button>
       <button class="filter-btn" data-filter="website">Websites</button>
@@ -59,54 +49,61 @@
       <button class="filter-btn" data-filter="social">Social Media</button>
       <button class="filter-btn" data-filter="print">Print Design</button>
     </div>
-
-    <div class="port-full-grid">
-      <div class="port-full-item" data-cat="website"><div class="port-ph-full">🌐<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Business Website</small></div><div class="port-ov-full"><div class="port-title">Restaurant Website</div><div class="port-cat">Website Design</div></div></div>
-      <div class="port-full-item" data-cat="logo"><div class="port-ph-full">🎨<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Logo Design</small></div><div class="port-ov-full"><div class="port-title">Tech Startup Logo</div><div class="port-cat">Logo Design</div></div></div>
-      <div class="port-full-item" data-cat="social"><div class="port-ph-full">📱<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Social Media</small></div><div class="port-ov-full"><div class="port-title">Instagram Kit</div><div class="port-cat">Social Media</div></div></div>
-      <div class="port-full-item" data-cat="banner"><div class="port-ph-full">🖼️<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Banner Design</small></div><div class="port-ov-full"><div class="port-title">Event Banner</div><div class="port-cat">Banner Design</div></div></div>
-      <div class="port-full-item" data-cat="print"><div class="port-ph-full">🖨️<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Print Design</small></div><div class="port-ov-full"><div class="port-title">Business Card Set</div><div class="port-cat">Print Design</div></div></div>
-      <div class="port-full-item" data-cat="website"><div class="port-ph-full">💻<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">E-commerce</small></div><div class="port-ov-full"><div class="port-title">Fashion Store</div><div class="port-cat">Website Design</div></div></div>
-      <div class="port-full-item" data-cat="logo"><div class="port-ph-full">✏️<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Brand Identity</small></div><div class="port-ov-full"><div class="port-title">Food Brand Identity</div><div class="port-cat">Logo Design</div></div></div>
-      <div class="port-full-item" data-cat="social"><div class="port-ph-full">📸<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Social Media</small></div><div class="port-ov-full"><div class="port-title">Brand Posts Kit</div><div class="port-cat">Social Media</div></div></div>
-      <div class="port-full-item" data-cat="print"><div class="port-ph-full">📄<small style="font-family:var(--font-c);font-size:.8rem;color:var(--gray);letter-spacing:2px">Brochure</small></div><div class="port-ov-full"><div class="port-title">Company Brochure</div><div class="port-cat">Print Design</div></div></div>
+    <div class="port-full-grid" id="portfolio-full-grid">
+      <div class="loading-grid">Loading projects from Firebase... 🔥</div>
     </div>
   </div>
 </section>
 
 <section id="cta-banner"><div class="container">
   <h2 class="cta-ttl">Like What You See?</h2>
-  <p class="cta-sub">Let's create something amazing for your business too!</p>
-  <div class="cta-btns">
-    <a href="https://wa.me/919256990806" target="_blank" class="btn-w">💬 Start a Project</a>
-    <a href="pricing.html" class="btn-o" style="border-color:#fff;color:#fff">View Pricing →</a>
-  </div>
+  <p class="cta-sub">Let's create something amazing for your business!</p>
+  <div class="cta-btns"><a href="https://wa.me/919256990806" target="_blank" class="btn-w">💬 Start a Project</a><a href="pricing.html" class="btn-o" style="border-color:#fff;color:#fff">View Pricing →</a></div>
 </div></section>
 
 <footer id="footer"><div class="container">
-  <div class="ft-grid">
-    <div><div class="ft-logo"><span>J</span>atin Brand Studio</div><p class="ft-tag">"Design That Drives Growth."</p></div>
-    <div><div class="ft-col-ttl">Quick Links</div><div class="ft-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a></div></div>
-    <div><div class="ft-col-ttl">Services</div><div class="ft-links"><a href="services.html">Website Design</a><a href="services.html">Logo Design</a><a href="services.html">Brand Identity</a></div></div>
-    <div><div class="ft-col-ttl">Contact</div><div class="ft-links"><a href="https://wa.me/919256990806">WhatsApp Us</a><a href="#">Ludhiana, Punjab</a></div></div>
-  </div>
+  <div class="ft-grid"><div><div class="ft-logo"><span>J</span>atin Brand Studio</div><p class="ft-tag">"Design That Drives Growth."</p></div><div><div class="ft-col-ttl">Quick Links</div><div class="ft-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a></div></div><div><div class="ft-col-ttl">Services</div><div class="ft-links"><a href="services.html">Website Design</a><a href="services.html">Logo Design</a><a href="services.html">Brand Identity</a></div></div><div><div class="ft-col-ttl">Contact</div><div class="ft-links"><a href="https://wa.me/919256990806">WhatsApp Us</a><a href="#">Ludhiana, Punjab</a></div></div></div>
   <div class="ft-bottom"><div class="ft-copy">© 2026 <span>Jatin Brand Studio</span>. All rights reserved.</div><div class="ft-made">Made with <span>❤️</span> in Ludhiana</div></div>
 </div></footer>
-
 <a href="https://wa.me/919256990806" target="_blank" class="wa-float">💬</a>
-<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<script src="js/main.js"></script>
-<script>
-// Portfolio filter
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const f = btn.dataset.filter;
-    document.querySelectorAll('.port-full-item').forEach(item => {
-      item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f);
+<button class="scroll-top">↑</button>
+<script type="module" src="js/main.js"></script>
+<script type="module">
+import { getPortfolio } from './js/firebase.js';
+const catIcons = { website:'🌐', logo:'🎨', banner:'🖼️', social:'📱', print:'🖨️' };
+
+(async () => {
+  const grid = document.getElementById('portfolio-full-grid');
+  try {
+    const items = await getPortfolio();
+    if(items.length === 0) {
+      grid.innerHTML = '<div class="loading-grid">No projects yet — check back soon! 🎨</div>'; return;
+    }
+    grid.innerHTML = items.map(item => `
+      <div class="port-full-item" data-cat="${item.category||''}">
+        ${item.imageUrl
+          ? `<img src="${item.imageUrl}" alt="${item.title||''}">`
+          : `<div class="port-ph-full">${catIcons[item.category]||'🖼️'}<small style="font-family:'Barlow Condensed',sans-serif;font-size:.8rem;color:#888;letter-spacing:2px">${item.category||''}</small></div>`
+        }
+        <div class="port-ov-full">
+          <div class="port-title">${item.title||'Project'}</div>
+          <div class="port-cat">${item.category||''}</div>
+        </div>
+      </div>
+    `).join('');
+    // Re-init filter
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.port-full-item').forEach(i => i.classList.toggle('hidden', f !== 'all' && i.dataset.cat !== f));
+      });
     });
-  });
-});
+  } catch(e) {
+    console.log('Portfolio error:', e);
+    grid.innerHTML = '<div class="loading-grid">Could not load portfolio. Please try again! 🔄</div>';
+  }
+})();
 </script>
 </body></html>
