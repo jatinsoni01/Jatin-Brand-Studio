@@ -17,14 +17,38 @@
 
 <section style="padding:100px 0;background:var(--dark2)"><div class="container">
   <div class="fade-up" style="text-align:center"><div class="sec-title">What We <span>Offer</span></div><p class="sec-sub">Full-service design solutions for your business</p><div class="o-line" style="margin:15px auto 40px"></div></div>
-  <div class="srv-grid">
-    <div class="srv-card fade-up"><span class="srv-icon">🌐</span><div class="srv-name">Website Design</div><p class="srv-desc">Modern, responsive & fast websites that convert visitors into paying clients. We build beautiful websites optimized for performance and results.</p><ul class="srv-feats"><li>Landing Pages</li><li>Business Websites</li><li>E-commerce Sites</li><li>Portfolio Websites</li></ul><div class="srv-price">Starting ₹2,999</div><a href="javascript:void(0)" onclick="orderService('Website Design')" class="btn-p">Order Now →</a></div>
-    <div class="srv-card fade-up"><span class="srv-icon">🎨</span><div class="srv-name">Logo Design</div><p class="srv-desc">Memorable logos that define your brand identity and leave a lasting impression on your customers. Professional, unique and versatile.</p><ul class="srv-feats"><li>Wordmark Logo</li><li>Emblem Logo</li><li>Mascot Logo</li><li>Full Brand Kit</li></ul><div class="srv-price">Starting ₹499</div><a href="javascript:void(0)" onclick="orderService('Logo Design')" class="btn-p">Order Now →</a></div>
-    <div class="srv-card fade-up"><span class="srv-icon">🏷️</span><div class="srv-name">Brand Identity</div><p class="srv-desc">Complete branding from scratch — everything your business needs to look professional and consistent across all platforms.</p><ul class="srv-feats"><li>Logo + Color Palette</li><li>Typography Selection</li><li>Brand Guidelines</li><li>Stationery Design</li></ul><div class="srv-price">Starting ₹1,999</div><a href="javascript:void(0)" onclick="orderService('Brand Identity')" class="btn-p">Order Now →</a></div>
-    <div class="srv-card fade-up"><span class="srv-icon">📱</span><div class="srv-name">Social Media Design</div><p class="srv-desc">Scroll-stopping social content that grows your audience and builds your brand presence on every platform.</p><ul class="srv-feats"><li>Post Templates</li><li>Story Templates</li><li>Reel Thumbnails</li><li>Profile Branding</li></ul><div class="srv-price">Starting ₹999</div><a href="javascript:void(0)" onclick="orderService('Social Media Design')" class="btn-p">Order Now →</a></div>
-    <div class="srv-card fade-up"><span class="srv-icon">🖨️</span><div class="srv-name">Print Design</div><p class="srv-desc">Professional print materials that make a great first impression. From business cards to large format banners.</p><ul class="srv-feats"><li>Business Cards</li><li>Flyers & Posters</li><li>Brochures</li><li>Banners & Standees</li></ul><div class="srv-price">Starting ₹299</div><a href="javascript:void(0)" onclick="orderService('Print Design')" class="btn-p">Order Now →</a></div>
-    <div class="srv-card fade-up"><span class="srv-icon">📊</span><div class="srv-name">UI/UX Design</div><p class="srv-desc">User-friendly digital experiences that delight your users and keep them coming back. Beautiful, functional interfaces.</p><ul class="srv-feats"><li>App UI Design</li><li>Website Wireframes</li><li>Interactive Prototype</li><li>User Flow Design</li></ul><div class="srv-price">Starting ₹3,999</div><a href="javascript:void(0)" onclick="orderService('UI/UX Design')" class="btn-p">Order Now →</a></div>
+  <div class="srv-grid" id="srv-grid">
+    <div style="grid-column:1/-1;text-align:center;color:#666;padding:40px;font-family:'Barlow Condensed',sans-serif;letter-spacing:2px">Loading services...</div>
   </div>
+<script type="module">
+import { getServices } from './js/firebase.js';
+(async () => {
+  const grid = document.getElementById('srv-grid');
+  try {
+    const srvs = await getServices();
+    if (srvs.length === 0) throw new Error('empty');
+    grid.innerHTML = srvs.map(s => `
+      <div class="srv-card fade-up">
+        <span class="srv-icon">${s.icon || '🎨'}</span>
+        <div class="srv-name">${s.name || ''}</div>
+        <p class="srv-desc">${s.desc || ''}</p>
+        <ul class="srv-feats">${(s.features || []).map(f => `<li>${f}</li>`).join('')}</ul>
+        <div class="srv-price">Starting ₹${(s.price || 0).toLocaleString('en-IN')}</div>
+        <a href="javascript:void(0)" onclick="orderService('${s.name}')" class="btn-p">Order Now →</a>
+      </div>`).join('');
+  } catch(e) {
+    // Fallback static content agar Firebase khaali ho
+    grid.innerHTML = [
+      {icon:'🌐',name:'Website Design',desc:'Modern, responsive & fast websites that convert visitors into paying clients.',feats:['Landing Pages','Business Websites','E-commerce Sites'],price:2999},
+      {icon:'🎨',name:'Logo Design',desc:'Memorable logos that define your brand identity.',feats:['Wordmark Logo','Emblem Logo','Full Brand Kit'],price:499},
+      {icon:'🏷️',name:'Brand Identity',desc:'Complete branding from scratch.',feats:['Logo + Color Palette','Typography','Brand Guidelines'],price:1999},
+      {icon:'📱',name:'Social Media Design',desc:'Scroll-stopping social content.',feats:['Post Templates','Story Templates','Reel Thumbnails'],price:999},
+      {icon:'🖨️',name:'Print Design',desc:'Professional print materials.',feats:['Business Cards','Flyers & Posters','Brochures'],price:299},
+      {icon:'📊',name:'UI/UX Design',desc:'User-friendly digital experiences.',feats:['App UI Design','Wireframes','Prototype'],price:3999}
+    ].map(s => `<div class="srv-card fade-up"><span class="srv-icon">${s.icon}</span><div class="srv-name">${s.name}</div><p class="srv-desc">${s.desc}</p><ul class="srv-feats">${s.feats.map(f=>`<li>${f}</li>`).join('')}</ul><div class="srv-price">Starting ₹${s.price.toLocaleString('en-IN')}</div><a href="javascript:void(0)" onclick="orderService('${s.name}')" class="btn-p">Order Now →</a></div>`).join('');
+  }
+})();
+</script>
 </div></section>
 
 <section style="padding:80px 0;background:var(--black)"><div class="container">

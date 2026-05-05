@@ -87,3 +87,46 @@ export const getPortfolio = async () => {
     return [];
   }
 };
+
+// ============================================
+// GET SERVICES → website services page mein
+// ============================================
+export const getServices = async () => {
+  try {
+    const snap = await getDocs(collection(db, 'services'));
+    return snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .filter(s => s.status !== 'hidden');
+  } catch(e) {
+    return [];
+  }
+};
+
+// ============================================
+// GET PRICING → website pricing page mein
+// ============================================
+export const getPricing = async () => {
+  try {
+    const snap = await getDocs(collection(db, 'pricing'));
+    return snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (a.price || 0) - (b.price || 0));
+  } catch(e) {
+    return [];
+  }
+};
+
+// ============================================
+// GET BLOGS → website blog page mein
+// ============================================
+export const getBlogs = async () => {
+  try {
+    const snap = await getDocs(collection(db, 'blog'));
+    return snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .filter(b => b.status !== 'draft')
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  } catch(e) {
+    return [];
+  }
+};

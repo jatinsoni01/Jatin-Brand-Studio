@@ -48,61 +48,37 @@
       <p class="sec-sub">Transparent pricing — no hidden charges, ever</p>
       <div class="o-line" style="margin:15px auto 40px"></div>
     </div>
-    <div class="price-grid">
-      <div class="price-card fade-up">
-        <div class="plan-nm">Basic</div>
-        <div class="plan-pr"><sup>₹</sup>999</div>
-        <div class="plan-pd">One-time Payment</div>
-        <div class="plan-div"></div>
-        <ul class="plan-feats">
-          <li><span class="ck">✓</span> Logo Design (1 Concept)</li>
-          <li><span class="ck">✓</span> Business Card Design</li>
-          <li><span class="ck">✓</span> PNG + PDF Files</li>
-          <li><span class="ck">✓</span> 2 Revisions</li>
-          <li><span class="ck">✓</span> 3 Day Delivery</li>
-          <li><span class="no">✗</span> Website</li>
-          <li><span class="no">✗</span> Social Media Kit</li>
-          <li><span class="no">✗</span> Source Files</li>
-        </ul>
-        <a href="javascript:void(0)" onclick="orderPlan('Basic Plan - ₹999')" class="plan-btn">Order Basic →</a>
-      </div>
-      <div class="price-card feat fade-up">
-        <div class="pop-badge">⭐ Most Popular</div>
-        <div class="plan-nm">Standard</div>
-        <div class="plan-pr"><sup>₹</sup>2,499</div>
-        <div class="plan-pd">One-time Payment</div>
-        <div class="plan-div"></div>
-        <ul class="plan-feats">
-          <li><span class="ck">✓</span> Logo Design (3 Concepts)</li>
-          <li><span class="ck">✓</span> Full Branding Package</li>
-          <li><span class="ck">✓</span> Social Media Kit</li>
-          <li><span class="ck">✓</span> 1 Page Website</li>
-          <li><span class="ck">✓</span> All File Formats</li>
-          <li><span class="ck">✓</span> 5 Revisions</li>
-          <li><span class="ck">✓</span> 5 Day Delivery</li>
-          <li><span class="ck">✓</span> Source Files Included</li>
-        </ul>
-        <a href="javascript:void(0)" onclick="orderPlan('Standard Plan - ₹2,499')" class="plan-btn">Order Now ⚡</a>
-      </div>
-      <div class="price-card fade-up">
-        <div class="plan-nm">Premium</div>
-        <div class="plan-pr"><sup>₹</sup>4,999</div>
-        <div class="plan-pd">One-time Payment</div>
-        <div class="plan-div"></div>
-        <ul class="plan-feats">
-          <li><span class="ck">✓</span> Everything in Standard</li>
-          <li><span class="ck">✓</span> 5 Page Website</li>
-          <li><span class="ck">✓</span> SEO Basic Setup</li>
-          <li><span class="ck">✓</span> Unlimited Revisions</li>
-          <li><span class="ck">✓</span> 1 Month Free Support</li>
-          <li><span class="ck">✓</span> Priority Delivery</li>
-          <li><span class="ck">✓</span> WhatsApp Support</li>
-          <li><span class="ck">✓</span> All Rights Transferred</li>
-        </ul>
-        <a href="javascript:void(0)" onclick="orderPlan('Premium Plan - ₹4,999')" class="plan-btn">Order Premium →</a>
-      </div>
+    <div class="price-grid" id="price-grid">
+      <div style="grid-column:1/-1;text-align:center;color:#666;padding:40px;font-family:'Barlow Condensed',sans-serif;letter-spacing:2px">Loading pricing...</div>
     </div>
   </div>
+<script type="module">
+import { getPricing } from './js/firebase.js';
+(async () => {
+  const grid = document.getElementById('price-grid');
+  try {
+    const plans = await getPricing();
+    if (plans.length === 0) throw new Error('empty');
+    grid.innerHTML = plans.map(p => `
+      <div class="price-card ${p.featured ? 'feat' : ''} fade-up">
+        ${p.featured && p.badge ? `<div class="pop-badge">⭐ ${p.badge}</div>` : ''}
+        <div class="plan-nm">${p.name || ''}</div>
+        <div class="plan-pr"><sup>₹</sup>${(p.price || 0).toLocaleString('en-IN')}</div>
+        <div class="plan-pd">One-time Payment</div>
+        <div class="plan-div"></div>
+        <ul class="plan-feats">
+          ${(p.features || []).map(f => `<li><span class="ck">✓</span> ${f}</li>`).join('')}
+        </ul>
+        <a href="javascript:void(0)" onclick="orderPlan('${p.name} Plan - ₹${p.price || 0}')" class="plan-btn">${p.btnText || 'Order Now →'}</a>
+      </div>`).join('');
+  } catch(e) {
+    grid.innerHTML = `
+      <div class="price-card fade-up"><div class="plan-nm">Basic</div><div class="plan-pr"><sup>₹</sup>999</div><div class="plan-pd">One-time Payment</div><div class="plan-div"></div><ul class="plan-feats"><li><span class="ck">✓</span> Logo Design</li><li><span class="ck">✓</span> Business Card</li><li><span class="ck">✓</span> PNG + PDF Files</li><li><span class="ck">✓</span> 2 Revisions</li></ul><a href="javascript:void(0)" onclick="orderPlan('Basic Plan - ₹999')" class="plan-btn">Order Basic →</a></div>
+      <div class="price-card feat fade-up"><div class="pop-badge">⭐ Most Popular</div><div class="plan-nm">Standard</div><div class="plan-pr"><sup>₹</sup>2,499</div><div class="plan-pd">One-time Payment</div><div class="plan-div"></div><ul class="plan-feats"><li><span class="ck">✓</span> Full Branding</li><li><span class="ck">✓</span> Social Media Kit</li><li><span class="ck">✓</span> 1 Page Website</li><li><span class="ck">✓</span> 5 Revisions</li></ul><a href="javascript:void(0)" onclick="orderPlan('Standard Plan - ₹2,499')" class="plan-btn">Order Now ⚡</a></div>
+      <div class="price-card fade-up"><div class="plan-nm">Premium</div><div class="plan-pr"><sup>₹</sup>4,999</div><div class="plan-pd">One-time Payment</div><div class="plan-div"></div><ul class="plan-feats"><li><span class="ck">✓</span> Everything in Standard</li><li><span class="ck">✓</span> 5 Page Website</li><li><span class="ck">✓</span> SEO Setup</li><li><span class="ck">✓</span> Unlimited Revisions</li></ul><a href="javascript:void(0)" onclick="orderPlan('Premium Plan - ₹4,999')" class="plan-btn">Order Premium →</a></div>`;
+  }
+})();
+</script>
 </section>
 
 <!-- COMPARISON TABLE -->
