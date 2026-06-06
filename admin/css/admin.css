@@ -294,3 +294,38 @@ tbody tr:last-child td{border-bottom:none}
   .page-content{padding:16px}
   .topbar{padding:0 16px}
 }
+/* =============================================
+   ADMIN MOBILE FIX
+============================================= */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+table { min-width: 600px; }
+@media (max-width: 768px) {
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-card { padding: 16px; }
+  .stat-val { font-size: 1.5rem; }
+  .page-content { padding: 14px; }
+  .topbar { padding: 0 14px; }
+  .topbar-name { display: none; }
+  .card { padding: 16px; }
+  .filter-bar { gap: 8px; }
+  .search-box { min-width: 100%; }
+  .filter-tab-group { width: 100%; }
+  .filter-tab { padding: 7px 12px; font-size: 0.75rem; flex: 1; text-align: center; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 14px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .port-admin-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .msg-layout { grid-template-columns: 1fr; height: auto; }
+  .msg-list { max-height: 300px; }
+  .msg-detail { min-height: 350px; padding: 16px; }
+  .msg-meta-grid { grid-template-columns: 1fr; }
+  .modal { max-width: 95vw; }
+  .form-group input, .form-group select,
+  .form-group textarea, .search-box input { font-size: 16px !important; }
+  .main-content { overflow-x: hidden; }
+}
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .port-admin-grid { grid-template-columns: 1fr; }
+  thead th { font-size: 0.68rem; padding: 10px; }
+  tbody td { padding: 10px; font-size: 0.82rem; }
+}
