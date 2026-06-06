@@ -342,3 +342,28 @@ table { min-width: 600px; }
     flex-wrap: wrap;
   }
 }
+
+/* VIEW ALL button cut fix */
+@media (max-width: 768px) {
+  .card-title {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .card-title a,
+  .card-title .btn,
+  .card-title button {
+    font-size: 0.72rem;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+  /* Recent orders/messages table overflow fix */
+  .card .table-wrap table {
+    min-width: unset;
+    width: 100%;
+  }
+  .card .table-wrap thead th,
+  .card .table-wrap tbody td {
+    padding: 10px 8px;
+    font-size: 0.78rem;
+  }
+}
