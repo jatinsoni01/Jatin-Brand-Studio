@@ -329,3 +329,16 @@ table { min-width: 600px; }
   thead th { font-size: 0.68rem; padding: 10px; }
   tbody td { padding: 10px; font-size: 0.82rem; }
 }
+
+/* Quick Actions mobile fix */
+@media (max-width: 768px) {
+  .card .btn { 
+    width: 100%; 
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .card div[style*="flex"], 
+  .card div[style*="gap"] {
+    flex-wrap: wrap;
+  }
+}
