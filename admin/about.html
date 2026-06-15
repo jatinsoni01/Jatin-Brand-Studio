@@ -3,6 +3,9 @@
 <head>
 <link rel="icon" href="/assets/favicon.ico">
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<link rel="manifest" href="/admin/manifest.json">
+<meta name="theme-color" content="#FF6600">
+<link rel="apple-touch-icon" href="/admin/assets/icons/apple-touch-icon.png">
 <title>About Editor — JBS Admin</title>
 <link rel="stylesheet" href="css/admin.css">
 </head>
@@ -204,6 +207,14 @@ function toast(msg, err=false) {
   t.style.cssText = `position:fixed;bottom:24px;right:24px;background:${err?'#ef4444':'#22c55e'};color:#fff;padding:12px 24px;font-family:"Barlow Condensed",sans-serif;font-size:.9rem;font-weight:700;z-index:9999;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)`;
   t.textContent = msg; document.body.appendChild(t);
   setTimeout(() => t.remove(), 3000);
+}
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/admin/sw.js', { scope: '/admin/' }).catch(console.error);
+  });
 }
 </script>
 </body></html>

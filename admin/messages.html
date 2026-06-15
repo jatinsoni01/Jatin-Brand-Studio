@@ -3,6 +3,9 @@
 <head>
 <link rel="icon" href="/assets/favicon.ico">
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<link rel="manifest" href="/admin/manifest.json">
+<meta name="theme-color" content="#FF6600">
+<link rel="apple-touch-icon" href="/admin/assets/icons/apple-touch-icon.png">
 <title>Messages — JBS Admin</title>
 <link rel="stylesheet" href="css/admin.css">
 </head>
@@ -131,6 +134,14 @@ window.delMsg = async (id) => {
   if(id === activeId) { activeId = null; document.getElementById('msg-detail').innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#555;gap:16px"><div style="font-size:4rem">📩</div></div>'; }
   await deleteMessage(id);
 };
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/admin/sw.js', { scope: '/admin/' }).catch(console.error);
+  });
+}
 </script>
 </body>
 </html>

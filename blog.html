@@ -3,6 +3,9 @@
 <head>
 <link rel="icon" href="/assets/favicon.ico">
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#FF6600">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <title>Blog — Jatin Brand Studio</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -159,4 +162,12 @@ const catEmojis = {
   <a href="about.html"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>About</a>
   <a href="contact.html"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Contact</a>
 </nav>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(console.error);
+  });
+}
+</script>
 </body></html>

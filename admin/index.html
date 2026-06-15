@@ -3,6 +3,9 @@
 <head>
 <link rel="icon" href="/assets/favicon.ico">
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<link rel="manifest" href="/admin/manifest.json">
+<meta name="theme-color" content="#FF6600">
+<link rel="apple-touch-icon" href="/admin/assets/icons/apple-touch-icon.png">
 <title>Admin Login — Jatin Brand Studio</title>
 <link rel="stylesheet" href="css/admin.css">
 <style>
@@ -196,6 +199,14 @@ document.addEventListener('keydown', e => {
   if(e.key >= '0' && e.key <= '9') window.pk(e.key);
   if(e.key === 'Backspace') window.dk();
 });
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/admin/sw.js', { scope: '/admin/' }).catch(console.error);
+  });
+}
 </script>
 </body>
 </html>
