@@ -12,8 +12,8 @@
   --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --yellow: #f59e0b;
 }
 
-*{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth}
-body{font-family:var(--font-b);background:var(--dark);color:var(--white);overflow-x:hidden}
+*{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{font-family:var(--font-b);background:var(--dark);color:var(--white);max-width:100%;overflow-x:hidden}
 a{text-decoration:none;color:inherit} ul{list-style:none} img{max-width:100%;display:block}
 input,select,textarea,button{font-family:var(--font-b)}
 

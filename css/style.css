@@ -29,11 +29,12 @@
    RESET & BASE
 ============================================= */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; max-width: 100%; overflow-x: hidden; }
 body {
   font-family: var(--font-b);
   background: var(--black);
   color: var(--white);
+  max-width: 100%;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
@@ -984,51 +985,6 @@ a:hover .arrow, button:hover .arrow { transform: translateX(4px); }
   .hamburger span { width: 22px; }
   .sec-title { font-size: 2rem; }
 }
-/* =============================================
-   BOTTOM NAV — MOBILE ONLY
-============================================= */
-.bottom-nav { display: none; }
-@media (max-width: 768px) {
-  .bottom-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 65px;
-    background: #0a0a0a;
-    border-top: 1px solid rgba(255,102,0,0.2);
-    z-index: 9999;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  .bottom-nav a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: #888;
-    text-decoration: none;
-    font-family: 'Barlow', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    flex: 1;
-    padding: 8px 0;
-  }
-  .bottom-nav a svg {
-    width: 22px;
-    height: 22px;
-    transition: all 0.3s ease;
-  }
-  .bottom-nav a.active,
-  .bottom-nav a:hover { color: #FF6600; }
-  .bottom-nav a.active svg,
-  .bottom-nav a:hover svg { filter: drop-shadow(0 0 6px rgba(255,102,0,0.6)); }
-  body { padding-bottom: 65px; }
-  .hamburger { display: none !important; }
-}
-
 /* =============================================
    BOTTOM NAV — MOBILE ONLY
 ============================================= */
